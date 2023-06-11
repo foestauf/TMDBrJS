@@ -20,6 +20,11 @@ class Movies {
     const response = await this.apiClient.get(`/movie/${id}`);
     return response;
   }
+
+  async getSimilar(id: string) {
+    const response = await this.apiClient.get(`/movie/${id}/similar`);
+    return response;
+  }
 }
 
 export default Movies;
