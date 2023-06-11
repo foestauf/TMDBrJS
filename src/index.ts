@@ -1,7 +1,48 @@
-class client {
-  constructor() {
-    console.log('client');
+import Movies from './movies/movies';
+import People from './people/people';
+import { camelCase } from 'camel-case';
+import { applyCaseMiddleware } from './utils/applyCaseMiddleware';
+interface IConfig {
+  apiKey: string;
+}
+
+export interface IApiClient {
+  get: <T = any>(url: string, options?: RequestInit | undefined) => Promise<T>;
+}
+
+class TmdbClient {
+  private apiClient: IApiClient;
+  movies: Movies;
+  people: People;
+
+  constructor(private config: IConfig) {
+    this.apiClient = {
+      get: async <T = any>(url: string, options: RequestInit = {}) => {
+        const response = await fetch(`https://api.themoviedb.org/3${url}`, {
+          ...options,
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.config.apiKey}`,
+            ...(options && options.headers),
+          },
+        });
+
+        if (!response.ok) {
+          if (response.status === 401) {
+            throw new Error('Invalid API key');
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        let data = await response.json();
+        data = applyCaseMiddleware(data, camelCase);
+        return data as T;
+      },
+    };
+    this.movies = new Movies(this.apiClient);
+
+    this.people = new People(this.apiClient);
   }
 }
 
-export default client;
+export default TmdbClient;
