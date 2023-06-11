@@ -1,4 +1,7 @@
-export { Uuid } from './helpers/uuid';
-import uuid from './helpers/uuid';
+class client {
+  constructor() {
+    console.log('client');
+  }
+}
 
-export default uuid;
+export default client;
