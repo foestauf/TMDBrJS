@@ -28,7 +28,6 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
           ssh-key: ${{ secrets.DEPLOY_TOKEN }}
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -38,6 +37,6 @@ jobs:
 
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          GH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
