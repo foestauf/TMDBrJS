@@ -3,16 +3,10 @@ import { MovieCredits } from './types/MovieCredit';
 import { IApiClient } from '..';
 
 interface Options {
-  include?: IncludeOptions;
+  include?: IncludeOptions[];
 }
 
-type IncludeOptions = {
-  movieCredits?: boolean;
-  tvCredits?: boolean;
-  combinedCredits?: boolean;
-  images?: boolean;
-  taggedImages?: boolean;
-};
+type IncludeOptions = ['movieCredits' | 'tvCredits' | 'combinedCredits' | 'images' | 'taggedImages'];
 
 class People {
   apiClient: IApiClient;
@@ -27,17 +21,15 @@ class People {
 
   async getById(id: string, options?: Options) {
     const { include } = options || {};
+    const appendToResponse = include?.join(',');
+    const url = `/person/${id}?append_to_response=${appendToResponse}`;
     try {
-      if (include?.movieCredits) {
-        const response = await this.apiClient.get(`/person/${id}?append_to_response=movie_credits`);
-        return response;
-      }
+      const response = await this.apiClient.get<Person>(url);
+      return response;
     } catch (error) {
       console.error(error);
       return {};
     }
-    const response = await this.apiClient.get<Person>(`/person/${id}`);
-    return response;
   }
 
   async getMovieCredits(id: string) {
