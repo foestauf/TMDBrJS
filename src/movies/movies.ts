@@ -2,13 +2,24 @@ import { IApiClient } from '..';
 import { MoveiCreditsResponseBody } from './types/MovieCast';
 
 interface Options {
-  include?: IncludeOptions;
+  include?: IncludeOptions[];
 }
 
-type IncludeOptions = {
-  credits?: boolean;
-  similar?: boolean;
-};
+type IncludeOptions = [
+  | 'credits'
+  | 'images'
+  | 'videos'
+  | 'similar'
+  | 'reviews'
+  | 'lists'
+  | 'recommendations'
+  | 'release_dates'
+  | 'keywords'
+  | 'changes'
+  | 'translations'
+  | 'external_ids'
+  | 'watch/providers',
+];
 
 class Movies {
   apiClient: IApiClient;
@@ -28,12 +39,13 @@ class Movies {
 
   async getById(id: string, options?: Options) {
     const { include } = options || {};
+    const appendToResponse = include?.join(',');
+    const url = `/movie/${id}`;
+    if (appendToResponse) {
+      url.concat(`?append_to_response=${appendToResponse}`);
+    }
     try {
-      if (include?.credits) {
-        const response = await this.apiClient.get(`/movie/${id}?append_to_response=credits`);
-        return response;
-      }
-      const response = await this.apiClient.get(`/movie/${id}`);
+      const response = await this.apiClient.get(url);
       return response;
     } catch (error) {
       console.error(error);
