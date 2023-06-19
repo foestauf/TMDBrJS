@@ -22,7 +22,10 @@ class People {
   async getById(id: string, options?: Options) {
     const { include } = options || {};
     const appendToResponse = include?.join(',');
-    const url = `/person/${id}?append_to_response=${appendToResponse}`;
+    const url = `/person/${id}`;
+    if (appendToResponse) {
+      url.concat(`?append_to_response=${appendToResponse}`);
+    }
     try {
       const response = await this.apiClient.get<Person>(url);
       return response;

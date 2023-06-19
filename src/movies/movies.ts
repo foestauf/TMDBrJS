@@ -40,7 +40,10 @@ class Movies {
   async getById(id: string, options?: Options) {
     const { include } = options || {};
     const appendToResponse = include?.join(',');
-    const url = `/movie/${id}?append_to_response=${appendToResponse}`;
+    const url = `/movie/${id}`;
+    if (appendToResponse) {
+      url.concat(`?append_to_response=${appendToResponse}`);
+    }
     try {
       const response = await this.apiClient.get(url);
       return response;
