@@ -1,25 +1,11 @@
 import { IApiClient } from '..';
-import { MoveiCreditsResponseBody } from './types/MovieCast';
-
-interface Options {
-  include?: IncludeOptions[];
-}
-
-type IncludeOptions = [
-  | 'credits'
-  | 'images'
-  | 'videos'
-  | 'similar'
-  | 'reviews'
-  | 'lists'
-  | 'recommendations'
-  | 'release_dates'
-  | 'keywords'
-  | 'changes'
-  | 'translations'
-  | 'external_ids'
-  | 'watch/providers',
-];
+import {
+  MoveiCreditsResponseBody,
+  Movie,
+  MovieAppendResponse,
+  MovieIncludeOptions,
+  MovieOptions,
+} from './types/MovieCast';
 
 class Movies {
   apiClient: IApiClient;
@@ -37,7 +23,7 @@ class Movies {
     return response;
   }
 
-  async getById(id: string, options?: Options) {
+  async getById<T extends MovieIncludeOptions[]>(id: string, options?: MovieOptions<T>) {
     const { include } = options || {};
     const appendToResponse = include?.join(',');
     const url = `/movie/${id}`;
@@ -45,7 +31,7 @@ class Movies {
       url.concat(`?append_to_response=${appendToResponse}`);
     }
     try {
-      const response = await this.apiClient.get(url);
+      const response = await this.apiClient.get<Movie & MovieAppendResponse<T>>(url);
       return response;
     } catch (error) {
       console.error(error);

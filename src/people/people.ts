@@ -1,12 +1,10 @@
-import { Person } from './types/Person';
+import { AppendResponse, IncludeOptions, Person } from './types/Person';
 import { MovieCredits } from './types/MovieCredit';
 import { IApiClient } from '..';
 
-interface Options {
+interface Options<T extends IncludeOptions[]> {
   include?: IncludeOptions[];
 }
-
-type IncludeOptions = ['movieCredits' | 'tvCredits' | 'combinedCredits' | 'images' | 'taggedImages'];
 
 class People {
   apiClient: IApiClient;
@@ -19,7 +17,7 @@ class People {
     return response.data;
   }
 
-  async getById(id: string, options?: Options) {
+  async getById<T extends IncludeOptions[]>(id: string, options?: Options<T>) {
     const { include } = options || {};
     const appendToResponse = include?.join(',');
     const url = `/person/${id}`;
@@ -27,7 +25,7 @@ class People {
       url.concat(`?append_to_response=${appendToResponse}`);
     }
     try {
-      const response = await this.apiClient.get<Person>(url);
+      const response = await this.apiClient.get<Person & AppendResponse<T>>(url);
       return response;
     } catch (error) {
       console.error(error);
