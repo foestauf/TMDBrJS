@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/foestauf/TMDBrJS/compare/v1.1.0...v1.1.1) (2023-06-20)
+
+
+### Bug Fixes
+
+* **types:** additional type support for movie and person responses ([c951b08](https://github.com/foestauf/TMDBrJS/commit/c951b08582ca938cfded5790cac3b794900da76a))
+
 # [1.1.0](https://github.com/foestauf/TMDBrJS/compare/v1.0.0...v1.1.0) (2023-06-12)
 
 
