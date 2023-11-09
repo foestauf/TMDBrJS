@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/foestauf/TMDBrJS/compare/v1.1.7...v1.2.0) (2023-11-09)
+
+
+### Features
+
+* **person api response:** improve person append to response typing ([#88](https://github.com/foestauf/TMDBrJS/issues/88)) ([a6c5fa9](https://github.com/foestauf/TMDBrJS/commit/a6c5fa96bd4a1132a8532146b8a0d14638af6921))
+
 ## [1.1.7](https://github.com/foestauf/TMDBrJS/compare/v1.1.6...v1.1.7) (2023-09-16)
 
 
