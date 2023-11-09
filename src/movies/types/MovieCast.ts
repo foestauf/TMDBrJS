@@ -1,13 +1,13 @@
 import { Person } from '../../people/types/Person';
 
-interface CastMember extends Person {
+export interface CastMember extends Person {
   cast_id: number;
   character: string;
   credit_id: string;
   order: number;
 }
 
-interface CrewMember extends Person {
+export interface CrewMember extends Person {
   credit_id: string;
   department: string;
   job: string;

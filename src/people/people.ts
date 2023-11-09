@@ -1,10 +1,6 @@
-import { AppendResponse, IncludeOptions, Person } from './types/Person';
+import { AppendOptions, AppendResponse, Options, Person } from './types/Person';
 import { MovieCredits } from './types/MovieCredit';
 import { IApiClient } from '..';
-
-interface Options<T extends IncludeOptions[]> {
-  include?: IncludeOptions[];
-}
 
 class People {
   apiClient: IApiClient;
@@ -17,7 +13,7 @@ class People {
     return response.data;
   }
 
-  async getById<T extends IncludeOptions[]>(id: string, options?: Options<T>) {
+  async getById<T extends AppendOptions[]>(id: string, options?: Options<T>) {
     const { include } = options || {};
     const appendToResponse = include?.join(',');
     const url = `/person/${id}`;
@@ -29,7 +25,10 @@ class People {
       return response;
     } catch (error) {
       console.error(error);
-      return {};
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      throw new Error('Something went wrong');
     }
   }
 
