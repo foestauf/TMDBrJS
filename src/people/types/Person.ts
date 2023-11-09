@@ -1,3 +1,5 @@
+import { CastMember, CrewMember } from '../../movies/types/MovieCast';
+
 export interface Person {
   adult: boolean;
   also_known_as: string[];
@@ -15,38 +17,55 @@ export interface Person {
   profile_path: string;
 }
 
-export interface MovieCredits {
-  movieCredits: MovieCredits[]; // replace 'any' with the actual type
-}
+type MovieCredits = {
+  id: number;
+  cast: CastMember[];
+  crew: CrewMember[];
+};
 
-export interface TvCredits {
+interface TvCredits {
   tvCredits: any; // replace 'any' with the actual type
 }
 
-export interface CombinedCredits {
+interface CombinedCredits {
   combinedCredits: any; // replace 'any' with the actual type
 }
 
-export interface Images {
+interface Images {
   images: any; // replace 'any' with the actual type
 }
 
-export interface TaggedImages {
-  taggedImages: any; // replace 'any' with the actual type
+type Latest = {
+  adult: boolean;
+  also_known_as: string[];
+  biography: string;
+  birthday: string | null;
+  deathday: string | null;
+  gender: number;
+  homepage: string | null;
+  id: number;
+  imdb_id: string | null;
+  known_for_department: string | null;
+  name: string;
+  place_of_birth: string | null;
+  popularity: number;
+  profile_path: string | null;
+};
+
+export interface Options<T extends AppendOptions[]> {
+  include?: T;
 }
 
-type IncludeOptionsMap = {
+type AppendResponseMap = {
   movieCredits: MovieCredits;
   tvCredits: TvCredits;
   combinedCredits: CombinedCredits;
   images: Images;
-  taggedImages: TaggedImages;
+  latest: Latest;
 };
 
-export type AppendResponse<T extends IncludeOptions[]> = T extends (infer U)[]
-  ? U extends keyof IncludeOptionsMap
-    ? IncludeOptionsMap[U]
-    : never
-  : never;
+export type AppendResponse<T extends AppendOptions[]> = {
+  [K in T[number]]: AppendResponseMap[K];
+};
 
-export type IncludeOptions = ['movieCredits' | 'tvCredits' | 'combinedCredits' | 'images' | 'taggedImages'];
+export type AppendOptions = 'movieCredits' | 'tvCredits' | 'combinedCredits' | 'images' | 'latest';
