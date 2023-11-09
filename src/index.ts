@@ -11,7 +11,7 @@ export interface IApiClient {
 }
 
 class TmdbClient {
-  private apiClient: IApiClient;
+  public apiClient: IApiClient;
   movies: Movies;
   people: People;
 
