@@ -19,6 +19,7 @@ export interface MoveiCreditsResponseBody {
   crew: CrewMember[];
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export interface MovieOptions<T extends MovieIncludeOptions[]> {
   include?: MovieIncludeOptions[];
 }
@@ -58,8 +59,6 @@ interface Videos {
 interface Images {
   images: any; // replace 'any' with the actual type
 }
-
-type IncludeOptions = 'reviews' | 'similarMovies' | 'credits' | 'videos' | 'images';
 
 type IncludeOptionsMap = {
   reviews: Reviews;
