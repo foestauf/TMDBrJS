@@ -31,6 +31,7 @@ jobs:
       matrix:
         node-version: [20.x]
 
+
     name: Run all tests
     runs-on: ubuntu-latest
 
@@ -59,6 +60,6 @@ jobs:
         run: npm run test
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

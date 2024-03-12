@@ -28,21 +28,21 @@
   "author": "Robert McKee",
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^17.6.5",
-    "@commitlint/config-conventional": "^17.6.5",
-    "@types/jest": "29.5.8",
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
+    "@types/jest": "29.5.12",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "8.53.0",
-    "eslint-plugin-jest": "27.6.0",
+    "eslint": "8.57.0",
+    "eslint-plugin-jest": "27.9.0",
     "husky": "^8.0.0",
     "jest": "29.7.0",
-    "lint-staged": "^14.0.0",
-    "prettier": "2.8.8",
-    "ts-jest": "29.1.1",
-    "typescript": "5.2.2"
+    "lint-staged": "^15.0.0",
+    "prettier": "3.2.5",
+    "ts-jest": "29.1.2",
+    "typescript": "5.4.2"
   },
   "files": [
     "lib/**/*"
