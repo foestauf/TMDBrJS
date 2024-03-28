@@ -57,9 +57,8 @@
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "camel-case": "^4.1.2",
     "semantic-release": "^23.0.0",
-    "snake-case": "^3.0.4"
+    "change-case": "^5.0.0"
   },
   "config": {
     "commitizen": {
