@@ -1,5 +1,6 @@
 import TmdbClient from '..';
 import { Options } from './types/Person';
+import { vi, expect, describe, beforeAll, it } from 'vitest';
 
 describe('People', () => {
   let tmdb: TmdbClient;
@@ -17,7 +18,7 @@ describe('People', () => {
         birthday: '1990-01-01',
         known_for_department: 'Acting',
       };
-      jest.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
 
       const result = await tmdb.people.getById(personId);
 
@@ -45,7 +46,7 @@ describe('People', () => {
           ],
         },
       };
-      jest.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
 
       const result = await tmdb.people.getById(personId, options);
 
@@ -54,7 +55,7 @@ describe('People', () => {
 
     it('should throw an error if API call fails', async () => {
       const personId = '123';
-      jest.spyOn(tmdb.apiClient, 'get').mockRejectedValue(new Error('API error'));
+      vi.spyOn(tmdb.apiClient, 'get').mockRejectedValue(new Error('API error'));
 
       await expect(tmdb.people.getById(personId)).rejects.toThrow('API error');
     });
