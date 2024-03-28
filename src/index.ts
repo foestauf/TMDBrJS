@@ -1,6 +1,6 @@
 import Movies from './movies/movies';
 import People from './people/people';
-import { camelCase } from 'camel-case';
+import { camelCase } from 'change-case';
 import { applyCaseMiddleware } from './utils/applyCaseMiddleware';
 interface IConfig {
   apiKey: string;

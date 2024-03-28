@@ -1,5 +1,4 @@
-import { camelCase } from 'camel-case';
-import { snakeCase } from 'snake-case';
+import { camelCase, snakeCase } from 'change-case';
 import { applyCaseMiddleware } from '../applyCaseMiddleware';
 import { describe, it, expect } from 'vitest';
 
