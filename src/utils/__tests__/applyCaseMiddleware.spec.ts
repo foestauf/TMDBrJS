@@ -1,6 +1,7 @@
 import { camelCase } from 'camel-case';
 import { snakeCase } from 'snake-case';
 import { applyCaseMiddleware } from '../applyCaseMiddleware';
+import { describe, it, expect } from 'vitest';
 
 describe('applyCaseMiddleware', () => {
   it('converts object keys to camel case', () => {

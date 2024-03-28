@@ -3,6 +3,7 @@
   "version": "1.2.5",
   "description": "API wrapper for TMDB API",
   "main": "lib/index.js",
+  "type": "module",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
@@ -11,7 +12,7 @@
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
-    "test": "vitest --coverage",
+    "test": "vitest --coverage run",
     "prepare": "npm run build && husky install",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",

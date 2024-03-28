@@ -1,6 +1,6 @@
 import TmdbClient from '..';
 import { Options } from './types/Person';
-import { vi } from 'vitest';
+import { vi, expect, describe, beforeAll, it } from 'vitest';
 
 describe('People', () => {
   let tmdb: TmdbClient;
