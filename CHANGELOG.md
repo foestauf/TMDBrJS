@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/foestauf/TMDBrJS/compare/v1.2.6...v1.2.7) (2024-04-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency change-case to v5.4.4 ([a1017ac](https://github.com/foestauf/TMDBrJS/commit/a1017ac39b63cd387da403c5e2a90b8081056965))
+
 ## [1.2.6](https://github.com/foestauf/TMDBrJS/compare/v1.2.5...v1.2.6) (2024-04-03)
 
 
