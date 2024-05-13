@@ -1,6 +1,6 @@
 {
   "name": "tmdbrjs",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "API wrapper for TMDB API",
   "main": "lib/index.js",
   "type": "module",
