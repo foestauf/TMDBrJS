@@ -1,4 +1,3 @@
-````markdown
 # TMDBrJS
 
 TMDBrJS is a JavaScript library for interacting with the TMDB API.
@@ -16,7 +15,6 @@ To use TMDBrJS, you need to have Node.js installed. Then, you can install the li
 ```bash
 npm install tmdbrjs
 ```
-````
 
 ## Usage
 
