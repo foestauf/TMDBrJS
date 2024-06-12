@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/foestauf/TMDBrJS/compare/v1.2.10...v1.3.0) (2024-06-12)
+
+
+### Features
+
+* **popular movies:** add types for the getPopular method ([#185](https://github.com/foestauf/TMDBrJS/issues/185)) ([332c762](https://github.com/foestauf/TMDBrJS/commit/332c762d7b34ed9a1b651a0b4a17a72fa9ef9f64))
+
 ## [1.2.10](https://github.com/foestauf/TMDBrJS/compare/v1.2.9...v1.2.10) (2024-06-07)
 
 
