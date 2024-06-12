@@ -5,6 +5,7 @@ import {
   MovieAppendResponse,
   MovieIncludeOptions,
   MovieOptions,
+  Popular,
 } from './types/MovieCast';
 
 class Movies {
@@ -13,9 +14,9 @@ class Movies {
     this.apiClient = apiClient;
   }
 
-  async getPopular() {
-    const response = await this.apiClient.get('/movie/popular');
-    return response;
+  async getPopular(page?: number) {
+    const response = await this.apiClient.get('/movie/popular?page=' + (page || '1'));
+    return response as Popular;
   }
 
   async getTopRated() {
