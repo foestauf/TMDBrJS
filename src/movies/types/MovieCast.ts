@@ -60,6 +60,13 @@ interface Images {
   images: any; // replace 'any' with the actual type
 }
 
+export interface Popular {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
+
 type IncludeOptionsMap = {
   reviews: Reviews;
   similarMovies: SimilarMovies;
