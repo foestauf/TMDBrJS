@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/foestauf/TMDBrJS/compare/v1.3.0...v1.3.1) (2024-06-30)
+
+
+### Bug Fixes
+
+* **movie getbyid and people getpopular:** updates types for movie.getById and people.getPopular ([#192](https://github.com/foestauf/TMDBrJS/issues/192)) ([5b2f3f4](https://github.com/foestauf/TMDBrJS/commit/5b2f3f4d23e4a896a70aba891d3197bd93ae6f69))
+
 # [1.3.0](https://github.com/foestauf/TMDBrJS/compare/v1.2.10...v1.3.0) (2024-06-12)
 
 
