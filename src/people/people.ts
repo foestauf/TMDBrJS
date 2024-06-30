@@ -1,4 +1,4 @@
-import { AppendOptions, AppendResponse, Options, Person } from './types/Person';
+import { AppendOptions, AppendResponse, Options, Person, PopularPeople } from './types/Person';
 import { MovieCredits } from './types/MovieCredit';
 import { IApiClient } from '..';
 
@@ -8,9 +8,9 @@ class People {
     this.apiClient = apiClient;
   }
 
-  async getPopular() {
-    const response = await this.apiClient.get('/person/popular');
-    return response.data;
+  async getPopular(page?: number) {
+    const response = await this.apiClient.get<PopularPeople>('/person/popular?page=' + (page ?? '1'));
+    return response;
   }
 
   async getById<T extends AppendOptions[]>(id: string, options?: Options<T>) {
@@ -21,10 +21,8 @@ class People {
       url.concat(`?append_to_response=${appendToResponse}`);
     }
     try {
-      const response = await this.apiClient.get<Person & AppendResponse<T>>(url);
-      return response;
+      return await this.apiClient.get<Person & AppendResponse<T>>(url);
     } catch (error) {
-      console.error(error);
       if (error instanceof Error) {
         throw new Error(error.message);
       }

@@ -23,6 +23,13 @@ type MovieCredits = {
   crew: CrewMember[];
 };
 
+export interface PopularPeople {
+  page: number;
+  results: Person[];
+  total_pages: number;
+  total_results: number;
+}
+
 interface TvCredits {
   tvCredits: any; // replace 'any' with the actual type
 }

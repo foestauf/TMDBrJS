@@ -7,7 +7,7 @@ interface IConfig {
 }
 
 export interface IApiClient {
-  get: <T = any>(url: string, options?: RequestInit | undefined) => Promise<T>;
+  get: <T = unknown>(url: string, options?: RequestInit | undefined) => Promise<T>;
 }
 
 class TmdbClient {
@@ -17,7 +17,7 @@ class TmdbClient {
 
   constructor(private config: IConfig) {
     this.apiClient = {
-      get: async <T = any>(url: string, options: RequestInit = {}) => {
+      get: async <T = unknown>(url: string, options: RequestInit = {}) => {
         const response = await fetch(`https://api.themoviedb.org/3${url}`, {
           ...options,
           headers: {

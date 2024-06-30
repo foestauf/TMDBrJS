@@ -1,5 +1,5 @@
-import TmdbClient from '..';
-import { Options } from './types/Person';
+import TmdbClient from '../..';
+import { Options } from '../types/Person';
 import { vi, expect, describe, beforeAll, it } from 'vitest';
 
 describe('People', () => {

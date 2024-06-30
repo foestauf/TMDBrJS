@@ -19,37 +19,12 @@ export interface MoveiCreditsResponseBody {
   crew: CrewMember[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export interface MovieOptions<T extends MovieIncludeOptions[]> {
-  include?: MovieIncludeOptions[];
-}
-
-export type MovieIncludeOptions = [
-  | 'credits'
-  | 'images'
-  | 'videos'
-  | 'similar'
-  | 'reviews'
-  | 'lists'
-  | 'recommendations'
-  | 'release_dates'
-  | 'keywords'
-  | 'changes'
-  | 'translations'
-  | 'external_ids'
-  | 'watch/providers',
-];
-
 interface Reviews {
   reviews: any; // replace 'any' with the actual type
 }
 
 interface SimilarMovies {
   similarMovies: any; // replace 'any' with the actual type
-}
-
-interface Credits {
-  credits: any; // replace 'any' with the actual type
 }
 
 interface Videos {
@@ -60,20 +35,12 @@ interface Images {
   images: any; // replace 'any' with the actual type
 }
 
-export interface Popular {
+export interface PopularMovies {
   page: number;
   results: Movie[];
   total_pages: number;
   total_results: number;
 }
-
-type IncludeOptionsMap = {
-  reviews: Reviews;
-  similarMovies: SimilarMovies;
-  credits: Credits;
-  videos: Videos;
-  images: Images;
-};
 
 type Genre = {
   id: number;
@@ -126,8 +93,20 @@ export type Movie = {
   vote_count: number;
 };
 
-export type MovieAppendResponse<T extends MovieIncludeOptions[]> = T extends (infer U)[]
-  ? U extends keyof IncludeOptionsMap
-    ? IncludeOptionsMap[U]
-    : never
-  : never;
+export interface Options<T extends AppendOptions[]> {
+  include?: T;
+}
+
+type AppendResponseMap = {
+  credits: MoveiCreditsResponseBody;
+  reviews: Reviews;
+  similar: SimilarMovies;
+  videos: Videos;
+  images: Images;
+};
+
+export type AppendResponse<T extends AppendOptions[]> = {
+  [K in T[number]]: AppendResponseMap[K];
+};
+
+export type AppendOptions = 'credits' | 'reviews' | 'similar' | 'videos' | 'images';
