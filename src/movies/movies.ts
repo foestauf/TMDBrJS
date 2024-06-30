@@ -1,11 +1,11 @@
 import { IApiClient } from '..';
 import {
+  AppendOptions,
+  AppendResponse,
   MoveiCreditsResponseBody,
   Movie,
-  MovieAppendResponse,
-  MovieIncludeOptions,
-  MovieOptions,
-  Popular,
+  Options,
+  PopularMovies,
 } from './types/MovieCast';
 
 class Movies {
@@ -15,8 +15,7 @@ class Movies {
   }
 
   async getPopular(page?: number) {
-    const response = await this.apiClient.get('/movie/popular?page=' + (page || '1'));
-    return response as Popular;
+    return await this.apiClient.get<PopularMovies>('/movie/popular?page=' + (page ?? '1'));
   }
 
   async getTopRated() {
@@ -24,19 +23,20 @@ class Movies {
     return response;
   }
 
-  async getById<T extends MovieIncludeOptions[]>(id: string, options?: MovieOptions<T>) {
-    const { include } = options || {};
+  async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Movie & AppendResponse<T>> {
+    const { include } = options || { include: [] };
     const appendToResponse = include?.join(',');
     const url = `/movie/${id}`;
     if (appendToResponse) {
       url.concat(`?append_to_response=${appendToResponse}`);
     }
     try {
-      const response = await this.apiClient.get<Movie & MovieAppendResponse<T>>(url);
-      return response;
+      return await this.apiClient.get<Movie & AppendResponse<T>>(url);
     } catch (error) {
-      console.error(error);
-      return {};
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      throw new Error('Something went wrong');
     }
   }
 
