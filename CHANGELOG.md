@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/foestauf/TMDBrJS/compare/v1.3.1...v1.3.2) (2024-07-05)
+
+
+### Bug Fixes
+
+* **append responses:** fixes append to response include options ([#195](https://github.com/foestauf/TMDBrJS/issues/195)) ([fdaa83f](https://github.com/foestauf/TMDBrJS/commit/fdaa83ff7ffd2a3a836202c1900aa0cb2bae24ba))
+
 ## [1.3.1](https://github.com/foestauf/TMDBrJS/compare/v1.3.0...v1.3.1) (2024-06-30)
 
 
