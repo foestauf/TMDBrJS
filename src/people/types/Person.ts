@@ -2,19 +2,19 @@ import { CastMember, CrewMember } from '../../movies/types/MovieCast';
 
 export interface Person {
   adult: boolean;
-  also_known_as: string[];
+  alsoKnownAs: string[];
   biography: string;
   birthday: string;
   deathday: string;
   gender: number;
   homepage: string;
   id: number;
-  imdb_id: string;
-  known_for_department: string;
+  imdbId: string;
+  knownForDepartment: string;
   name: string;
-  place_of_birth: string;
+  placeOfBirth: string;
   popularity: number;
-  profile_path: string;
+  profilePath: string;
 }
 
 type MovieCredits = {
@@ -26,8 +26,8 @@ type MovieCredits = {
 export interface PopularPeople {
   page: number;
   results: Person[];
-  total_pages: number;
-  total_results: number;
+  totalPages: number;
+  totalResults: number;
 }
 
 interface TvCredits {
@@ -44,19 +44,19 @@ interface Images {
 
 type Latest = {
   adult: boolean;
-  also_known_as: string[];
+  alsoKnownAs: string[];
   biography: string;
   birthday: string | null;
   deathday: string | null;
   gender: number;
   homepage: string | null;
   id: number;
-  imdb_id: string | null;
-  known_for_department: string | null;
+  imdbId: string | null;
+  knownForDepartment: string | null;
   name: string;
-  place_of_birth: string | null;
+  placeOfBirth: string | null;
   popularity: number;
-  profile_path: string | null;
+  profilePath: string | null;
 };
 
 export interface Options<T extends AppendOptions[]> {

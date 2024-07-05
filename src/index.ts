@@ -17,8 +17,9 @@ class TmdbClient {
 
   constructor(private config: IConfig) {
     this.apiClient = {
-      get: async <T = unknown>(url: string, options: RequestInit = {}) => {
-        const response = await fetch(`https://api.themoviedb.org/3${url}`, {
+      get: async <T = unknown>(pathname: string, options: RequestInit = {}) => {
+        const url = new URL(pathname, 'https://api.themoviedb.org/3');
+        const response = await fetch(url, {
           ...options,
           headers: {
             'Content-Type': 'application/json',
