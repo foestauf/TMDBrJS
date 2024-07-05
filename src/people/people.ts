@@ -16,12 +16,12 @@ class People {
   async getById<T extends AppendOptions[]>(id: string, options?: Options<T>) {
     const { include } = options || {};
     const appendToResponse = include?.join(',');
-    const url = `/person/${id}`;
+    const url = new URL(`https://api.themoviedb.org/3/person/${id}`);
     if (appendToResponse) {
-      url.concat(`?append_to_response=${appendToResponse}`);
+      url.searchParams.append('append_to_response', appendToResponse);
     }
     try {
-      return await this.apiClient.get<Person & AppendResponse<T>>(url);
+      return await this.apiClient.get<Person & AppendResponse<T>>(url.toString());
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);

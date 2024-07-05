@@ -26,12 +26,12 @@ class Movies {
   async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Movie & AppendResponse<T>> {
     const { include } = options || { include: [] };
     const appendToResponse = include?.join(',');
-    const url = `/movie/${id}`;
+    const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
     if (appendToResponse) {
-      url.concat(`?append_to_response=${appendToResponse}`);
+      url.searchParams.append('append_to_response', appendToResponse);
     }
     try {
-      return await this.apiClient.get<Movie & AppendResponse<T>>(url);
+      return await this.apiClient.get<Movie & AppendResponse<T>>(url.toString());
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);

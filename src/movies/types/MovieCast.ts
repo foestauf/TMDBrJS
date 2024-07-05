@@ -3,12 +3,13 @@ import { Person } from '../../people/types/Person';
 export interface CastMember extends Person {
   cast_id: number;
   character: string;
-  credit_id: string;
+  creditId: string;
   order: number;
+  knownForDepartment: string;
 }
 
 export interface CrewMember extends Person {
-  credit_id: string;
+  creditId: string;
   department: string;
   job: string;
 }
@@ -38,8 +39,8 @@ interface Images {
 export interface PopularMovies {
   page: number;
   results: Movie[];
-  total_pages: number;
-  total_results: number;
+  totalPages: number;
+  totalResults: number;
 }
 
 type Genre = {
@@ -49,9 +50,9 @@ type Genre = {
 
 type ProductionCompany = {
   id: number;
-  logo_path: string;
+  logoPath: string;
   name: string;
-  origin_country: string;
+  originCountry: string;
 };
 
 type ProductionCountry = {
@@ -68,29 +69,29 @@ type SpokenLanguage = {
 export type Movie = {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: string;
+  belongsToCollection: string;
   budget: number;
   genres: Genre[];
   homepage: string;
   id: number;
-  imdb_id: string;
-  original_language: string;
-  original_title: string;
+  imdbId: string;
+  originalLanguage: string;
+  originalTitle: string;
   overview: string;
   popularity: number;
-  poster_path: string;
-  production_companies: ProductionCompany[];
-  production_countries: ProductionCountry[];
-  release_date: string;
+  posterPath: string;
+  productionCompanies: ProductionCompany[];
+  productionCountries: ProductionCountry[];
+  releaseDate: string;
   revenue: number;
   runtime: number;
-  spoken_languages: SpokenLanguage[];
+  spokenLanguages: SpokenLanguage[];
   status: string;
   tagline: string;
   title: string;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
+  voteAverage: number;
+  voteCount: number;
 };
 
 export interface Options<T extends AppendOptions[]> {
