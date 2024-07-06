@@ -12,6 +12,7 @@
     "build": "tsc",
     "check-types": "tsc --noEmit --pretty",
     "commit": "cz",
+    "dev": "tsc -w",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",

@@ -15,11 +15,11 @@ class Movies {
   }
 
   async getPopular(page?: number) {
-    return await this.apiClient.get<PopularMovies>('/movie/popular?page=' + (page ?? '1'));
+    return await this.apiClient.get<PopularMovies>('movie/popular?page=' + (page ?? '1'));
   }
 
   async getTopRated() {
-    const response = await this.apiClient.get('/movie/top_rated');
+    const response = await this.apiClient.get('movie/top_rated');
     return response;
   }
 
@@ -41,12 +41,12 @@ class Movies {
   }
 
   async getSimilar(id: string) {
-    const response = await this.apiClient.get(`/movie/${id}/similar`);
+    const response = await this.apiClient.get(`movie/${id}/similar`);
     return response;
   }
 
   async getCredits(id: string) {
-    const response = await this.apiClient.get<MoveiCreditsResponseBody>(`/movie/${id}/credits`);
+    const response = await this.apiClient.get<MoveiCreditsResponseBody>(`movie/${id}/credits`);
     return response;
   }
 }
