@@ -1,12 +1,16 @@
 import TmdbClient from '../..';
 import { Options } from '../types/Person';
-import { vi, expect, describe, beforeAll, it } from 'vitest';
+import { vi, expect, describe, beforeAll, it, beforeEach } from 'vitest';
 
 describe('People', () => {
   let tmdb: TmdbClient;
 
   beforeAll(() => {
     tmdb = new TmdbClient({ apiKey: '123' });
+  });
+
+  beforeEach(() => {
+    vi.restoreAllMocks();
   });
 
   describe('getById', () => {
@@ -33,7 +37,7 @@ describe('People', () => {
       const response = {
         id: personId,
         name: 'John Doe',
-        movie_credits: {
+        movieCredits: {
           cast: [
             {
               id: 1,
@@ -46,11 +50,22 @@ describe('People', () => {
           ],
         },
       };
-      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+      const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValueOnce({
+        ok: true,
+        json: async () => response,
+      } as any);
 
       const result = await tmdb.people.getById(personId, options);
+      const url = new URL(`https://api.themoviedb.org/3/person/${personId}`);
+      url.searchParams.append('append_to_response', 'movieCredits');
 
       expect(result).toEqual(response);
+      expect(fetchSpy).toHaveBeenCalledWith(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer 123',
+        },
+      });
     });
 
     it('should throw an error if API call fails', async () => {
