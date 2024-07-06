@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/foestauf/TMDBrJS/compare/v1.3.2...v1.3.3) (2024-07-06)
+
+
+### Bug Fixes
+
+* **tmdb api url constructor:** fixes url constructor ([#196](https://github.com/foestauf/TMDBrJS/issues/196)) ([947c5ad](https://github.com/foestauf/TMDBrJS/commit/947c5ada88ed3e48f247785e94d41c4d4255f56d))
+
 ## [1.3.2](https://github.com/foestauf/TMDBrJS/compare/v1.3.1...v1.3.2) (2024-07-05)
 
 
