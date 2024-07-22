@@ -14,7 +14,7 @@
     "commit": "cz",
     "dev": "tsc -w",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
-    "lint": "eslint",
+    "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "test": "vitest --coverage run",
     "prepare": "npm run build",
