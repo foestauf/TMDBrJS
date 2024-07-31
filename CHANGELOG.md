@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/foestauf/TMDBrJS/compare/v1.3.3...v1.3.4) (2024-07-31)
+
+
+### Bug Fixes
+
+* **types:** adds stricter type checks ([#218](https://github.com/foestauf/TMDBrJS/issues/218)) ([0d816f3](https://github.com/foestauf/TMDBrJS/commit/0d816f3ad8878b83ef095bf4b1f9359cf2752b60))
+
 ## [1.3.3](https://github.com/foestauf/TMDBrJS/compare/v1.3.2...v1.3.3) (2024-07-06)
 
 
