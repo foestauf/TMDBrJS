@@ -31,15 +31,15 @@ export interface PopularPeople {
 }
 
 interface TvCredits {
-  tvCredits: any; // replace 'any' with the actual type
+  tvCredits: unknown; // replace 'unknown' with the actual type
 }
 
 interface CombinedCredits {
-  combinedCredits: any; // replace 'any' with the actual type
+  combinedCredits: unknown; // replace 'unknown' with the actual type
 }
 
 interface Images {
-  images: any; // replace 'any' with the actual type
+  images: unknown; // replace 'unknown' with the actual type
 }
 
 type Latest = {

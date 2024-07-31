@@ -21,19 +21,19 @@ export interface MoveiCreditsResponseBody {
 }
 
 interface Reviews {
-  reviews: any; // replace 'any' with the actual type
+  reviews: unknown; // replace 'unknown' with the actual type
 }
 
 interface SimilarMovies {
-  similarMovies: any; // replace 'any' with the actual type
+  similarMovies: unknown; // replace 'unknown' with the actual type
 }
 
 interface Videos {
-  videos: any; // replace 'any' with the actual type
+  videos: unknown; // replace 'unknown' with the actual type
 }
 
 interface Images {
-  images: any; // replace 'any' with the actual type
+  images: unknown; // replace 'unknown' with the actual type
 }
 
 export interface PopularMovies {

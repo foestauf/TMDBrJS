@@ -52,8 +52,8 @@ describe('People', () => {
       };
       const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValueOnce({
         ok: true,
-        json: async () => response,
-      } as any);
+        json: () => Promise.resolve(response),
+      } as Response);
 
       const result = await tmdb.people.getById(personId, options);
       const url = new URL(`https://api.themoviedb.org/3/person/${personId}`);

@@ -15,7 +15,7 @@ class Movies {
   }
 
   async getPopular(page?: number) {
-    return await this.apiClient.get<PopularMovies>('movie/popular?page=' + (page ?? '1'));
+    return await this.apiClient.get<PopularMovies>('movie/popular?page=' + (page?.toString() ?? '1'));
   }
 
   async getTopRated() {

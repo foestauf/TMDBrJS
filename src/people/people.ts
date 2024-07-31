@@ -10,7 +10,7 @@ class People {
   }
 
   async getPopular(page?: number) {
-    const response = await this.apiClient.get<PopularPeople>('/person/popular?page=' + (page ?? '1'));
+    const response = await this.apiClient.get<PopularPeople>('/person/popular?page=' + (page?.toString() ?? '1'));
     return response;
   }
 
