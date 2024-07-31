@@ -24,7 +24,7 @@ class TmdbClient {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${this.config.apiKey}`,
-            ...(options && options.headers),
+            ...options.headers,
           },
         });
 
@@ -32,10 +32,10 @@ class TmdbClient {
           if (response.status === 401) {
             throw new Error('Invalid API key');
           }
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! status: ${String(response.status)}`);
         }
 
-        let data = await response.json();
+        let data: unknown = await response.json();
         data = applyCaseMiddleware(data, camelCase);
         return data as T;
       },
