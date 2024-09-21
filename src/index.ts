@@ -7,7 +7,7 @@ interface IConfig {
 }
 
 export interface IApiClient {
-  get: <T = unknown>(url: string, options?: RequestInit | undefined) => Promise<T>;
+  get: <T = unknown>(url: string, options?: RequestInit) => Promise<T>;
 }
 
 class TmdbClient {
