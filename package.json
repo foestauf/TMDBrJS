@@ -1,6 +1,6 @@
 {
   "name": "tmdbrjs",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "API wrapper for TMDB API",
   "exports": "./lib/index.js",
   "engines": {
