@@ -18,6 +18,9 @@ class TmdbClient {
   constructor(private config: IConfig) {
     this.apiClient = {
       get: async <T = unknown>(pathname: string, options: RequestInit = {}) => {
+        if (!this.config.apiKey) {
+          throw new Error('No API key provided');
+        }
         const url = new URL(pathname, 'https://api.themoviedb.org/3/');
         const response = await fetch(url, {
           ...options,

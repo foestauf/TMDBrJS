@@ -1,6 +1,6 @@
 # TMDBrJS
 
-TMDBrJS is a JavaScript library for interacting with the TMDB API.
+TMDBrJS is a JavaScript library for interacting with the [TMDB](https://www.themoviedb.org/) API.
 
 ## Disclaimer
 
