@@ -135,5 +135,12 @@ describe('TmdbClient', () => {
 
       await expect(tmdb.people.getById(personId)).rejects.toThrow('API error');
     });
+
+    it('should throw an error if no API key is provided', async () => {
+      const client = new TmdbClient({ apiKey: '' });
+      const personId = '123';
+
+      await expect(client.people.getById(personId)).rejects.toThrow('No API key provided');
+    });
   });
 });
