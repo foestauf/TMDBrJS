@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/foestauf/TMDBrJS/compare/v1.3.8...v1.4.0) (2024-10-11)
+
+
+### Features
+
+* **client export:** client is now exported as a named export ([#262](https://github.com/foestauf/TMDBrJS/issues/262)) ([56917da](https://github.com/foestauf/TMDBrJS/commit/56917dae8ab50b3505ebdc33672e1da8dc52cb15))
+
 ## [1.3.8](https://github.com/foestauf/TMDBrJS/compare/v1.3.7...v1.3.8) (2024-10-11)
 
 
