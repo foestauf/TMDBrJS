@@ -1,14 +1,13 @@
-import TmdbClient from '..';
-
 import { vi, expect, describe, beforeAll, it } from 'vitest';
 import { Options as MovieOptions } from '../movies/types/MovieCast';
 import { Options as PersonOptions } from '../people/types/Person';
+import { Client } from '..';
 
-describe('TmdbClient', () => {
-  let tmdb: TmdbClient;
+describe('Client', () => {
+  let tmdb: Client;
 
   beforeAll(() => {
-    tmdb = new TmdbClient({ apiKey: '123' });
+    tmdb = new Client({ apiKey: '123' });
   });
 
   describe('movies', () => {
@@ -137,7 +136,7 @@ describe('TmdbClient', () => {
     });
 
     it('should throw an error if no API key is provided', async () => {
-      const client = new TmdbClient({ apiKey: '' });
+      const client = new Client({ apiKey: '' });
       const personId = '123';
 
       await expect(client.people.getById(personId)).rejects.toThrow('No API key provided');

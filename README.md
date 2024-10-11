@@ -21,7 +21,7 @@ npm install tmdbrjs
 To instantiate the client, you need to provide your TMDB API key. You can obtain an API key by creating an account on the TMDB website.
 
 ```javascript
-import Client from 'tmdbrjs';
+import { Client } from 'tmdbrjs';
 
 const apiKey = 'YOUR_API_KEY';
 const client = new Client({ apiKey });
