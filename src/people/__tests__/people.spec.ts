@@ -1,12 +1,12 @@
-import TmdbClient from '../..';
+import { Client } from '../..';
 import { Options } from '../types/Person';
 import { vi, expect, describe, beforeAll, it, beforeEach } from 'vitest';
 
 describe('People', () => {
-  let tmdb: TmdbClient;
+  let tmdb: Client;
 
   beforeAll(() => {
-    tmdb = new TmdbClient({ apiKey: '123' });
+    tmdb = new Client({ apiKey: '123' });
   });
 
   beforeEach(() => {

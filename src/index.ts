@@ -2,6 +2,9 @@ import Movies from './movies/movies';
 import People from './people/people';
 import { camelCase } from 'change-case';
 import { applyCaseMiddleware } from './utils/applyCaseMiddleware';
+import { Person } from './people/types/Person';
+import { MovieCredits } from './people/types/MovieCredit';
+
 interface IConfig {
   apiKey: string;
 }
@@ -10,7 +13,7 @@ export interface IApiClient {
   get: <T = unknown>(url: string, options?: RequestInit) => Promise<T>;
 }
 
-class TmdbClient {
+class Client {
   public apiClient: IApiClient;
   movies: Movies;
   people: People;
@@ -49,4 +52,5 @@ class TmdbClient {
   }
 }
 
-export default TmdbClient;
+export { Client };
+export type { Person, MovieCredits };

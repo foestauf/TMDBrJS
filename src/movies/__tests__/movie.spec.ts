@@ -1,12 +1,12 @@
 import { vi, describe, it, beforeAll, expect } from 'vitest';
-import TmdbClient from '../..';
+import { Client } from '../..';
 import { Options } from '../types/MovieCast';
 
 describe('Movies', () => {
-  let tmdb: TmdbClient;
+  let tmdb: Client;
 
   beforeAll(() => {
-    tmdb = new TmdbClient({ apiKey: '123' });
+    tmdb = new Client({ apiKey: '123' });
   });
 
   describe('getPopular', () => {
