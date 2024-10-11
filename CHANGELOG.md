@@ -1,3 +1,10 @@
+## [1.3.8](https://github.com/foestauf/TMDBrJS/compare/v1.3.7...v1.3.8) (2024-10-11)
+
+
+### Bug Fixes
+
+* **api-key:** will now throw an error if no api-key is provided ([#261](https://github.com/foestauf/TMDBrJS/issues/261)) ([b75e4b6](https://github.com/foestauf/TMDBrJS/commit/b75e4b6b795e5ae99ce43926d632bd6b76d967f0))
+
 ## [1.3.7](https://github.com/foestauf/TMDBrJS/compare/v1.3.6...v1.3.7) (2024-09-27)
 
 
