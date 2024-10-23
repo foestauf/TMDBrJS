@@ -35,7 +35,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
-    "@types/jest": "29.5.13",
+    "@types/jest": "29.5.14",
     "@typescript-eslint/eslint-plugin": "8.11.0",
     "@typescript-eslint/parser": "8.11.0",
     "@vitest/coverage-v8": "^2.0.0",
