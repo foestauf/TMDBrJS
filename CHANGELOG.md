@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/foestauf/TMDBrJS/compare/v1.4.1...v1.4.2) (2024-10-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.0 ([87ce012](https://github.com/foestauf/TMDBrJS/commit/87ce0124c83f9331866004300b1bbfc939d97969))
+
 ## [1.4.1](https://github.com/foestauf/TMDBrJS/compare/v1.4.0...v1.4.1) (2024-10-19)
 
 
