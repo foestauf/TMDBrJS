@@ -2,7 +2,7 @@ import { IApiClient } from '..';
 import {
   AppendOptions,
   AppendResponse,
-  MoveiCreditsResponseBody,
+  MovieCredits,
   Movie,
   Options,
   PopularMovies,
@@ -24,7 +24,7 @@ class Movies {
   }
 
   async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Movie & AppendResponse<T>> {
-    const { include } = options || { include: [] };
+    const { include } = options ?? { include: [] };
     const appendToResponse = include?.join(',');
     const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
     if (appendToResponse) {
@@ -46,7 +46,7 @@ class Movies {
   }
 
   async getCredits(id: string) {
-    const response = await this.apiClient.get<MoveiCreditsResponseBody>(`movie/${id}/credits`);
+    const response = await this.apiClient.get<MovieCredits>(`movie/${id}/credits`);
     return response;
   }
 }

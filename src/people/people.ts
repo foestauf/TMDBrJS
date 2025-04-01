@@ -1,4 +1,4 @@
-import { AppendOptions, AppendResponse, Options, Person, PopularPeople } from './types/Person';
+import { AppendOptions, AppendResponse, Options, Person, PopularPeople, TvCredits, CombinedCredits, Images } from './types/Person';
 import { MovieCredits } from './types/MovieCredit';
 import { IApiClient } from '..';
 import ApiURL from '../utils/apiURL';
@@ -9,13 +9,13 @@ class People {
     this.apiClient = apiClient;
   }
 
-  async getPopular(page?: number) {
+  async getPopular(page?: number): Promise<PopularPeople> {
     const response = await this.apiClient.get<PopularPeople>('/person/popular?page=' + (page?.toString() ?? '1'));
     return response;
   }
 
-  async getById<T extends AppendOptions[]>(id: string, options?: Options<T>) {
-    const { include } = options || {};
+  async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Person & AppendResponse<T>> {
+    const { include } = options ?? {};
     const appendToResponse = include?.join(',');
     const url = new ApiURL(`person/${id}`);
     if (appendToResponse) {
@@ -31,33 +31,33 @@ class People {
     }
   }
 
-  async getMovieCredits(id: string) {
+  async getMovieCredits(id: string): Promise<MovieCredits> {
     const response = await this.apiClient.get<MovieCredits>(`person/${id}/movie_credits`);
     return response;
   }
 
-  async getTvCredits(id: string) {
-    const response = await this.apiClient.get(`person/${id}/tv_credits`);
+  async getTvCredits(id: string): Promise<TvCredits> {
+    const response = await this.apiClient.get<TvCredits>(`person/${id}/tv_credits`);
     return response;
   }
 
-  async getCombinedCredits(id: string) {
-    const response = await this.apiClient.get(`person/${id}/combined_credits`);
+  async getCombinedCredits(id: string): Promise<CombinedCredits> {
+    const response = await this.apiClient.get<CombinedCredits>(`person/${id}/combined_credits`);
     return response;
   }
 
-  async getImages(id: string) {
-    const response = await this.apiClient.get(`person/${id}/images`);
+  async getImages(id: string): Promise<Images> {
+    const response = await this.apiClient.get<Images>(`person/${id}/images`);
     return response;
   }
 
   /**
-   * @deprecated
+   * @deprecated Use getImages instead
    * @param id string
-   * @returns
+   * @returns Promise<Images>
    */
-  async getTaggedImages(id: string) {
-    const response = await this.apiClient.get(`3/person/${id}/tagged_images`);
+  async getTaggedImages(id: string): Promise<Images> {
+    const response = await this.apiClient.get<Images>(`3/person/${id}/tagged_images`);
     return response;
   }
 }
