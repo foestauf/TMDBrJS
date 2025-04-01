@@ -1,7 +1,7 @@
 {
   "name": "tmdbrjs",
   "version": "1.4.5",
-  "description": "API wrapper for TMDB API",
+  "description": "A TypeScript wrapper for The Movie Database (TMDB) API",
   "exports": "./lib/index.js",
   "engines": {
     "node": ">=18"
@@ -21,14 +21,22 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "check-api": "NODE_OPTIONS=\"--loader ts-node/esm\" ts-node --project scripts/tsconfig.json scripts/check-api-compatibility.ts",
+    "validate-types": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/foestauf/TMDBrJS.git"
   },
   "keywords": [
-    "typescript"
+    "tmdb",
+    "themoviedb",
+    "api",
+    "typescript",
+    "movies",
+    "tv",
+    "people"
   ],
   "author": "Robert McKee",
   "license": "MIT",
@@ -36,20 +44,31 @@
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "@types/jest": "29.5.14",
+    "@types/node": "^20.11.24",
+    "@types/node-fetch": "^2.6.11",
     "@typescript-eslint/eslint-plugin": "8.19.1",
     "@typescript-eslint/parser": "8.19.1",
     "@vitest/coverage-v8": "^2.0.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "dotenv": "^16.4.5",
     "eslint": "9.23.0",
     "eslint-plugin-jest": "28.11.0",
     "husky": "^9.0.0",
-    "jest": "29.7.0",
     "lint-staged": "^15.0.0",
+    "node-fetch": "^2.7.0",
     "prettier": "3.5.3",
+    "ts-node": "^10.9.2",
     "typescript": "5.8.2",
     "typescript-eslint": "^8.0.0",
     "vitest": "^2.0.0"
+  },
+  "dependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "change-case": "^5.4.4",
+    "semantic-release": "^24.0.0",
+    "zod": "^3.22.4"
   },
   "files": [
     "lib/**/*"
@@ -58,12 +77,6 @@
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
     }
-  },
-  "dependencies": {
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "change-case": "^5.4.4",
-    "semantic-release": "^24.0.0"
   },
   "config": {
     "commitizen": {
@@ -87,5 +100,6 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ]
-  }
+  },
+  "tmdbApiVersion": "3"
 }

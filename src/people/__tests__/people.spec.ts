@@ -58,6 +58,7 @@ describe('People', () => {
       const result = await tmdb.people.getById(personId, options);
       const url = new URL(`https://api.themoviedb.org/3/person/${personId}`);
       url.searchParams.append('append_to_response', 'movieCredits');
+      url.searchParams.append('language', 'en-US');
 
       expect(result).toEqual(response);
       expect(fetchSpy).toHaveBeenCalledWith(url, {
