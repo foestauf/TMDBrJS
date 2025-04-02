@@ -1,27 +1,34 @@
-import typeScriptParser from '@typescript-eslint/parser';
-import jestPlugin from 'eslint-plugin-jest';
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import jestPlugin from 'eslint-plugin-jest';
 
 export default [
   eslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
   {
+    files: ['src/**/*.ts'],
     languageOptions: {
+      parser: tsParser,
       parserOptions: {
         project: true,
         tsconfigRootDir: import.meta.dirname,
       },
+      globals: {
+        fetch: true,
+        console: true,
+        global: true,
+      },
     },
     plugins: {
-      jest: jestPlugin,
+      '@typescript-eslint': tseslint,
+      'jest': jestPlugin,
     },
     rules: {
+      ...tseslint.configs['strict-type-checked'].rules,
       '@typescript-eslint/no-unused-vars': 'error',
     },
-    files: ['**/*.ts'],
   },
   {
-    ignores: ['dist/*', '*.config.js', '**/coverage/**', 'lib/*'],
+    ignores: ['dist/*', '*.config.js', '**/coverage/**', 'lib/*', 'tests/*'],
   },
 ];

@@ -1,4 +1,13 @@
-import { AppendOptions, AppendResponse, Options, Person, PopularPeople, TvCredits, CombinedCredits, Images } from './types/Person';
+import {
+  AppendOptions,
+  AppendResponse,
+  Options,
+  Person,
+  PopularPeople,
+  TvCredits,
+  CombinedCredits,
+  Images,
+} from './types/Person';
 import { MovieCredits } from './types/MovieCredit';
 import { IApiClient } from '..';
 import ApiURL from '../utils/apiURL';
@@ -10,7 +19,11 @@ class People {
   }
 
   async getPopular(page?: number): Promise<PopularPeople> {
-    const response = await this.apiClient.get<PopularPeople>('/person/popular?page=' + (page?.toString() ?? '1'));
+    const url = new ApiURL('person/popular');
+    if (page) {
+      url.appendParam('page', page.toString());
+    }
+    const response = await this.apiClient.get<PopularPeople>(url.toString());
     return response;
   }
 

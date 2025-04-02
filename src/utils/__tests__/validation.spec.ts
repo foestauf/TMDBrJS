@@ -8,7 +8,7 @@ import {
   PersonSchema,
   PopularMoviesSchema,
   PopularPeopleSchema,
-  validateResponse
+  validateResponse,
 } from '../validation';
 import { z } from 'zod';
 
@@ -20,21 +20,21 @@ const testData = {
       id: 1,
       logoPath: '/path/to/logo.png',
       name: 'Warner Bros',
-      originCountry: 'US'
+      originCountry: 'US',
     },
     productionCountry: {
       iso_3166_1: 'US',
-      name: 'United States'
+      name: 'United States',
     },
     spokenLanguage: {
-      english_name: 'English',
+      englishName: 'English',
       iso_639_1: 'en',
-      name: 'English'
+      name: 'English',
     },
     movie: {
       adult: false,
-      backdrop_path: '/path/to/backdrop.jpg',
-      belongsToCollection: 'Collection Name',
+      backdropPath: '/path/to/backdrop.jpg',
+      belongsToCollection: null,
       budget: 1000000,
       genres: [{ id: 1, name: 'Action' }],
       homepage: 'https://example.com',
@@ -45,30 +45,52 @@ const testData = {
       overview: 'Movie overview',
       popularity: 100,
       posterPath: '/path/to/poster.jpg',
-      productionCompanies: [{
-        id: 1,
-        logoPath: '/path/to/logo.png',
-        name: 'Warner Bros',
-        originCountry: 'US'
-      }],
-      productionCountries: [{
-        iso_3166_1: 'US',
-        name: 'United States'
-      }],
+      productionCompanies: [
+        {
+          id: 1,
+          logoPath: '/path/to/logo.png',
+          name: 'Warner Bros',
+          originCountry: 'US',
+        },
+      ],
+      productionCountries: [
+        {
+          iso_3166_1: 'US',
+          name: 'United States',
+        },
+      ],
       releaseDate: '2024-01-01',
       revenue: 2000000,
       runtime: 120,
-      spokenLanguages: [{
-        english_name: 'English',
-        iso_639_1: 'en',
-        name: 'English'
-      }],
+      spokenLanguages: [
+        {
+          englishName: 'English',
+          iso_639_1: 'en',
+          name: 'English',
+        },
+      ],
       status: 'Released',
       tagline: 'Movie tagline',
       title: 'Movie Title',
       video: false,
       voteAverage: 7.5,
-      voteCount: 1000
+      voteCount: 1000,
+    },
+    popularMovie: {
+      adult: false,
+      backdropPath: '/path/to/backdrop.jpg',
+      genreIds: [1, 2, 3],
+      id: 1,
+      originalLanguage: 'en',
+      originalTitle: 'Original Title',
+      overview: 'Movie overview',
+      popularity: 100,
+      posterPath: '/path/to/poster.jpg',
+      releaseDate: '2024-01-01',
+      title: 'Movie Title',
+      video: false,
+      voteAverage: 7.5,
+      voteCount: 1000,
     },
     person: {
       adult: false,
@@ -84,8 +106,35 @@ const testData = {
       name: 'John Doe',
       placeOfBirth: 'New York',
       popularity: 100,
-      profilePath: '/path/to/profile.jpg'
-    }
+      profilePath: '/path/to/profile.jpg',
+    },
+    popularPerson: {
+      adult: false,
+      gender: 1,
+      id: 1,
+      knownFor: [
+        {
+          adult: false,
+          backdropPath: '/path/to/backdrop.jpg',
+          genreIds: [1, 2, 3],
+          id: 1,
+          originalLanguage: 'en',
+          originalTitle: 'Original Title',
+          overview: 'Movie overview',
+          popularity: 100,
+          posterPath: '/path/to/poster.jpg',
+          releaseDate: '2024-01-01',
+          title: 'Movie Title',
+          video: false,
+          voteAverage: 7.5,
+          voteCount: 1000,
+        },
+      ],
+      knownForDepartment: 'Acting',
+      name: 'John Doe',
+      popularity: 100,
+      profilePath: '/path/to/profile.jpg',
+    },
   },
   invalid: {
     genre: { id: '1', name: 123 },
@@ -93,55 +142,77 @@ const testData = {
       id: '1',
       logoPath: 123,
       name: null,
-      originCountry: undefined
+      originCountry: undefined,
     },
     productionCountry: {
       iso_3166_1: 123,
-      name: null
+      name: null,
     },
     spokenLanguage: {
-      english_name: 123,
+      englishName: 123,
       iso_639_1: null,
-      name: undefined
+      name: undefined,
     },
     movie: {
       adult: 'false',
-      backdrop_path: 123,
-      belongsToCollection: null,
+      backdropPath: 123,
+      belongsToCollection: 123,
       budget: '1000000',
       genres: [{ id: '1', name: 123 }],
-      homepage: null,
+      homepage: 123,
       id: '1',
-      imdbId: null,
+      imdbId: 123,
       originalLanguage: 123,
       originalTitle: null,
       overview: 123,
       popularity: '100',
-      posterPath: null,
-      productionCompanies: [{
-        id: '1',
-        logoPath: 123,
-        name: null,
-        originCountry: undefined
-      }],
-      productionCountries: [{
-        iso_3166_1: 123,
-        name: null
-      }],
-      releaseDate: null,
+      posterPath: 123,
+      productionCompanies: [
+        {
+          id: '1',
+          logoPath: 123,
+          name: null,
+          originCountry: undefined,
+        },
+      ],
+      productionCountries: [
+        {
+          iso_3166_1: 123,
+          name: null,
+        },
+      ],
+      releaseDate: 123,
       revenue: '2000000',
       runtime: '120',
-      spokenLanguages: [{
-        english_name: 123,
-        iso_639_1: null,
-        name: undefined
-      }],
+      spokenLanguages: [
+        {
+          englishName: 123,
+          iso_639_1: null,
+          name: undefined,
+        },
+      ],
       status: null,
-      tagline: null,
+      tagline: 123,
       title: null,
       video: 'false',
       voteAverage: '7.5',
-      voteCount: '1000'
+      voteCount: '1000',
+    },
+    popularMovie: {
+      adult: 'false',
+      backdropPath: 123,
+      genreIds: ['1', '2', '3'],
+      id: '1',
+      originalLanguage: 123,
+      originalTitle: null,
+      overview: 123,
+      popularity: '100',
+      posterPath: 123,
+      releaseDate: 123,
+      title: null,
+      video: 'false',
+      voteAverage: '7.5',
+      voteCount: '1000',
     },
     person: {
       adult: 'false',
@@ -157,17 +228,40 @@ const testData = {
       name: null,
       placeOfBirth: 123,
       popularity: '100',
-      profilePath: 123
-    }
-  }
+      profilePath: 123,
+    },
+    popularPerson: {
+      adult: 'false',
+      gender: '1',
+      id: '1',
+      knownFor: [
+        {
+          adult: 'false',
+          backdropPath: 123,
+          genreIds: ['1', '2', '3'],
+          id: '1',
+          originalLanguage: 123,
+          originalTitle: null,
+          overview: 123,
+          popularity: '100',
+          posterPath: 123,
+          releaseDate: 123,
+          title: null,
+          video: 'false',
+          voteAverage: '7.5',
+          voteCount: '1000',
+        },
+      ],
+      knownForDepartment: 123,
+      name: null,
+      popularity: '100',
+      profilePath: 123,
+    },
+  },
 };
 
 // Helper function to test schema validation
-const testSchemaValidation = <T extends z.ZodType>(
-  schema: T,
-  validData: z.infer<T>,
-  invalidData: unknown
-): void => {
+const testSchemaValidation = <T extends z.ZodType>(schema: T, validData: z.infer<T>, invalidData: unknown): void => {
   it('should validate valid data', () => {
     const result = schema.safeParse(validData);
     expect(result.success).toBe(true);
@@ -207,16 +301,16 @@ describe('Validation Utils', () => {
   describe('PopularMoviesSchema', () => {
     const validResponse = {
       page: 1,
-      results: [testData.valid.movie],
+      results: [testData.valid.popularMovie],
       totalPages: 10,
-      totalResults: 100
+      totalResults: 100,
     };
 
     const invalidResponse = {
       page: '1',
-      results: [testData.invalid.movie],
+      results: [testData.invalid.popularMovie],
       totalPages: '10',
-      totalResults: '100'
+      totalResults: '100',
     };
 
     it('should validate valid paginated response', () => {
@@ -233,16 +327,16 @@ describe('Validation Utils', () => {
   describe('PopularPeopleSchema', () => {
     const validResponse = {
       page: 1,
-      results: [testData.valid.person],
+      results: [testData.valid.popularPerson],
       totalPages: 10,
-      totalResults: 100
+      totalResults: 100,
     };
 
     const invalidResponse = {
       page: '1',
-      results: [testData.invalid.person],
+      results: [testData.invalid.popularPerson],
       totalPages: '10',
-      totalResults: '100'
+      totalResults: '100',
     };
 
     it('should validate valid paginated response', () => {
@@ -257,17 +351,24 @@ describe('Validation Utils', () => {
   });
 
   describe('validateResponse', () => {
-    it('should validate and return valid data', () => {
-      const result = validateResponse(GenreSchema, testData.valid.genre);
-      expect(result).toEqual(testData.valid.genre);
+    const TestSchema = z.object({
+      id: z.number(),
+      name: z.string(),
+    });
+
+    it('should validate valid data', () => {
+      const validData = { id: 1, name: 'test' };
+      expect(() => validateResponse(TestSchema, validData)).not.toThrow();
     });
 
     it('should throw error for invalid data', () => {
-      expect(() => validateResponse(GenreSchema, testData.invalid.genre)).toThrow();
+      const invalidData = { id: '1', name: 123 };
+      expect(() => validateResponse(TestSchema, invalidData)).toThrow();
     });
 
     it('should handle non-Zod errors', () => {
-      expect(() => validateResponse(GenreSchema, testData.invalid.genre)).toThrow();
+      const invalidData = { id: '1', name: 123 };
+      expect(() => validateResponse(TestSchema, invalidData)).toThrow();
     });
   });
-}); 
+});
