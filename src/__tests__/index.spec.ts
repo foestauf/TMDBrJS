@@ -1,6 +1,22 @@
 import { vi, expect, describe, beforeAll, it } from 'vitest';
-import { Options as MovieOptions, Movie, MovieCredits, PopularMovies, Reviews, SimilarMovies, Videos, Images as MovieImages } from '../movies/types/MovieCast';
-import { Options as PersonOptions, Person, TvCredits, CombinedCredits, Images as PersonImages, PopularPeople } from '../people/types/Person';
+import {
+  Options as MovieOptions,
+  Movie,
+  MovieCredits,
+  PopularMovies,
+  Reviews,
+  SimilarMovies,
+  Videos,
+  Images as MovieImages,
+} from '../movies/types/MovieCast';
+import {
+  Options as PersonOptions,
+  Person,
+  TvCredits,
+  CombinedCredits,
+  Images as PersonImages,
+  PopularPeople,
+} from '../people/types/Person';
 import { Client } from '..';
 
 describe('Client', () => {
@@ -18,7 +34,7 @@ describe('Client', () => {
       budget: 1000000,
       genres: [
         { id: 28, name: 'Action' },
-        { id: 12, name: 'Adventure' }
+        { id: 12, name: 'Adventure' },
       ],
       homepage: 'https://example.com',
       id: 123,
@@ -33,14 +49,14 @@ describe('Client', () => {
           id: 1,
           logoPath: '/path/to/logo.png',
           name: 'Production Company',
-          originCountry: 'US'
-        }
+          originCountry: 'US',
+        },
       ],
       productionCountries: [
         {
           iso_3166_1: 'US',
-          name: 'United States'
-        }
+          name: 'United States',
+        },
       ],
       releaseDate: '2022-01-01',
       revenue: 2000000,
@@ -49,15 +65,15 @@ describe('Client', () => {
         {
           english_name: 'English',
           iso_639_1: 'en',
-          name: 'English'
-        }
+          name: 'English',
+        },
       ],
       status: 'Released',
       tagline: 'Movie tagline',
       title: 'Movie Title',
       video: false,
       voteAverage: 7.5,
-      voteCount: 1000
+      voteCount: 1000,
     };
 
     const mockMovieCredits: MovieCredits = {
@@ -81,8 +97,8 @@ describe('Client', () => {
           cast_id: 1,
           character: 'Character Name',
           creditId: 'credit1',
-          order: 1
-        }
+          order: 1,
+        },
       ],
       crew: [
         {
@@ -102,9 +118,9 @@ describe('Client', () => {
           profilePath: null,
           creditId: 'credit2',
           department: 'Directing',
-          job: 'Director'
-        }
-      ]
+          job: 'Director',
+        },
+      ],
     };
 
     const mockReviews: Reviews = {
@@ -117,12 +133,12 @@ describe('Client', () => {
             author: 'Reviewer Name',
             content: 'Review content',
             createdAt: '2022-01-01',
-            url: 'https://example.com/review'
-          }
+            url: 'https://example.com/review',
+          },
         ],
         totalPages: 1,
-        totalResults: 1
-      }
+        totalResults: 1,
+      },
     };
 
     const mockSimilarMovies: SimilarMovies = {
@@ -131,8 +147,8 @@ describe('Client', () => {
         page: 1,
         results: [mockMovie],
         totalPages: 1,
-        totalResults: 1
-      }
+        totalResults: 1,
+      },
     };
 
     const mockVideos: Videos = {
@@ -145,10 +161,10 @@ describe('Client', () => {
             name: 'Video Name',
             site: 'YouTube',
             size: 1080,
-            type: 'Trailer'
-          }
-        ]
-      }
+            type: 'Trailer',
+          },
+        ],
+      },
     };
 
     const mockMovieImages: MovieImages = {
@@ -162,8 +178,8 @@ describe('Client', () => {
             iso6391: null,
             voteAverage: 7.5,
             voteCount: 100,
-            width: 1920
-          }
+            width: 1920,
+          },
         ],
         posters: [
           {
@@ -173,17 +189,17 @@ describe('Client', () => {
             iso6391: null,
             voteAverage: 7.5,
             voteCount: 100,
-            width: 1000
-          }
-        ]
-      }
+            width: 1000,
+          },
+        ],
+      },
     };
 
     const mockPopularMovies: PopularMovies = {
       page: 1,
       results: [mockMovie],
       totalPages: 1,
-      totalResults: 1
+      totalResults: 1,
     };
 
     it('should return popular movies', async () => {
@@ -211,7 +227,7 @@ describe('Client', () => {
       };
       const response = {
         ...mockMovie,
-        credits: mockMovieCredits
+        credits: mockMovieCredits,
       };
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
 
@@ -231,7 +247,7 @@ describe('Client', () => {
         reviews: mockReviews,
         similar: mockSimilarMovies,
         videos: mockVideos,
-        images: mockMovieImages
+        images: mockMovieImages,
       };
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
 
@@ -288,7 +304,7 @@ describe('Client', () => {
       name: 'John Doe',
       placeOfBirth: 'New York',
       popularity: 7.5,
-      profilePath: '/path/to/profile.jpg'
+      profilePath: '/path/to/profile.jpg',
     };
 
     const mockMovieCredits: MovieCredits = {
@@ -300,17 +316,17 @@ describe('Client', () => {
           character: 'Lead Role',
           creditId: 'credit1',
           order: 1,
-          knownForDepartment: 'Acting'
-        }
+          knownForDepartment: 'Acting',
+        },
       ],
       crew: [
         {
           ...mockPerson,
           creditId: 'credit2',
           department: 'Directing',
-          job: 'Director'
-        }
-      ]
+          job: 'Director',
+        },
+      ],
     };
 
     const mockTvCredits: TvCredits = {
@@ -322,8 +338,8 @@ describe('Client', () => {
           originalName: 'Original TV Show 1',
           character: 'Lead Role',
           creditId: 'credit1',
-          episodeCount: 10
-        }
+          episodeCount: 10,
+        },
       ],
       crew: [
         {
@@ -333,9 +349,9 @@ describe('Client', () => {
           department: 'Directing',
           job: 'Director',
           creditId: 'credit2',
-          episodeCount: 5
-        }
-      ]
+          episodeCount: 5,
+        },
+      ],
     };
 
     const mockCombinedCredits: CombinedCredits = {
@@ -347,7 +363,7 @@ describe('Client', () => {
           originalName: 'Original Movie 1',
           character: 'Lead Role',
           creditId: 'credit1',
-          mediaType: 'movie'
+          mediaType: 'movie',
         },
         {
           id: 2,
@@ -356,8 +372,8 @@ describe('Client', () => {
           character: 'Lead Role',
           creditId: 'credit2',
           mediaType: 'tv',
-          episodeCount: 10
-        }
+          episodeCount: 10,
+        },
       ],
       crew: [
         {
@@ -367,9 +383,9 @@ describe('Client', () => {
           department: 'Directing',
           job: 'Director',
           creditId: 'credit3',
-          mediaType: 'movie'
-        }
-      ]
+          mediaType: 'movie',
+        },
+      ],
     };
 
     const mockPersonImages: PersonImages = {
@@ -382,16 +398,16 @@ describe('Client', () => {
           iso6391: null,
           voteAverage: 7.5,
           voteCount: 100,
-          width: 667
-        }
-      ]
+          width: 667,
+        },
+      ],
     };
 
     const mockPopularPeople: PopularPeople = {
       page: 1,
       results: [mockPerson],
       totalPages: 1,
-      totalResults: 1
+      totalResults: 1,
     };
 
     it('should return popular people', async () => {
@@ -419,7 +435,7 @@ describe('Client', () => {
       };
       const response = {
         ...mockPerson,
-        movieCredits: mockMovieCredits
+        movieCredits: mockMovieCredits,
       };
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
 
@@ -437,7 +453,7 @@ describe('Client', () => {
         ...mockPerson,
         movieCredits: mockMovieCredits,
         tvCredits: mockTvCredits,
-        images: mockPersonImages
+        images: mockPersonImages,
       };
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
 
@@ -446,7 +462,7 @@ describe('Client', () => {
       expect(result).toEqual(response);
     });
 
-    it('should return a person\'s movie credits', async () => {
+    it("should return a person's movie credits", async () => {
       const personId = '123';
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(mockMovieCredits);
 
@@ -455,7 +471,7 @@ describe('Client', () => {
       expect(result).toEqual(mockMovieCredits);
     });
 
-    it('should return a person\'s TV credits', async () => {
+    it("should return a person's TV credits", async () => {
       const personId = '123';
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(mockTvCredits);
 
@@ -464,7 +480,7 @@ describe('Client', () => {
       expect(result).toEqual(mockTvCredits);
     });
 
-    it('should return a person\'s combined credits', async () => {
+    it("should return a person's combined credits", async () => {
       const personId = '123';
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(mockCombinedCredits);
 
@@ -473,7 +489,7 @@ describe('Client', () => {
       expect(result).toEqual(mockCombinedCredits);
     });
 
-    it('should return a person\'s images', async () => {
+    it("should return a person's images", async () => {
       const personId = '123';
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(mockPersonImages);
 

@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/foestauf/TMDBrJS/compare/v1.4.5...v1.4.6) (2025-04-02)
+
+
+### Bug Fixes
+
+* **schema validation:** fixes schema validators for person and movies ([#337](https://github.com/foestauf/TMDBrJS/issues/337)) ([0e1fc88](https://github.com/foestauf/TMDBrJS/commit/0e1fc88eef190d8b1d6d4b85dcec14efdb19c6a8))
+
 ## [1.4.5](https://github.com/foestauf/TMDBrJS/compare/v1.4.4...v1.4.5) (2025-02-16)
 
 
