@@ -75,11 +75,6 @@
   "files": [
     "lib/**/*"
   ],
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "if [ -t 1 ]; then npx cz --hook; fi"
-    }
-  },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
