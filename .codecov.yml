@@ -1,0 +1,21 @@
+ignore:
+  - "**/*.config.ts"
+  - "**/tests/**"
+  - "**/__tests__/**"
+  - "**/*.spec.ts"
+  - "**/*.test.ts"
+  - "**/types/**"
+  - "**/dist/**"
+  - "**/lib/**"
+  - "**/node_modules/**"
+
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 1%
+    patch:
+      default:
+        target: 80%
+        threshold: 1% 

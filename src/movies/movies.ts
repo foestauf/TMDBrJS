@@ -1,12 +1,6 @@
 import { IApiClient } from '..';
-import {
-  AppendOptions,
-  AppendResponse,
-  MovieCredits,
-  Movie,
-  Options,
-  PopularMovies,
-} from './types/MovieCast';
+import { AppendOptions, AppendResponse, MovieCredits, Movie, Options, PopularMovies } from './types/MovieCast';
+import ApiURL from '../utils/apiURL';
 
 class Movies {
   apiClient: IApiClient;
@@ -26,9 +20,9 @@ class Movies {
   async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Movie & AppendResponse<T>> {
     const { include } = options ?? { include: [] };
     const appendToResponse = include?.join(',');
-    const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
+    const url = new ApiURL(`movie/${id}`);
     if (appendToResponse) {
-      url.searchParams.append('append_to_response', appendToResponse);
+      url.appendParam('append_to_response', appendToResponse);
     }
     try {
       return await this.apiClient.get<Movie & AppendResponse<T>>(url.toString());
