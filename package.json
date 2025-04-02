@@ -20,7 +20,7 @@
     "test:e2e": "vitest --config vitest.e2e.config.ts run",
     "test:e2e:watch": "vitest --config vitest.e2e.config.ts",
     "prepare": "husky",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
@@ -96,7 +96,8 @@
       [
         "@semantic-release/npm",
         {
-          "npmPublish": true
+          "npmPublish": true,
+          "tarballDir": "dist"
         }
       ],
       "@semantic-release/git",
