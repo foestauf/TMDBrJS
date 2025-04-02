@@ -36,13 +36,17 @@ class Client {
         }
         const url = new URL(pathname, `${this.baseUrl}/${this.version}/`);
         url.searchParams.append('language', this.language);
-        
+
         const response = await fetch(url, {
-          ...options,
+          method: options.method,
+          body: options.body,
+          credentials: options.credentials,
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${this.config.apiKey}`,
-            ...options.headers,
+            ...(options.headers
+              ? Object.fromEntries(Object.entries(options.headers).filter(([, value]) => value !== undefined))
+              : {}),
           },
         });
 
