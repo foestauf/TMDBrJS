@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/foestauf/TMDBrJS/compare/v1.4.6...v1.5.0) (2025-04-02)
+
+
+### Features
+
+* **schema-validation:** api responses will now be validated ([06b43b1](https://github.com/foestauf/TMDBrJS/commit/06b43b15d3ac4c815714ee13100f2191d6707452))
+
 ## [1.4.6](https://github.com/foestauf/TMDBrJS/compare/v1.4.5...v1.4.6) (2025-04-02)
 
 
