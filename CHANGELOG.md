@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/foestauf/TMDBrJS/compare/v1.5.1...v1.5.2) (2025-04-28)
+
+
+### Bug Fixes
+
+* **method arg types:** update methods that take an id to accept string or number ([#358](https://github.com/foestauf/TMDBrJS/issues/358)) ([421a66d](https://github.com/foestauf/TMDBrJS/commit/421a66d89a570d059bc4aaa854e9246b0e29d3fe))
+
 ## [1.5.1](https://github.com/foestauf/TMDBrJS/compare/v1.5.0...v1.5.1) (2025-04-17)
 
 
