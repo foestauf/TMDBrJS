@@ -29,7 +29,7 @@ describe('Client', () => {
   describe('movies', () => {
     const mockMovie: Movie = {
       adult: false,
-      backdrop_path: '/path/to/backdrop.jpg',
+      backdropPath: '/path/to/backdrop.jpg',
       belongsToCollection: 'Collection Name',
       budget: 1000000,
       genres: [

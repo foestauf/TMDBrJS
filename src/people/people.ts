@@ -27,10 +27,13 @@ class People {
     return response;
   }
 
-  async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Person & AppendResponse<T>> {
+  async getById<T extends AppendOptions[]>(
+    id: string | number,
+    options?: Options<T>,
+  ): Promise<Person & AppendResponse<T>> {
     const { include } = options ?? {};
     const appendToResponse = include?.join(',');
-    const url = new ApiURL(`person/${id}`);
+    const url = new ApiURL(`person/${id.toString()}`);
     if (appendToResponse) {
       url.appendParam('append_to_response', appendToResponse);
     }
@@ -44,33 +47,33 @@ class People {
     }
   }
 
-  async getMovieCredits(id: string): Promise<MovieCredits> {
-    const response = await this.apiClient.get<MovieCredits>(`person/${id}/movie_credits`);
+  async getMovieCredits(id: string | number): Promise<MovieCredits> {
+    const response = await this.apiClient.get<MovieCredits>(`person/${id.toString()}/movie_credits`);
     return response;
   }
 
-  async getTvCredits(id: string): Promise<TvCredits> {
-    const response = await this.apiClient.get<TvCredits>(`person/${id}/tv_credits`);
+  async getTvCredits(id: string | number): Promise<TvCredits> {
+    const response = await this.apiClient.get<TvCredits>(`person/${id.toString()}/tv_credits`);
     return response;
   }
 
-  async getCombinedCredits(id: string): Promise<CombinedCredits> {
-    const response = await this.apiClient.get<CombinedCredits>(`person/${id}/combined_credits`);
+  async getCombinedCredits(id: string | number): Promise<CombinedCredits> {
+    const response = await this.apiClient.get<CombinedCredits>(`person/${id.toString()}/combined_credits`);
     return response;
   }
 
-  async getImages(id: string): Promise<Images> {
-    const response = await this.apiClient.get<Images>(`person/${id}/images`);
+  async getImages(id: string | number): Promise<Images> {
+    const response = await this.apiClient.get<Images>(`person/${id.toString()}/images`);
     return response;
   }
 
   /**
    * @deprecated Use getImages instead
-   * @param id string
+   * @param id string | number
    * @returns Promise<Images>
    */
-  async getTaggedImages(id: string): Promise<Images> {
-    const response = await this.apiClient.get<Images>(`3/person/${id}/tagged_images`);
+  async getTaggedImages(id: string | number): Promise<Images> {
+    const response = await this.apiClient.get<Images>(`3/person/${id.toString()}/tagged_images`);
     return response;
   }
 }

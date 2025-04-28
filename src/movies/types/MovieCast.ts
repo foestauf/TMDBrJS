@@ -116,7 +116,7 @@ type SpokenLanguage = {
 
 export type Movie = {
   adult: boolean;
-  backdrop_path: string;
+  backdropPath: string;
   belongsToCollection: string;
   budget: number;
   genres: Genre[];
