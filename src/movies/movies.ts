@@ -17,10 +17,13 @@ class Movies {
     return response;
   }
 
-  async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Movie & AppendResponse<T>> {
+  async getById<T extends AppendOptions[]>(
+    id: string | number,
+    options?: Options<T>,
+  ): Promise<Movie & AppendResponse<T>> {
     const { include } = options ?? { include: [] };
     const appendToResponse = include?.join(',');
-    const url = new ApiURL(`movie/${id}`);
+    const url = new ApiURL(`movie/${id.toString()}`);
     if (appendToResponse) {
       url.appendParam('append_to_response', appendToResponse);
     }
@@ -34,13 +37,23 @@ class Movies {
     }
   }
 
-  async getSimilar(id: string) {
-    const response = await this.apiClient.get(`movie/${id}/similar`);
+  async getSimilar(id: string | number) {
+    const response = await this.apiClient.get(`movie/${id.toString()}/similar`);
     return response;
   }
 
-  async getCredits(id: string) {
-    const response = await this.apiClient.get<MovieCredits>(`movie/${id}/credits`);
+  async getCredits(id: string | number) {
+    const response = await this.apiClient.get<MovieCredits>(`movie/${id.toString()}/credits`);
+    return response;
+  }
+
+  async getDetails(id: string | number) {
+    const response = await this.apiClient.get<Movie>(`movie/${id.toString()}`);
+    return response;
+  }
+
+  async getMovieCredits(id: string | number) {
+    const response = await this.apiClient.get<MovieCredits>(`movie/${id.toString()}/credits`);
     return response;
   }
 }
