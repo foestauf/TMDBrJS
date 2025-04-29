@@ -9,7 +9,7 @@
   "type": "module",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc -p tsconfig.cjs.json",
     "check-types": "tsc --noEmit --pretty",
     "commit": "cz",
     "dev": "tsc -w",
