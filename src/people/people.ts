@@ -11,6 +11,7 @@ import {
 import { MovieCredits } from './types/MovieCredit';
 import { IApiClient } from '..';
 import ApiURL from '../utils/apiURL';
+import { camelToSnakeCaseArray } from '../utils/caseConversion';
 
 class People {
   apiClient: IApiClient;
@@ -32,7 +33,9 @@ class People {
     options?: Options<T>,
   ): Promise<Person & AppendResponse<T>> {
     const { include } = options ?? {};
-    const appendToResponse = include?.join(',');
+    // Convert camelCase options to snake_case for the API
+    const appendToResponse = include ? camelToSnakeCaseArray(include).join(',') : undefined;
+
     const url = new ApiURL(`person/${id.toString()}`);
     if (appendToResponse) {
       url.appendParam('append_to_response', appendToResponse);

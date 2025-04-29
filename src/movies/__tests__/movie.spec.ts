@@ -94,6 +94,32 @@ describe('Movies', () => {
       const result = await tmdb.movies.getById(movieId, options);
 
       expect(result).toEqual(response);
+      // Verify that the URL was constructed correctly with snake_case
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('append_to_response=credits'));
+    });
+
+    it('should convert multiple camelCase append options to snake_case', async () => {
+      const movieId = '123';
+      const options: Options<['credits', 'videos', 'images']> = {
+        include: ['credits', 'videos', 'images'],
+      };
+      const response = {
+        id: movieId,
+        title: 'Movie 1',
+        credits: { cast: [] },
+        videos: { results: [] },
+        images: { backdrops: [], posters: [] },
+      };
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+
+      const result = await tmdb.movies.getById(movieId, options);
+
+      expect(result).toEqual(response);
+      // Verify that the URL was constructed correctly with snake_case
+      // URL encoding converts commas to %2C
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(
+        expect.stringMatching(/append_to_response=credits(%2C|,)videos(%2C|,)images/),
+      );
     });
 
     it('should throw an error if API call fails', async () => {
