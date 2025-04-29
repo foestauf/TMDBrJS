@@ -1,6 +1,7 @@
 import { IApiClient } from '..';
-import { AppendOptions, AppendResponse, MovieCredits, Movie, Options, PopularMovies } from './types/MovieCast';
+import { AppendOptions, AppendResponse, MovieCredits, Movie, Options, PopularMovies } from './types/MovieCast.js';
 import ApiURL from '../utils/apiURL';
+import { camelToSnakeCaseArray } from '../utils/caseConversion';
 
 class Movies {
   apiClient: IApiClient;
@@ -22,7 +23,8 @@ class Movies {
     options?: Options<T>,
   ): Promise<Movie & AppendResponse<T>> {
     const { include } = options ?? { include: [] };
-    const appendToResponse = include?.join(',');
+    // Convert camelCase options to snake_case for the API
+    const appendToResponse = include ? camelToSnakeCaseArray(include).join(',') : undefined;
     const url = new ApiURL(`movie/${id.toString()}`);
     if (appendToResponse) {
       url.appendParam('append_to_response', appendToResponse);
