@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/foestauf/TMDBrJS/compare/v1.5.2...v1.5.3) (2025-04-30)
+
+
+### Bug Fixes
+
+* **package exports:** fix exports for real this time ([#362](https://github.com/foestauf/TMDBrJS/issues/362)) ([062d875](https://github.com/foestauf/TMDBrJS/commit/062d875c2d7ef5dc66e8f7353ac694dedf8233b8))
+
 ## [1.5.2](https://github.com/foestauf/TMDBrJS/compare/v1.5.1...v1.5.2) (2025-04-28)
 
 
