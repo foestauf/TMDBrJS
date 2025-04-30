@@ -2,14 +2,29 @@
   "name": "tmdbrjs",
   "version": "1.5.2",
   "description": "A TypeScript wrapper for The Movie Database (TMDB) API",
-  "exports": "./lib/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/index.d.ts",
+        "default": "./lib/esm/index.js"
+      },
+      "require": {
+        "types": "./lib/cjs/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
   "engines": {
     "node": ">=18"
   },
   "type": "module",
-  "types": "./lib/index.d.ts",
+  "types": "./lib/esm/index.d.ts",
   "scripts": {
-    "build": "tsc && tsc -p tsconfig.cjs.json",
+    "clean": "rm -rf lib || true",
+    "build": "npm run clean && tsc && tsc -p tsconfig.cjs.json && npm run create-package-files",
+    "create-package-files": "echo '{\"type\":\"commonjs\"}' > lib/cjs/package.json && echo '{\"type\":\"module\"}' > lib/esm/package.json",
     "check-types": "tsc --noEmit --pretty",
     "commit": "cz",
     "dev": "tsc -w",
@@ -73,7 +88,8 @@
     "zod": "^3.22.4"
   },
   "files": [
-    "lib/**/*"
+    "lib/esm/**/*",
+    "lib/cjs/**/*"
   ],
   "config": {
     "commitizen": {
