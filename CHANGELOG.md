@@ -1,3 +1,10 @@
+## [1.5.13](https://github.com/foestauf/TMDBrJS/compare/v1.5.12...v1.5.13) (2025-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.49 ([#397](https://github.com/foestauf/TMDBrJS/issues/397)) ([9ba8887](https://github.com/foestauf/TMDBrJS/commit/9ba8887da4ddecddce208367318ef719f2659e52))
+
 ## [1.5.12](https://github.com/foestauf/TMDBrJS/compare/v1.5.11...v1.5.12) (2025-06-02)
 
 
