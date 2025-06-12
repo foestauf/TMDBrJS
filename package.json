@@ -1,6 +1,6 @@
 {
   "name": "tmdbrjs",
-  "version": "1.5.19",
+  "version": "1.5.20",
   "description": "A TypeScript wrapper for The Movie Database (TMDB) API",
   "exports": {
     ".": {
