@@ -1,4 +1,5 @@
 // vitest.config.ts
+// Configuration updated to properly separate unit tests from E2E tests
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
