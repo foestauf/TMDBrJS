@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/foestauf/TMDBrJS/compare/v1.5.29...v1.6.0) (2025-07-13)
+
+
+### Features
+
+* **api:** extends movies and people appendToOptions ([#452](https://github.com/foestauf/TMDBrJS/issues/452)) ([d13eeb9](https://github.com/foestauf/TMDBrJS/commit/d13eeb998171473f9563407e73c4274ff80465b6))
+
 ## [1.5.29](https://github.com/foestauf/TMDBrJS/compare/v1.5.28...v1.5.29) (2025-07-12)
 
 
