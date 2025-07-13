@@ -97,7 +97,7 @@ const movie = await client.movies.getById('550');
 
 // With append_to_response (type-safe)
 const movieWithCredits = await client.movies.getById('550', {
-  include: ['credits', 'videos', 'images']
+  include: ['credits', 'videos', 'images', 'recommendations', 'keywords']
 });
 ```
 
@@ -124,7 +124,7 @@ const person = await client.people.getById('287');
 
 // With append_to_response
 const personWithCredits = await client.people.getById('287', {
-  include: ['movieCredits', 'tvCredits'] // Note: camelCase is automatically converted
+  include: ['movieCredits', 'tvCredits', 'externalIds', 'translations'] // Note: camelCase is automatically converted
 });
 ```
 
@@ -163,7 +163,32 @@ const movieWithExtras = await client.movies.getById('550', {
 // TypeScript knows about the appended properties
 console.log(movieWithExtras.credits.cast);
 console.log(movieWithExtras.videos.results);
+console.log(movieWithExtras.recommendations.results);
 ```
+
+#### Available append_to_response Options
+
+**Movies:**
+- `credits` - Cast and crew information
+- `videos` - Trailers, teasers, clips
+- `images` - Backdrops and posters
+- `reviews` - User reviews
+- `similar` - Similar movies
+- `recommendations` - Recommended movies
+- `keywords` - Movie keywords
+- `translations` - Title and overview translations
+- `releaseDates` - Release dates by country
+- `externalIds` - External IDs (IMDb, etc.)
+- `accountStates` - User's account states (favorite, rated, watchlist)
+
+**People:**
+- `movieCredits` - Movie appearances
+- `tvCredits` - TV show appearances
+- `combinedCredits` - All credits combined
+- `images` - Profile images
+- `externalIds` - External IDs (IMDb, social media)
+- `taggedImages` - Images the person is tagged in
+- `translations` - Biography translations
 
 ### Automatic Case Conversion
 

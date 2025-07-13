@@ -1,24 +1,31 @@
 import {
   AppendOptions,
-  AppendResponse,
   Options,
   Person,
   PopularPeople,
   TvCredits,
   CombinedCredits,
   Images,
+  ExternalIds,
+  TaggedImages,
+  Translations,
 } from './types/Person';
 import { MovieCredits } from './types/MovieCredit';
-import { IApiClient } from '..';
 import ApiURL from '../utils/apiURL';
-import { camelToSnakeCaseArray } from '../utils/caseConversion';
+import { BaseService, BaseAppendResponse } from '../utils/BaseService';
 
-class People {
-  apiClient: IApiClient;
-  constructor(apiClient: IApiClient) {
-    this.apiClient = apiClient;
-  }
+type PeopleAppendResponseMap = {
+  movieCredits: MovieCredits;
+  tvCredits: TvCredits;
+  combinedCredits: CombinedCredits;
+  images: Images;
+  latest: Person;
+  externalIds: ExternalIds;
+  taggedImages: TaggedImages;
+  translations: Translations;
+};
 
+class People extends BaseService<AppendOptions, PeopleAppendResponseMap> {
   async getPopular(page?: number): Promise<PopularPeople> {
     const url = new ApiURL('person/popular');
     if (page) {
@@ -31,23 +38,8 @@ class People {
   async getById<T extends AppendOptions[]>(
     id: string | number,
     options?: Options<T>,
-  ): Promise<Person & AppendResponse<T>> {
-    const { include } = options ?? {};
-    // Convert camelCase options to snake_case for the API
-    const appendToResponse = include ? camelToSnakeCaseArray(include).join(',') : undefined;
-
-    const url = new ApiURL(`person/${id.toString()}`);
-    if (appendToResponse) {
-      url.appendParam('append_to_response', appendToResponse);
-    }
-    try {
-      return await this.apiClient.get<Person & AppendResponse<T>>(url.toString());
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      }
-      throw new Error('Something went wrong');
-    }
+  ): Promise<Person & BaseAppendResponse<T, PeopleAppendResponseMap>> {
+    return this.getByIdWithAppendToResponse<T, Person>('person/{id}', id, options);
   }
 
   async getMovieCredits(id: string | number): Promise<MovieCredits> {

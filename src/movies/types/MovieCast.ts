@@ -60,6 +60,81 @@ export interface Videos {
   };
 }
 
+export interface Recommendations {
+  recommendations: {
+    page: number;
+    results: Movie[];
+    totalPages: number;
+    totalResults: number;
+  };
+}
+
+export interface Keywords {
+  keywords: {
+    id: number;
+    keywords: Array<{
+      id: number;
+      name: string;
+    }>;
+  };
+}
+
+export interface Translations {
+  translations: {
+    id: number;
+    translations: Array<{
+      iso_3166_1: string;
+      iso_639_1: string;
+      name: string;
+      englishName: string;
+      data: {
+        homepage: string;
+        overview: string;
+        runtime: number;
+        tagline: string;
+        title: string;
+      };
+    }>;
+  };
+}
+
+export interface ReleaseDates {
+  releaseDates: {
+    id: number;
+    results: Array<{
+      iso_3166_1: string;
+      releaseDates: Array<{
+        certification: string;
+        descriptors: string[];
+        iso_639_1: string;
+        note: string;
+        releaseDate: string;
+        type: number;
+      }>;
+    }>;
+  };
+}
+
+export interface ExternalIds {
+  externalIds: {
+    id: number;
+    imdbId: string | null;
+    wikidataId: string | null;
+    facebookId: string | null;
+    instagramId: string | null;
+    twitterId: string | null;
+  };
+}
+
+export interface AccountStates {
+  accountStates: {
+    id: number;
+    favorite: boolean;
+    rated: boolean | { value: number };
+    watchlist: boolean;
+  };
+}
+
 export interface Images {
   images: {
     id: number;
@@ -152,10 +227,27 @@ type AppendResponseMap = {
   similar: SimilarMovies;
   videos: Videos;
   images: Images;
+  recommendations: Recommendations;
+  keywords: Keywords;
+  translations: Translations;
+  releaseDates: ReleaseDates;
+  externalIds: ExternalIds;
+  accountStates: AccountStates;
 };
 
 export type AppendResponse<T extends AppendOptions[]> = {
   [K in T[number]]: AppendResponseMap[K];
 };
 
-export type AppendOptions = 'credits' | 'reviews' | 'similar' | 'videos' | 'images';
+export type AppendOptions =
+  | 'credits'
+  | 'reviews'
+  | 'similar'
+  | 'videos'
+  | 'images'
+  | 'recommendations'
+  | 'keywords'
+  | 'translations'
+  | 'releaseDates'
+  | 'externalIds'
+  | 'accountStates';

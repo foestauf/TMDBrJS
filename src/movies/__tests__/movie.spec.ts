@@ -122,11 +122,33 @@ describe('Movies', () => {
       );
     });
 
+    it('should support new append options', async () => {
+      const movieId = '123';
+      const options: Options<['recommendations', 'keywords', 'externalIds']> = {
+        include: ['recommendations', 'keywords', 'externalIds'],
+      };
+      const response = {
+        id: movieId,
+        title: 'Movie 1',
+        recommendations: { results: [] },
+        keywords: { keywords: [] },
+        externalIds: { imdbId: 'tt123' },
+      };
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+
+      const result = await tmdb.movies.getById(movieId, options);
+
+      expect(result).toEqual(response);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(
+        expect.stringMatching(/append_to_response=recommendations(%2C|,)keywords(%2C|,)external_ids/),
+      );
+    });
+
     it('should throw an error if API call fails', async () => {
       const movieId = '123';
       vi.spyOn(tmdb.apiClient, 'get').mockRejectedValue(new Error('API error'));
 
-      await expect(tmdb.movies.getById(movieId)).rejects.toThrow('API error');
+      await expect(tmdb.movies.getById(movieId)).rejects.toThrow('Failed to fetch movie/{id}: API error');
     });
   });
 
