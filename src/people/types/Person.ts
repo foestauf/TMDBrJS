@@ -82,6 +82,63 @@ export interface Images {
   profiles: Profile[];
 }
 
+export interface ExternalIds {
+  externalIds: {
+    id: number;
+    freebaseMid: string | null;
+    freebaseId: string | null;
+    imdbId: string | null;
+    tvrageId: number | null;
+    wikidataId: string | null;
+    facebookId: string | null;
+    instagramId: string | null;
+    twitterId: string | null;
+  };
+}
+
+export interface TaggedImages {
+  taggedImages: {
+    id: number;
+    page: number;
+    results: Array<{
+      aspectRatio: number;
+      filePath: string;
+      height: number;
+      id: string;
+      iso_639_1: string | null;
+      voteAverage: number;
+      voteCount: number;
+      width: number;
+      imageType: string;
+      media: {
+        id: number;
+        mediaType: 'movie' | 'tv';
+        title?: string;
+        name?: string;
+        originalTitle?: string;
+        originalName?: string;
+      };
+    }>;
+    totalPages: number;
+    totalResults: number;
+  };
+}
+
+export interface Translations {
+  translations: {
+    id: number;
+    translations: Array<{
+      iso_3166_1: string;
+      iso_639_1: string;
+      name: string;
+      englishName: string;
+      data: {
+        biography: string;
+      };
+    }>;
+  };
+}
+
 export interface PopularPeople {
   page: number;
   results: Person[];
@@ -99,10 +156,21 @@ type AppendResponseMap = {
   combinedCredits: CombinedCredits;
   images: Images;
   latest: Person;
+  externalIds: ExternalIds;
+  taggedImages: TaggedImages;
+  translations: Translations;
 };
 
 export type AppendResponse<T extends AppendOptions[]> = {
   [K in T[number]]: AppendResponseMap[K];
 };
 
-export type AppendOptions = 'movieCredits' | 'tvCredits' | 'combinedCredits' | 'images' | 'latest';
+export type AppendOptions =
+  | 'movieCredits'
+  | 'tvCredits'
+  | 'combinedCredits'
+  | 'images'
+  | 'latest'
+  | 'externalIds'
+  | 'taggedImages'
+  | 'translations';

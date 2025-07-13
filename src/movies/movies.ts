@@ -1,14 +1,38 @@
-import { IApiClient } from '..';
-import { AppendOptions, AppendResponse, MovieCredits, Movie, Options, PopularMovies } from './types/MovieCast.js';
-import ApiURL from '../utils/apiURL';
-import { camelToSnakeCaseArray } from '../utils/caseConversion';
+import {
+  AppendOptions,
+  AppendResponse,
+  MovieCredits,
+  Movie,
+  Options,
+  PopularMovies,
+  Reviews,
+  SimilarMovies,
+  Videos,
+  Images,
+  Recommendations,
+  Keywords,
+  Translations,
+  ReleaseDates,
+  ExternalIds,
+  AccountStates,
+} from './types/MovieCast.js';
+import { BaseService } from '../utils/BaseService';
 
-class Movies {
-  apiClient: IApiClient;
-  constructor(apiClient: IApiClient) {
-    this.apiClient = apiClient;
-  }
+type MovieAppendResponseMap = {
+  credits: MovieCredits;
+  reviews: Reviews;
+  similar: SimilarMovies;
+  videos: Videos;
+  images: Images;
+  recommendations: Recommendations;
+  keywords: Keywords;
+  translations: Translations;
+  releaseDates: ReleaseDates;
+  externalIds: ExternalIds;
+  accountStates: AccountStates;
+};
 
+class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
   async getPopular(page?: number) {
     return await this.apiClient.get<PopularMovies>('movie/popular?page=' + (page?.toString() ?? '1'));
   }
@@ -22,21 +46,7 @@ class Movies {
     id: string | number,
     options?: Options<T>,
   ): Promise<Movie & AppendResponse<T>> {
-    const { include } = options ?? { include: [] };
-    // Convert camelCase options to snake_case for the API
-    const appendToResponse = include ? camelToSnakeCaseArray(include).join(',') : undefined;
-    const url = new ApiURL(`movie/${id.toString()}`);
-    if (appendToResponse) {
-      url.appendParam('append_to_response', appendToResponse);
-    }
-    try {
-      return await this.apiClient.get<Movie & AppendResponse<T>>(url.toString());
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(error.message);
-      }
-      throw new Error('Something went wrong');
-    }
+    return this.getByIdWithAppendToResponse<T, Movie>('movie/{id}', id, options);
   }
 
   async getSimilar(id: string | number) {
