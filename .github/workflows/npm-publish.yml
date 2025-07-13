@@ -23,7 +23,7 @@ jobs:
       id-token: write # to enable use of OIDC for npm provenance
 
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.DEPLOY_TOKEN }}
@@ -36,10 +36,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - run: HUSKY=0 pnpm install
+      - run: pnpm install
 
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          HUSKY: 0
         run: npx semantic-release

@@ -14,26 +14,74 @@ export interface CrewMember extends Person {
   job: string;
 }
 
-export interface MoveiCreditsResponseBody {
+export interface MovieCredits {
   id: number;
   cast: CastMember[];
   crew: CrewMember[];
 }
 
-interface Reviews {
-  reviews: any; // replace 'any' with the actual type
+export interface Reviews {
+  reviews: {
+    id: number;
+    page: number;
+    results: Array<{
+      id: string;
+      author: string;
+      content: string;
+      createdAt: string;
+      url: string;
+    }>;
+    totalPages: number;
+    totalResults: number;
+  };
 }
 
-interface SimilarMovies {
-  similarMovies: any; // replace 'any' with the actual type
+export interface SimilarMovies {
+  similarMovies: {
+    id: number;
+    page: number;
+    results: Movie[];
+    totalPages: number;
+    totalResults: number;
+  };
 }
 
-interface Videos {
-  videos: any; // replace 'any' with the actual type
+export interface Videos {
+  videos: {
+    id: number;
+    results: Array<{
+      id: string;
+      key: string;
+      name: string;
+      site: string;
+      size: number;
+      type: string;
+    }>;
+  };
 }
 
-interface Images {
-  images: any; // replace 'any' with the actual type
+export interface Images {
+  images: {
+    id: number;
+    backdrops: Array<{
+      aspectRatio: number;
+      filePath: string;
+      height: number;
+      iso6391: string | null;
+      voteAverage: number;
+      voteCount: number;
+      width: number;
+    }>;
+    posters: Array<{
+      aspectRatio: number;
+      filePath: string;
+      height: number;
+      iso6391: string | null;
+      voteAverage: number;
+      voteCount: number;
+      width: number;
+    }>;
+  };
 }
 
 export interface PopularMovies {
@@ -68,7 +116,7 @@ type SpokenLanguage = {
 
 export type Movie = {
   adult: boolean;
-  backdrop_path: string;
+  backdropPath: string;
   belongsToCollection: string;
   budget: number;
   genres: Genre[];
@@ -99,7 +147,7 @@ export interface Options<T extends AppendOptions[]> {
 }
 
 type AppendResponseMap = {
-  credits: MoveiCreditsResponseBody;
+  credits: MovieCredits;
   reviews: Reviews;
   similar: SimilarMovies;
   videos: Videos;

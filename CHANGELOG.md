@@ -1,3 +1,297 @@
+## [1.5.29](https://github.com/foestauf/TMDBrJS/compare/v1.5.28...v1.5.29) (2025-07-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.7 ([#449](https://github.com/foestauf/TMDBrJS/issues/449)) ([039fec4](https://github.com/foestauf/TMDBrJS/commit/039fec4124214e3d6bb2e9380f7cefd5fd18248d))
+
+## [1.5.28](https://github.com/foestauf/TMDBrJS/compare/v1.5.27...v1.5.28) (2025-07-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.76 ([#445](https://github.com/foestauf/TMDBrJS/issues/445)) ([12a7da6](https://github.com/foestauf/TMDBrJS/commit/12a7da66c09e4f58401ce016987ffcacb53ce429))
+
+## [1.5.27](https://github.com/foestauf/TMDBrJS/compare/v1.5.26...v1.5.27) (2025-07-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.75 ([#443](https://github.com/foestauf/TMDBrJS/issues/443)) ([e8ffcfa](https://github.com/foestauf/TMDBrJS/commit/e8ffcfa9bfc9735e8775f56411971f1777403b2e))
+
+## [1.5.26](https://github.com/foestauf/TMDBrJS/compare/v1.5.25...v1.5.26) (2025-07-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.74 ([#442](https://github.com/foestauf/TMDBrJS/issues/442)) ([5c2e6ed](https://github.com/foestauf/TMDBrJS/commit/5c2e6edc48cef15527344dbd187122e3d4b23168))
+
+## [1.5.25](https://github.com/foestauf/TMDBrJS/compare/v1.5.24...v1.5.25) (2025-07-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.73 ([#441](https://github.com/foestauf/TMDBrJS/issues/441)) ([8335b93](https://github.com/foestauf/TMDBrJS/commit/8335b936e55fbe83fa6afd91155ed29a4c298248))
+
+## [1.5.24](https://github.com/foestauf/TMDBrJS/compare/v1.5.23...v1.5.24) (2025-07-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.71 ([#440](https://github.com/foestauf/TMDBrJS/issues/440)) ([3df5655](https://github.com/foestauf/TMDBrJS/commit/3df56555a8ebe7ae6e72cb00c7a60365f7a29d7e))
+
+## [1.5.23](https://github.com/foestauf/TMDBrJS/compare/v1.5.22...v1.5.23) (2025-06-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.6 ([#436](https://github.com/foestauf/TMDBrJS/issues/436)) ([fc961e7](https://github.com/foestauf/TMDBrJS/commit/fc961e7ccd394ccea045ef693bb7d7d9e6d2fd8f))
+
+## [1.5.22](https://github.com/foestauf/TMDBrJS/compare/v1.5.21...v1.5.22) (2025-06-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.67 ([#422](https://github.com/foestauf/TMDBrJS/issues/422)) ([ea28883](https://github.com/foestauf/TMDBrJS/commit/ea28883dcd428723226a65931aa0fbf77f3a6580))
+
+## [1.5.21](https://github.com/foestauf/TMDBrJS/compare/v1.5.20...v1.5.21) (2025-06-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.64 ([#414](https://github.com/foestauf/TMDBrJS/issues/414)) ([ce6c39c](https://github.com/foestauf/TMDBrJS/commit/ce6c39cc3932bd0f8eb530dfeb20259b229ec80d))
+
+## [1.5.20](https://github.com/foestauf/TMDBrJS/compare/v1.5.19...v1.5.20) (2025-06-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.63 ([#412](https://github.com/foestauf/TMDBrJS/issues/412)) ([f01dd6d](https://github.com/foestauf/TMDBrJS/commit/f01dd6d94dca401d50d7a9d9ff28ee36e0f604a0))
+
+## [1.5.19](https://github.com/foestauf/TMDBrJS/compare/v1.5.18...v1.5.19) (2025-06-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.62 ([#411](https://github.com/foestauf/TMDBrJS/issues/411)) ([d3662c4](https://github.com/foestauf/TMDBrJS/commit/d3662c42d0971fe17b1e9b39a95695a18373307d))
+
+## [1.5.18](https://github.com/foestauf/TMDBrJS/compare/v1.5.17...v1.5.18) (2025-06-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.58 ([#410](https://github.com/foestauf/TMDBrJS/issues/410)) ([2b17820](https://github.com/foestauf/TMDBrJS/commit/2b17820f59e30b0cac027c7a3ebcb40bea1a58a3))
+
+## [1.5.17](https://github.com/foestauf/TMDBrJS/compare/v1.5.16...v1.5.17) (2025-06-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.57 ([#408](https://github.com/foestauf/TMDBrJS/issues/408)) ([7d55ec5](https://github.com/foestauf/TMDBrJS/commit/7d55ec5b0539a0603d7b68ddac47c82aec76803f))
+
+## [1.5.16](https://github.com/foestauf/TMDBrJS/compare/v1.5.15...v1.5.16) (2025-06-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.56 ([#403](https://github.com/foestauf/TMDBrJS/issues/403)) ([2e55777](https://github.com/foestauf/TMDBrJS/commit/2e55777db80e7c3ed4556cdfcd231c340f1f9980))
+
+## [1.5.15](https://github.com/foestauf/TMDBrJS/compare/v1.5.14...v1.5.15) (2025-06-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.51 ([#400](https://github.com/foestauf/TMDBrJS/issues/400)) ([7b39f1d](https://github.com/foestauf/TMDBrJS/commit/7b39f1de6281b19db7ad514b8ad83a604de162de))
+
+## [1.5.14](https://github.com/foestauf/TMDBrJS/compare/v1.5.13...v1.5.14) (2025-06-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.50 ([#399](https://github.com/foestauf/TMDBrJS/issues/399)) ([8eebf2f](https://github.com/foestauf/TMDBrJS/commit/8eebf2f61edf7b6d92e057253a2bf02a073dcafc))
+
+## [1.5.13](https://github.com/foestauf/TMDBrJS/compare/v1.5.12...v1.5.13) (2025-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.49 ([#397](https://github.com/foestauf/TMDBrJS/issues/397)) ([9ba8887](https://github.com/foestauf/TMDBrJS/commit/9ba8887da4ddecddce208367318ef719f2659e52))
+
+## [1.5.12](https://github.com/foestauf/TMDBrJS/compare/v1.5.11...v1.5.12) (2025-06-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.48 ([#394](https://github.com/foestauf/TMDBrJS/issues/394)) ([292027d](https://github.com/foestauf/TMDBrJS/commit/292027dc69e052913c25af36e3411841143224f7))
+
+## [1.5.11](https://github.com/foestauf/TMDBrJS/compare/v1.5.10...v1.5.11) (2025-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.46 ([#393](https://github.com/foestauf/TMDBrJS/issues/393)) ([d22162d](https://github.com/foestauf/TMDBrJS/commit/d22162dddbfbe2f8f2d193a566f2473327846b21))
+
+## [1.5.10](https://github.com/foestauf/TMDBrJS/compare/v1.5.9...v1.5.10) (2025-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.45 ([#392](https://github.com/foestauf/TMDBrJS/issues/392)) ([f463274](https://github.com/foestauf/TMDBrJS/commit/f463274bbf6e2547ee575635078ba19d777c32e3))
+
+## [1.5.9](https://github.com/foestauf/TMDBrJS/compare/v1.5.8...v1.5.9) (2025-05-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.42 ([#387](https://github.com/foestauf/TMDBrJS/issues/387)) ([15475d7](https://github.com/foestauf/TMDBrJS/commit/15475d71693602e68a81a2316aacc9c827372bc3))
+
+## [1.5.8](https://github.com/foestauf/TMDBrJS/compare/v1.5.7...v1.5.8) (2025-05-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.30 ([#383](https://github.com/foestauf/TMDBrJS/issues/383)) ([518e52f](https://github.com/foestauf/TMDBrJS/commit/518e52f71a7a70b808d0c40507cf45f39c902bfb))
+
+## [1.5.7](https://github.com/foestauf/TMDBrJS/compare/v1.5.6...v1.5.7) (2025-05-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.13 ([#382](https://github.com/foestauf/TMDBrJS/issues/382)) ([59089fa](https://github.com/foestauf/TMDBrJS/commit/59089fa813c8215f0072f01f9d2252be1895c2a9))
+
+## [1.5.6](https://github.com/foestauf/TMDBrJS/compare/v1.5.5...v1.5.6) (2025-05-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.25.7 ([#380](https://github.com/foestauf/TMDBrJS/issues/380)) ([eb21648](https://github.com/foestauf/TMDBrJS/commit/eb2164886bf33672f9854cc4ae2383843555298d))
+
+## [1.5.5](https://github.com/foestauf/TMDBrJS/compare/v1.5.4...v1.5.5) (2025-05-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.4 ([#377](https://github.com/foestauf/TMDBrJS/issues/377)) ([b5beeee](https://github.com/foestauf/TMDBrJS/commit/b5beeee1960d3418cc01f8c3ff6fd5d9ef74360f))
+
+## [1.5.4](https://github.com/foestauf/TMDBrJS/compare/v1.5.3...v1.5.4) (2025-05-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.24.4 ([#364](https://github.com/foestauf/TMDBrJS/issues/364)) ([abae0f5](https://github.com/foestauf/TMDBrJS/commit/abae0f53a19ddf387c31d3356306d49b3266f3ab))
+
+## [1.5.3](https://github.com/foestauf/TMDBrJS/compare/v1.5.2...v1.5.3) (2025-04-30)
+
+
+### Bug Fixes
+
+* **package exports:** fix exports for real this time ([#362](https://github.com/foestauf/TMDBrJS/issues/362)) ([062d875](https://github.com/foestauf/TMDBrJS/commit/062d875c2d7ef5dc66e8f7353ac694dedf8233b8))
+
+## [1.5.2](https://github.com/foestauf/TMDBrJS/compare/v1.5.1...v1.5.2) (2025-04-28)
+
+
+### Bug Fixes
+
+* **method arg types:** update methods that take an id to accept string or number ([#358](https://github.com/foestauf/TMDBrJS/issues/358)) ([421a66d](https://github.com/foestauf/TMDBrJS/commit/421a66d89a570d059bc4aaa854e9246b0e29d3fe))
+
+## [1.5.1](https://github.com/foestauf/TMDBrJS/compare/v1.5.0...v1.5.1) (2025-04-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v3.24.3 ([#351](https://github.com/foestauf/TMDBrJS/issues/351)) ([b1d000a](https://github.com/foestauf/TMDBrJS/commit/b1d000a85c769a6e5f06abfff9623bc6aa23ca0c))
+
+# [1.5.0](https://github.com/foestauf/TMDBrJS/compare/v1.4.6...v1.5.0) (2025-04-02)
+
+
+### Features
+
+* **schema-validation:** api responses will now be validated ([06b43b1](https://github.com/foestauf/TMDBrJS/commit/06b43b15d3ac4c815714ee13100f2191d6707452))
+
+## [1.4.6](https://github.com/foestauf/TMDBrJS/compare/v1.4.5...v1.4.6) (2025-04-02)
+
+
+### Bug Fixes
+
+* **schema validation:** fixes schema validators for person and movies ([#337](https://github.com/foestauf/TMDBrJS/issues/337)) ([0e1fc88](https://github.com/foestauf/TMDBrJS/commit/0e1fc88eef190d8b1d6d4b85dcec14efdb19c6a8))
+
+## [1.4.5](https://github.com/foestauf/TMDBrJS/compare/v1.4.4...v1.4.5) (2025-02-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.3 ([#323](https://github.com/foestauf/TMDBrJS/issues/323)) ([300f599](https://github.com/foestauf/TMDBrJS/commit/300f59964c66f8dc2bc072f22f32803765242823))
+
+## [1.4.4](https://github.com/foestauf/TMDBrJS/compare/v1.4.3...v1.4.4) (2025-02-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.2 ([#320](https://github.com/foestauf/TMDBrJS/issues/320)) ([7e02092](https://github.com/foestauf/TMDBrJS/commit/7e02092e67f6ab3d4ba044c267c125750f9a805b))
+
+## [1.4.3](https://github.com/foestauf/TMDBrJS/compare/v1.4.2...v1.4.3) (2025-01-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.1 ([#305](https://github.com/foestauf/TMDBrJS/issues/305)) ([02b77d7](https://github.com/foestauf/TMDBrJS/commit/02b77d760b45b5125e6292ebcc13b5c9ab8673ec))
+
+## [1.4.2](https://github.com/foestauf/TMDBrJS/compare/v1.4.1...v1.4.2) (2024-10-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.2.0 ([87ce012](https://github.com/foestauf/TMDBrJS/commit/87ce0124c83f9331866004300b1bbfc939d97969))
+
+## [1.4.1](https://github.com/foestauf/TMDBrJS/compare/v1.4.0...v1.4.1) (2024-10-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.1.3 ([7744c0f](https://github.com/foestauf/TMDBrJS/commit/7744c0fc9d1247d80942bb901ed67b563b66d726))
+
+# [1.4.0](https://github.com/foestauf/TMDBrJS/compare/v1.3.8...v1.4.0) (2024-10-11)
+
+
+### Features
+
+* **client export:** client is now exported as a named export ([#262](https://github.com/foestauf/TMDBrJS/issues/262)) ([56917da](https://github.com/foestauf/TMDBrJS/commit/56917dae8ab50b3505ebdc33672e1da8dc52cb15))
+
+## [1.3.8](https://github.com/foestauf/TMDBrJS/compare/v1.3.7...v1.3.8) (2024-10-11)
+
+
+### Bug Fixes
+
+* **api-key:** will now throw an error if no api-key is provided ([#261](https://github.com/foestauf/TMDBrJS/issues/261)) ([b75e4b6](https://github.com/foestauf/TMDBrJS/commit/b75e4b6b795e5ae99ce43926d632bd6b76d967f0))
+
+## [1.3.7](https://github.com/foestauf/TMDBrJS/compare/v1.3.6...v1.3.7) (2024-09-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.1.2 ([57bd33c](https://github.com/foestauf/TMDBrJS/commit/57bd33c63f44a6cb8da2c38fe9ea7dfb77a16588))
+
+## [1.3.6](https://github.com/foestauf/TMDBrJS/compare/v1.3.5...v1.3.6) (2024-09-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.1.1 ([90c9be9](https://github.com/foestauf/TMDBrJS/commit/90c9be9a0e1151d1ae04b34f04689248c710eaa4))
+
+## [1.3.5](https://github.com/foestauf/TMDBrJS/compare/v1.3.4...v1.3.5) (2024-08-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semantic-release to v24.1.0 ([765bc8b](https://github.com/foestauf/TMDBrJS/commit/765bc8bab17b0727c81b0a59d04ff925f1395226))
+
+## [1.3.4](https://github.com/foestauf/TMDBrJS/compare/v1.3.3...v1.3.4) (2024-07-31)
+
+
+### Bug Fixes
+
+* **types:** adds stricter type checks ([#218](https://github.com/foestauf/TMDBrJS/issues/218)) ([0d816f3](https://github.com/foestauf/TMDBrJS/commit/0d816f3ad8878b83ef095bf4b1f9359cf2752b60))
+
 ## [1.3.3](https://github.com/foestauf/TMDBrJS/compare/v1.3.2...v1.3.3) (2024-07-06)
 
 

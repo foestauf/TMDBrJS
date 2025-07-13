@@ -1,12 +1,7 @@
 import { IApiClient } from '..';
-import {
-  AppendOptions,
-  AppendResponse,
-  MoveiCreditsResponseBody,
-  Movie,
-  Options,
-  PopularMovies,
-} from './types/MovieCast';
+import { AppendOptions, AppendResponse, MovieCredits, Movie, Options, PopularMovies } from './types/MovieCast.js';
+import ApiURL from '../utils/apiURL';
+import { camelToSnakeCaseArray } from '../utils/caseConversion';
 
 class Movies {
   apiClient: IApiClient;
@@ -15,7 +10,7 @@ class Movies {
   }
 
   async getPopular(page?: number) {
-    return await this.apiClient.get<PopularMovies>('movie/popular?page=' + (page ?? '1'));
+    return await this.apiClient.get<PopularMovies>('movie/popular?page=' + (page?.toString() ?? '1'));
   }
 
   async getTopRated() {
@@ -23,12 +18,16 @@ class Movies {
     return response;
   }
 
-  async getById<T extends AppendOptions[]>(id: string, options?: Options<T>): Promise<Movie & AppendResponse<T>> {
-    const { include } = options || { include: [] };
-    const appendToResponse = include?.join(',');
-    const url = new URL(`https://api.themoviedb.org/3/movie/${id}`);
+  async getById<T extends AppendOptions[]>(
+    id: string | number,
+    options?: Options<T>,
+  ): Promise<Movie & AppendResponse<T>> {
+    const { include } = options ?? { include: [] };
+    // Convert camelCase options to snake_case for the API
+    const appendToResponse = include ? camelToSnakeCaseArray(include).join(',') : undefined;
+    const url = new ApiURL(`movie/${id.toString()}`);
     if (appendToResponse) {
-      url.searchParams.append('append_to_response', appendToResponse);
+      url.appendParam('append_to_response', appendToResponse);
     }
     try {
       return await this.apiClient.get<Movie & AppendResponse<T>>(url.toString());
@@ -40,13 +39,23 @@ class Movies {
     }
   }
 
-  async getSimilar(id: string) {
-    const response = await this.apiClient.get(`movie/${id}/similar`);
+  async getSimilar(id: string | number) {
+    const response = await this.apiClient.get(`movie/${id.toString()}/similar`);
     return response;
   }
 
-  async getCredits(id: string) {
-    const response = await this.apiClient.get<MoveiCreditsResponseBody>(`movie/${id}/credits`);
+  async getCredits(id: string | number) {
+    const response = await this.apiClient.get<MovieCredits>(`movie/${id.toString()}/credits`);
+    return response;
+  }
+
+  async getDetails(id: string | number) {
+    const response = await this.apiClient.get<Movie>(`movie/${id.toString()}`);
+    return response;
+  }
+
+  async getMovieCredits(id: string | number) {
+    const response = await this.apiClient.get<MovieCredits>(`movie/${id.toString()}/credits`);
     return response;
   }
 }

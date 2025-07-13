@@ -4,17 +4,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/node/v/tmdbrjs.svg)](https://nodejs.org)
 
-TMDBrJS is a TypeScript library for interacting with The Movie Database (TMDB) API. It provides a clean, typed interface with automatic camelCase conversion of API responses.
+TMDBrJS is a TypeScript library for interacting with [The Movie Database (TMDB)](https://www.themoviedb.org/) API. It provides a clean, typed interface with automatic camelCase conversion of API responses.
 
 ## Features
 
 - 🎯 **Full TypeScript support** with comprehensive type definitions
 - 🔄 **Automatic camelCase conversion** of TMDB API responses
-- 📦 **ESM-only package** for modern JavaScript environments
+- 📦 **ESM and CommonJS** support for all JavaScript environments
 - 🎬 **Complete movie endpoints** including popular, top-rated, and detailed movie information
 - 👥 **People endpoints** with credits and media information
 - 🔍 **Advanced append_to_response** support with type safety
 - ⚡ **Lightweight** with minimal dependencies
+- 🌐 **Configurable language** support
 
 ## Disclaimer
 
@@ -45,9 +46,20 @@ pnpm add tmdbrjs
 ### Basic Setup
 
 ```typescript
-import TmdbClient from 'tmdbrjs';
+import { Client } from 'tmdbrjs';
 
-const client = new TmdbClient({ apiKey: 'YOUR_API_KEY' });
+const client = new Client({ apiKey: 'YOUR_API_KEY' });
+```
+
+### With Configuration Options
+
+```typescript
+const client = new Client({ 
+  apiKey: 'YOUR_API_KEY',
+  language: 'en-US', // Optional: defaults to 'en-US'
+  version: '3', // Optional: API version, defaults to '3'
+  baseUrl: 'https://api.themoviedb.org' // Optional: custom base URL
+});
 ```
 
 ### Error Handling
@@ -112,7 +124,7 @@ const person = await client.people.getById('287');
 
 // With append_to_response
 const personWithCredits = await client.people.getById('287', {
-  include: ['movie_credits', 'tv_credits']
+  include: ['movieCredits', 'tvCredits'] // Note: camelCase is automatically converted
 });
 ```
 
@@ -169,48 +181,95 @@ console.log(movie.backdropPath);
 
 ## Development
 
+### Prerequisites
+
+- Node.js >= 18
+- pnpm (recommended) or npm
+- TMDB API key for running tests
+
 ### Setup
 
+1. Clone the repository:
 ```bash
-# Clone the repository
 git clone https://github.com/foestauf/TMDBrJS.git
 cd TMDBrJS
+```
 
-# Install dependencies
-npm install
+2. Install dependencies:
+```bash
+pnpm install
+```
 
-# Build the project
-npm run build
+3. Create a `.env.test` file in the root directory with your TMDB API key:
+```bash
+TMDB_API_KEY=your_api_key_here
 ```
 
 ### Available Scripts
 
 ```bash
-npm run build          # Build the TypeScript files
-npm run dev           # Watch mode for development
-npm run test          # Run tests with coverage
-npm run lint          # Run ESLint
-npm run lint:fix      # Fix ESLint issues
-npm run format        # Format code with Prettier
-npm run check-types   # Type check without building
+pnpm build          # Build both ESM and CommonJS versions
+pnpm dev           # Watch mode for development
+pnpm test          # Run unit tests with coverage
+pnpm test:e2e      # Run end-to-end tests
+pnpm lint          # Run ESLint
+pnpm lint:fix      # Fix ESLint issues
+pnpm format        # Format code with Prettier
+pnpm check-types   # Type check without building
 ```
+
+### Running Tests
+
+The project uses Vitest for testing. There are two types of tests:
+
+1. Unit tests:
+```bash
+pnpm test
+```
+
+2. End-to-end tests:
+```bash
+pnpm test:e2e
+```
+
+For e2e tests, you can provide the API key in two ways:
+- Set it in the `.env.test` file
+- Set it as an environment variable: `TMDB_API_KEY=your_api_key_here pnpm test:e2e`
+
+### Code Quality
+
+- Run linting: `pnpm lint`
+- Fix linting issues: `pnpm lint:fix`
+- Type checking: `pnpm check-types`
 
 ### Commit Convention
 
-This project uses [Conventional Commits](https://www.conventionalcommits.org/). Use `npm run commit` to commit changes with commitizen.
+This project uses [Conventional Commits](https://www.conventionalcommits.org/). Use `pnpm commit` to commit changes with commitizen.
+
+## CI/CD
+
+The project uses GitHub Actions for continuous integration. The CI pipeline:
+
+1. Runs on Node.js 18.x, 20.x, and 21.x
+2. Performs the following checks:
+   - Linting
+   - Type checking
+   - Unit tests
+   - End-to-end tests
+   - Coverage reporting (via Codecov)
 
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
 
-### Development Guidelines
+### Development Workflow
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
-4. Run tests (`npm test`)
-5. Run linting (`npm run lint`)
-6. Commit your changes using conventional commits (`npm run commit`)
+4. Run tests (`pnpm test`)
+5. Run linting (`pnpm lint`)
+6. Commit your changes using conventional commits (`pnpm commit`)
 7. Push to your branch
 8. Open a Pull Request
 

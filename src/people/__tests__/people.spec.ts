@@ -1,12 +1,12 @@
-import TmdbClient from '../..';
+import { Client } from '../../index';
 import { Options } from '../types/Person';
 import { vi, expect, describe, beforeAll, it, beforeEach } from 'vitest';
 
 describe('People', () => {
-  let tmdb: TmdbClient;
+  let tmdb: Client;
 
   beforeAll(() => {
-    tmdb = new TmdbClient({ apiKey: '123' });
+    tmdb = new Client({ apiKey: '123' });
   });
 
   beforeEach(() => {
@@ -50,22 +50,38 @@ describe('People', () => {
           ],
         },
       };
-      const fetchSpy = vi.spyOn(global, 'fetch').mockResolvedValueOnce({
-        ok: true,
-        json: async () => response,
-      } as any);
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
 
       const result = await tmdb.people.getById(personId, options);
-      const url = new URL(`https://api.themoviedb.org/3/person/${personId}`);
-      url.searchParams.append('append_to_response', 'movieCredits');
 
       expect(result).toEqual(response);
-      expect(fetchSpy).toHaveBeenCalledWith(url, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer 123',
-        },
-      });
+      // Verify that the URL was constructed correctly with snake_case
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('append_to_response=movie_credits'));
+    });
+
+    it('should convert multiple camelCase append options to snake_case', async () => {
+      const personId = '123';
+      const options: Options<['movieCredits', 'tvCredits', 'combinedCredits', 'images']> = {
+        include: ['movieCredits', 'tvCredits', 'combinedCredits', 'images'],
+      };
+      const response = {
+        id: personId,
+        name: 'John Doe',
+        movieCredits: { cast: [] },
+        tvCredits: { cast: [] },
+        combinedCredits: { cast: [] },
+        images: { profiles: [] },
+      };
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+
+      const result = await tmdb.people.getById(personId, options);
+
+      expect(result).toEqual(response);
+      // Verify that the URL was constructed correctly with snake_case
+      // URL encoding converts commas to %2C
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(
+        expect.stringMatching(/append_to_response=movie_credits(%2C|,)tv_credits(%2C|,)combined_credits(%2C|,)images/),
+      );
     });
 
     it('should throw an error if API call fails', async () => {
