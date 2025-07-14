@@ -1,4 +1,5 @@
-if [[ $1 == *"[skip ci]"* ]]; then
+#!/bin/sh
+if echo "$1" | grep -q "\[skip ci\]"; then
   exit 0
 fi
 

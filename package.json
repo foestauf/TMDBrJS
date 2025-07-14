@@ -17,7 +17,7 @@
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "type": "module",
   "types": "./lib/esm/index.d.ts",
