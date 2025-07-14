@@ -131,12 +131,12 @@ export const PopularPeopleSchema = z.object({
 });
 
 // Validation function
-export function validateResponse<T>(schema: z.ZodSchema<T>, data: unknown): T {
+export function validateResponse<T>(schema: z.ZodType<T>, data: unknown): T {
   try {
     return schema.parse(data);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      console.error('API Response Validation Error:', error.errors);
+      console.error('API Response Validation Error:', error.issues);
     }
     throw error;
   }
