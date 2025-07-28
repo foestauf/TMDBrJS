@@ -1,9 +1,11 @@
 import Movies from './movies/movies';
 import People from './people/people';
+import Tv from './tv/tv';
 import { camelCase } from 'change-case';
 import { applyCaseMiddleware } from './utils/applyCaseMiddleware';
 import { Person } from './people/types/Person';
 import { MovieCredits } from './people/types/MovieCredit';
+import { TvShow, TvCredits } from './tv/types/TvShow';
 
 interface IConfig {
   apiKey: string;
@@ -20,6 +22,7 @@ class Client {
   public apiClient: IApiClient;
   movies: Movies;
   people: People;
+  tv: Tv;
   private readonly version: string;
   private readonly baseUrl: string;
   private readonly language: string;
@@ -70,6 +73,7 @@ class Client {
     };
     this.movies = new Movies(this.apiClient);
     this.people = new People(this.apiClient);
+    this.tv = new Tv(this.apiClient);
   }
 
   getVersion(): string {
@@ -82,4 +86,4 @@ class Client {
 }
 
 export { Client };
-export type { Person, MovieCredits };
+export type { Person, MovieCredits, TvShow, TvCredits };
