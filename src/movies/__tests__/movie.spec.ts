@@ -197,4 +197,49 @@ describe('Movies', () => {
       expect(result).toEqual(response);
     });
   });
+
+  describe('getDetails', () => {
+    it('should return movie details', async () => {
+      const movieId = '123';
+      const response = {
+        id: 123,
+        title: 'Test Movie',
+        overview: 'A test movie',
+        releaseDate: '2023-01-01',
+      };
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+
+      const result = await tmdb.movies.getDetails(movieId);
+
+      expect(result).toEqual(response);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(`movie/${movieId}`);
+    });
+  });
+
+  describe('getMovieCredits', () => {
+    it('should return movie credits', async () => {
+      const movieId = '123';
+      const response = {
+        id: 123,
+        cast: [
+          {
+            id: 1,
+            name: 'Actor 1',
+          },
+        ],
+        crew: [
+          {
+            id: 2,
+            name: 'Director 1',
+          },
+        ],
+      };
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
+
+      const result = await tmdb.movies.getMovieCredits(movieId);
+
+      expect(result).toEqual(response);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(`movie/${movieId}/credits`);
+    });
+  });
 });

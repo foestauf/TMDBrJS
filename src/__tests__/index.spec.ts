@@ -512,4 +512,158 @@ describe('Client', () => {
       await expect(client.people.getById(personId)).rejects.toThrow('No API key provided');
     });
   });
+
+  describe('Client configuration and error handling', () => {
+    it('should use default version when not specified', () => {
+      const client = new Client({ apiKey: '123' });
+      expect(client.getVersion()).toBe('3');
+    });
+
+    it('should use custom version when specified', () => {
+      const client = new Client({ apiKey: '123', version: '4' });
+      expect(client.getVersion()).toBe('4');
+    });
+
+    it('should use default language when not specified', () => {
+      const client = new Client({ apiKey: '123' });
+      expect(client.getLanguage()).toBe('en-US');
+    });
+
+    it('should use custom language when specified', () => {
+      const client = new Client({ apiKey: '123', language: 'fr-FR' });
+      expect(client.getLanguage()).toBe('fr-FR');
+    });
+
+    it('should use default base URL when not specified', async () => {
+      const client = new Client({ apiKey: '123' });
+      
+      // Mock fetch to check the URL being called
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({}),
+      });
+      global.fetch = mockFetch;
+
+      try {
+        await client.movies.getPopular();
+      } catch {
+        // Ignore the error, we just want to check the URL
+      }
+
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          href: expect.stringContaining('https://api.themoviedb.org/3/'),
+        }),
+        expect.any(Object),
+      );
+    });
+
+    it('should use custom base URL when specified', async () => {
+      const client = new Client({ apiKey: '123', baseUrl: 'https://custom.api.com' });
+      
+      // Mock fetch to check the URL being called
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({}),
+      });
+      global.fetch = mockFetch;
+
+      try {
+        await client.movies.getPopular();
+      } catch {
+        // Ignore the error, we just want to check the URL
+      }
+
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          href: expect.stringContaining('https://custom.api.com/3/'),
+        }),
+        expect.any(Object),
+      );
+    });
+
+    it('should throw error for 404 status', async () => {
+      const client = new Client({ apiKey: '123' });
+      
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: false,
+        status: 404,
+      });
+      global.fetch = mockFetch;
+
+      await expect(client.movies.getPopular()).rejects.toThrow('Resource not found');
+    });
+
+    it('should throw error for 429 status', async () => {
+      const client = new Client({ apiKey: '123' });
+      
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: false,
+        status: 429,
+      });
+      global.fetch = mockFetch;
+
+      await expect(client.movies.getPopular()).rejects.toThrow('Too many requests');
+    });
+
+    it('should throw error for other HTTP errors', async () => {
+      const client = new Client({ apiKey: '123' });
+      
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: false,
+        status: 500,
+      });
+      global.fetch = mockFetch;
+
+      await expect(client.movies.getPopular()).rejects.toThrow('HTTP error! status: 500');
+    });
+
+    it('should include authorization header with bearer token', async () => {
+      const client = new Client({ apiKey: 'test-api-key' });
+      
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({}),
+      });
+      global.fetch = mockFetch;
+
+      try {
+        await client.movies.getPopular();
+      } catch {
+        // Ignore the error, we just want to check the headers
+      }
+
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.any(Object),
+        expect.objectContaining({
+          headers: expect.objectContaining({
+            Authorization: 'Bearer test-api-key',
+          }),
+        }),
+      );
+    });
+
+    it('should include language parameter in requests', async () => {
+      const client = new Client({ apiKey: '123', language: 'es-ES' });
+      
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({}),
+      });
+      global.fetch = mockFetch;
+
+      try {
+        await client.movies.getPopular();
+      } catch {
+        // Ignore the error, we just want to check the URL parameters
+      }
+
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          href: expect.stringContaining('language=es-ES'),
+        }),
+        expect.any(Object),
+      );
+    });
+  });
 });
