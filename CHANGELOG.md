@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/foestauf/TMDBrJS/compare/v1.6.6...v1.7.0) (2025-07-30)
+
+
+### Features
+
+* **tv service:** adds support to TV endpoints ([bc08762](https://github.com/foestauf/TMDBrJS/commit/bc087623871b5d9d1810ea5875c16f8be844e3da))
+
 ## [1.6.6](https://github.com/foestauf/TMDBrJS/compare/v1.6.5...v1.6.6) (2025-07-29)
 
 

@@ -22,20 +22,24 @@ export interface TvCredits {
 
 export interface AggregateCredits {
   id: number;
-  cast: Array<CastMember & {
-    roles: Array<{
-      creditId: string;
-      character: string;
-      episodeCount: number;
-    }>;
-  }>;
-  crew: Array<CrewMember & {
-    jobs: Array<{
-      creditId: string;
-      job: string;
-      episodeCount: number;
-    }>;
-  }>;
+  cast: Array<
+    CastMember & {
+      roles: Array<{
+        creditId: string;
+        character: string;
+        episodeCount: number;
+      }>;
+    }
+  >;
+  crew: Array<
+    CrewMember & {
+      jobs: Array<{
+        creditId: string;
+        job: string;
+        episodeCount: number;
+      }>;
+    }
+  >;
 }
 
 export interface TvReviews {
@@ -176,27 +180,30 @@ export interface TvImages {
 export interface TvWatchProviders {
   watchProviders: {
     id: number;
-    results: Record<string, {
-      link: string;
-      flatrate?: Array<{
-        logoPath: string;
-        providerId: number;
-        providerName: string;
-        displayPriority: number;
-      }>;
-      rent?: Array<{
-        logoPath: string;
-        providerId: number;
-        providerName: string;
-        displayPriority: number;
-      }>;
-      buy?: Array<{
-        logoPath: string;
-        providerId: number;
-        providerName: string;
-        displayPriority: number;
-      }>;
-    }>;
+    results: Record<
+      string,
+      {
+        link: string;
+        flatrate?: Array<{
+          logoPath: string;
+          providerId: number;
+          providerName: string;
+          displayPriority: number;
+        }>;
+        rent?: Array<{
+          logoPath: string;
+          providerId: number;
+          providerName: string;
+          displayPriority: number;
+        }>;
+        buy?: Array<{
+          logoPath: string;
+          providerId: number;
+          providerName: string;
+          displayPriority: number;
+        }>;
+      }
+    >;
   };
 }
 
@@ -269,10 +276,12 @@ export interface TvChanges {
         id: string;
         action: string;
         time: string;
-        value: string | {
-          episodeId: number;
-          episodeNumber: number;
-        };
+        value:
+          | string
+          | {
+              episodeId: number;
+              episodeNumber: number;
+            };
         originalValue?: string;
       }>;
     }>;
@@ -419,7 +428,6 @@ export type TvShow = {
 export interface Options<T extends TvAppendOptions[]> {
   include?: T;
 }
-
 
 export type TvAppendOptions =
   | 'credits'

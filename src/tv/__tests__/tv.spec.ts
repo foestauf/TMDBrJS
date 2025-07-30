@@ -715,5 +715,4 @@ describe('Tv', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining(`tv/${tvId}/account_states`));
     });
   });
-
 });

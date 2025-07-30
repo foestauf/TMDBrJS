@@ -226,7 +226,6 @@ class Tv extends BaseService<TvAppendOptions, TvAppendResponseMap> {
     const response = await this.apiClient.get<TvAccountStates>(url.toString());
     return response;
   }
-
 }
 
 export default Tv;
