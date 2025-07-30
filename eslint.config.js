@@ -21,7 +21,7 @@ export default [
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'jest': jestPlugin,
+      jest: jestPlugin,
     },
     rules: {
       ...tseslint.configs['strict-type-checked'].rules,
@@ -29,6 +29,6 @@ export default [
     },
   },
   {
-    ignores: ['dist/*', '*.config.js', '**/coverage/**', 'lib/*', 'tests/*'],
+    ignores: ['dist/*', '*.config.js', '**/coverage/**', 'lib/*', '**/__tests__/**'],
   },
 ];
