@@ -23,7 +23,7 @@ jobs:
       id-token: write # to enable use of OIDC for npm provenance
 
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v5.0.1
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.DEPLOY_TOKEN }}
