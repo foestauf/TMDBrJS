@@ -88,7 +88,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "change-case": "^5.4.4",
-    "semantic-release": "^24.0.0",
+    "semantic-release": "^25.0.0",
     "zod": "^4.0.0"
   },
   "files": [
