@@ -5,29 +5,29 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./lib/esm/index.d.ts",
-        "default": "./lib/esm/index.js"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./lib/cjs/index.d.ts",
-        "default": "./lib/cjs/index.js"
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       }
     }
   },
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "engines": {
     "node": ">=20"
   },
   "type": "module",
-  "types": "./lib/esm/index.d.ts",
+  "types": "./dist/index.d.mts",
   "scripts": {
-    "clean": "rm -rf lib || true",
-    "build": "npm run clean && tsc && tsc -p tsconfig.cjs.json && npm run create-package-files",
-    "create-package-files": "echo '{\"type\":\"commonjs\"}' > lib/cjs/package.json && echo '{\"type\":\"module\"}' > lib/esm/package.json",
+    "clean": "rm -rf dist || true",
+    "build": "tsdown",
     "check-types": "tsc --noEmit --pretty",
+    "validate-package": "attw --pack . && publint",
     "commit": "cz",
-    "dev": "tsc -w",
+    "dev": "tsdown --watch",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -35,7 +35,7 @@
     "test:e2e": "vitest --config vitest.e2e.config.ts run",
     "test:e2e:watch": "vitest --config vitest.e2e.config.ts",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run lint",
+    "prepublishOnly": "npm run lint && npm run validate-package",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
@@ -58,6 +58,7 @@
   "author": "Robert McKee",
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@eslint/js": "^9.29.0",
@@ -76,7 +77,9 @@
     "lint-staged": "^16.0.0",
     "node-fetch": "^3.0.0",
     "prettier": "3.6.2",
+    "publint": "^0.3.15",
     "ts-node": "^10.9.2",
+    "tsdown": "^0.16.5",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.0.0",
     "vitest": "^4.0.0"
@@ -89,8 +92,7 @@
     "zod": "^4.0.0"
   },
   "files": [
-    "lib/esm/**/*",
-    "lib/cjs/**/*"
+    "dist"
   ],
   "config": {
     "commitizen": {
