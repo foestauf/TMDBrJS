@@ -4,6 +4,7 @@ coverage
 
 # npm library files
 lib/
+dist/
 
 # Dependency directories
 node_modules/

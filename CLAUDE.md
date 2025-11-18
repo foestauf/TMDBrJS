@@ -10,9 +10,10 @@ TMDBrJS is a TypeScript library for interacting with The Movie Database (TMDB) A
 
 ### Build
 ```bash
-npm run build          # Compile TypeScript to JavaScript in lib/
+npm run build          # Build dual ESM+CJS with tsdown to dist/
 npm run dev           # Watch mode for development
 npm run check-types   # Type check without emitting files
+npm run validate-package  # Validate package exports and types
 ```
 
 ### Testing
@@ -64,11 +65,15 @@ The main client (`TmdbClient`) creates an HTTP client with:
 ## Important Implementation Details
 
 1. **ESM Module**: This is a pure ESM package (type: "module" in package.json)
-2. **Node Version**: Requires Node.js 18+
-3. **Build Output**: TypeScript compiles to `lib/` directory with source maps and type definitions
-4. **Case Conversion**: All TMDB API responses are automatically converted from snake_case to camelCase
-5. **Error Handling**: API errors are caught and re-thrown with descriptive messages
-6. **Type Safety**: Extensive use of TypeScript generics for append_to_response functionality
+2. **Node Version**: Requires Node.js 20+
+3. **Build System**: Uses tsdown (Rust-powered bundler) for fast dual-format builds
+4. **Build Output**: Dual ESM+CJS bundles in `dist/` directory with proper type declarations
+   - ESM: `index.mjs` with `index.d.mts` types
+   - CJS: `index.cjs` with `index.d.cts` types
+5. **Package Validation**: Automated validation with @arethetypeswrong/cli and publint
+6. **Case Conversion**: All TMDB API responses are automatically converted from snake_case to camelCase
+7. **Error Handling**: API errors are caught and re-thrown with descriptive messages
+8. **Type Safety**: Extensive use of TypeScript generics for append_to_response functionality
 
 ## Release Process
 - Uses semantic-release for automated versioning and publishing
