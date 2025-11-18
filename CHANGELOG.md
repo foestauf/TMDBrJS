@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/foestauf/TMDBrJS/compare/v1.7.15...v1.8.0) (2025-11-18)
+
+
+### Features
+
+* migrate build system from tsc to tsdown ([#548](https://github.com/foestauf/TMDBrJS/issues/548)) ([2940031](https://github.com/foestauf/TMDBrJS/commit/2940031d0c80401a6189ce7928593ab9448688ba))
+
 ## [1.7.15](https://github.com/foestauf/TMDBrJS/compare/v1.7.14...v1.7.15) (2025-09-21)
 
 
