@@ -89,7 +89,7 @@ importers:
         version: 10.9.2(@types/node@24.10.4)(typescript@5.9.3)
       tsdown:
         specifier: ^0.17.0
-        version: 0.17.3(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)
+        version: 0.17.4(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -3725,8 +3725,8 @@ packages:
       '@swc/wasm':
         optional: true
 
-  tsdown@0.17.3:
-    resolution: {integrity: sha512-bgLgTog+oyadDTr9SZ57jZtb+A4aglCjo3xgJrkCDxbzcQl2l2iDDr4b06XHSQHwyDNIhYFDgPRhuu1wL3pNsw==}
+  tsdown@0.17.4:
+    resolution: {integrity: sha512-z+kNuv1rwM1POQIufDUVrdNc/uGy0ueRVafCyDH39IdHxin4JXgB8DNGSPoqdIpcOpqUoRbNreK8NxENFmlhKw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -8172,7 +8172,7 @@ snapshots:
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
-  tsdown@0.17.3(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3):
+  tsdown@0.17.4(@arethetypeswrong/core@0.18.2)(publint@0.3.16)(typescript@5.9.3):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
