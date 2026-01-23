@@ -22,7 +22,7 @@ importers:
         version: 25.0.2(typescript@5.9.3)
       zod:
         specifier: ^4.0.0
-        version: 4.3.5
+        version: 4.3.6
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
@@ -1897,8 +1897,8 @@ packages:
   duplexer2@0.1.4:
     resolution: {integrity: sha512-asLFVfWWtJ90ZyOUHMqk7/S2w2guQKxUI2itj3d92ADHhxUSbCMGi1f1cBcJ7xM1To+pE/Khbwo1yuNbMEPKeA==}
 
-  electron-to-chromium@1.5.267:
-    resolution: {integrity: sha512-0Drusm6MVRXSOJpGbaSVgcQsuB4hEkMpHXaVstcPmhu5LIedxs1xNK/nIxmQIU/RPC0+1/o0AVZfBTkTNJOdUw==}
+  electron-to-chromium@1.5.277:
+    resolution: {integrity: sha512-wKXFZw4erWmmOz5N/grBoJ2XrNJGDFMu2+W5ACHza5rHtvsqrK4gb6rnLC7XxKB9WlJ+RmyQatuEXmtm86xbnw==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -4138,8 +4138,8 @@ packages:
     resolution: {integrity: sha512-CzhO+pFNo8ajLM2d2IW/R93ipy99LWjtwblvC1RsoSUMZgyLbYFr221TnSNT7GjGdYui6P459mw9JH/g/zW2ug==}
     engines: {node: '>=18'}
 
-  zod@4.3.5:
-    resolution: {integrity: sha512-k7Nwx6vuWx1IJ9Bjuf4Zt1PEllcwe7cls3VNzm4CQ1/hgtFUK2bRNG3rvnpPUhFjmqJKAKtjV576KnUkHocg/g==}
+  zod@4.3.6:
+    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
 
 snapshots:
 
@@ -5832,7 +5832,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.9.17
       caniuse-lite: 1.0.30001765
-      electron-to-chromium: 1.5.267
+      electron-to-chromium: 1.5.277
       node-releases: 2.0.27
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
     optional: true
@@ -6192,7 +6192,7 @@ snapshots:
     dependencies:
       readable-stream: 2.3.8
 
-  electron-to-chromium@1.5.267:
+  electron-to-chromium@1.5.277:
     optional: true
 
   emittery@0.13.1:
@@ -8618,4 +8618,4 @@ snapshots:
 
   yoctocolors@2.1.2: {}
 
-  zod@4.3.5: {}
+  zod@4.3.6: {}
