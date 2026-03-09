@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/foestauf/TMDBrJS/compare/v1.8.1...v1.9.0) (2026-03-09)
+
+
+### Features
+
+* switch npm publishing to OIDC trusted publisher ([#658](https://github.com/foestauf/TMDBrJS/issues/658)) ([47b1749](https://github.com/foestauf/TMDBrJS/commit/47b174946b553e0827b28bd1561d2bf9acc041f3))
+
 ## [1.8.1](https://github.com/foestauf/TMDBrJS/compare/v1.8.0...v1.8.1) (2025-11-18)
 
 
