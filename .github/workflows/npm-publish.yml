@@ -10,17 +10,13 @@ on:
 
 jobs:
   release:
-    strategy:
-      matrix:
-        node-version: [22.x]
-
     name: Create a new release
     runs-on: ubuntu-latest
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
       pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
+      id-token: write # to enable use of OIDC for npm trusted publishing
 
     steps:
       - uses: actions/checkout@v6.0.2
@@ -31,16 +27,15 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 24.x
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "24.x"
           cache: "pnpm"
       - run: pnpm install
 
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HUSKY: 0
         run: npx semantic-release
