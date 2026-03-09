@@ -82,13 +82,13 @@
     "tsdown": "^0.21.0",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.0.0",
-    "vitest": "^4.0.0"
-  },
-  "dependencies": {
+    "vitest": "^4.0.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^25.0.0"
+  },
+  "dependencies": {
     "change-case": "^5.4.4",
-    "semantic-release": "^25.0.0",
     "zod": "^4.0.0"
   },
   "files": [
