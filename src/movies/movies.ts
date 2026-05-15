@@ -88,6 +88,11 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     if (page) url.appendParam('page', page.toString());
     return this.apiClient.get<UpcomingMovies>(url.toString());
   }
+
+  async getLatest(): Promise<Movie> {
+    const url = new ApiURL('movie/latest');
+    return this.apiClient.get<Movie>(url.toString());
+  }
 }
 
 export default Movies;
