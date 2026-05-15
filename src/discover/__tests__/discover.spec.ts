@@ -35,4 +35,27 @@ describe('Discover', () => {
       expect(calledWith).toContain('page=2');
     });
   });
+
+  describe('tv', () => {
+    it('hits discover/tv with no query', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.discover.tv();
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('discover/tv'));
+    });
+
+    it('serializes a TV-specific query', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.discover.tv({
+        sortBy: 'first_air_date.desc',
+        withNetworks: [213],
+        firstAirDateYear: 2025,
+        includeNullFirstAirDates: false,
+      });
+      const calledWith = (tmdb.apiClient.get as unknown as { mock: { calls: [string][] } }).mock.calls[0][0];
+      expect(calledWith).toContain('sort_by=first_air_date.desc');
+      expect(calledWith).toContain('with_networks=213');
+      expect(calledWith).toContain('first_air_date_year=2025');
+      expect(calledWith).toContain('include_null_first_air_dates=false');
+    });
+  });
 });
