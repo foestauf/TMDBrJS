@@ -103,8 +103,21 @@ class Client {
 export { Client };
 export type { Person, MovieCredits, TvShow, TvCredits };
 export type { Genre, GenreList } from './genres/types/Genre';
-export type { ConfigurationDetails, CountryConfig, LanguageConfig, JobConfig, TimezoneConfig } from './configuration/types/Configuration';
-export type { TrendingWindow, TrendingMulti, TrendingAllResponse, TrendingMoviesResponse, TrendingTvResponse, TrendingPeopleResponse } from './trending/types/Trending';
+export type {
+  ConfigurationDetails,
+  CountryConfig,
+  LanguageConfig,
+  JobConfig,
+  TimezoneConfig,
+} from './configuration/types/Configuration';
+export type {
+  TrendingWindow,
+  TrendingMulti,
+  TrendingAllResponse,
+  TrendingMoviesResponse,
+  TrendingTvResponse,
+  TrendingPeopleResponse,
+} from './trending/types/Trending';
 export type {
   BaseSearchOptions,
   MovieSearchOptions,

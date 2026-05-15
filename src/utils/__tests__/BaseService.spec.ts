@@ -45,9 +45,7 @@ describe('BaseService', () => {
 
       const result = await testService.testGetById('123', { include: ['credits'] as const });
 
-      expect(mockApiClient.get).toHaveBeenCalledWith(
-        'test/123?append_to_response=credits',
-      );
+      expect(mockApiClient.get).toHaveBeenCalledWith('test/123?append_to_response=credits');
       expect(result).toEqual(mockResponse);
     });
 
@@ -64,9 +62,7 @@ describe('BaseService', () => {
         include: ['credits', 'videos'] as const,
       });
 
-      expect(mockApiClient.get).toHaveBeenCalledWith(
-        'test/123?append_to_response=credits%2Cvideos',
-      );
+      expect(mockApiClient.get).toHaveBeenCalledWith('test/123?append_to_response=credits%2Cvideos');
       expect(result).toEqual(mockResponse);
     });
 

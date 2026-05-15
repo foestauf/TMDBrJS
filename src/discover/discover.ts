@@ -1,12 +1,7 @@
 import type { IApiClient } from '..';
 import ApiURL from '../utils/apiURL';
 import { serializeDiscoverQuery } from './serializeQuery';
-import type {
-  MovieDiscoverQuery,
-  TvDiscoverQuery,
-  DiscoverMoviesResponse,
-  DiscoverTvResponse,
-} from './types/Discover';
+import type { MovieDiscoverQuery, TvDiscoverQuery, DiscoverMoviesResponse, DiscoverTvResponse } from './types/Discover';
 
 class Discover {
   constructor(private readonly apiClient: IApiClient) {}

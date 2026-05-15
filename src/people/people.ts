@@ -78,12 +78,7 @@ class People extends BaseService<AppendOptions, PeopleAppendResponseMap> {
     return this.apiClient.get<Person>(url.toString());
   }
 
-  async getChanges(
-    id: string | number,
-    startDate?: string,
-    endDate?: string,
-    page?: number,
-  ): Promise<PersonChanges> {
+  async getChanges(id: string | number, startDate?: string, endDate?: string, page?: number): Promise<PersonChanges> {
     const url = new ApiURL(`person/${id.toString()}/changes`);
     if (startDate) url.appendParam('start_date', startDate);
     if (endDate) url.appendParam('end_date', endDate);

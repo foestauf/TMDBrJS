@@ -1,3 +1,43 @@
+# [1.10.0](https://github.com/foestauf/TMDBrJS/compare/v1.9.0...v1.10.0) (2026-05-15)
+
+
+### Bug Fixes
+
+* **discover:** narrow type in serializeQuery to satisfy no-base-to-string lint rule ([d1b0f9c](https://github.com/foestauf/TMDBrJS/commit/d1b0f9c6812afcb7dd46f2055f6fca131f6a0829))
+* **utils:** make ApiURL return relative paths so Client baseUrl is honored ([64ca08f](https://github.com/foestauf/TMDBrJS/commit/64ca08f6af9cc5e385fbb443f4cf85adffd068a1))
+
+
+### Features
+
+* **configuration:** add configuration service ([d29a36e](https://github.com/foestauf/TMDBrJS/commit/d29a36eceed4d2b81be0bd49dadd5c5b972e00c6))
+* **discover:** add discover service with movies() and tv() ([bef72ed](https://github.com/foestauf/TMDBrJS/commit/bef72edb49f187715359352f66a532aac0656a29))
+* **discover:** add types and query serializer ([44acd8d](https://github.com/foestauf/TMDBrJS/commit/44acd8d30d3cdedf8a57bf1d33caa6040feb4b36))
+* **genres:** add genres service with movies() and tv() ([1f62d3e](https://github.com/foestauf/TMDBrJS/commit/1f62d3e3c24e497bf0f913a2757d40d7d9806b0d))
+* **movies:** add getAccountStates ([d202e31](https://github.com/foestauf/TMDBrJS/commit/d202e3109a544c7960408513737921ef37b51d25))
+* **movies:** add getAlternativeTitles ([f3b173c](https://github.com/foestauf/TMDBrJS/commit/f3b173c634c997288b4320a6894521281dc61f01))
+* **movies:** add getChanges ([c47605f](https://github.com/foestauf/TMDBrJS/commit/c47605f013e9c72165ce2a2fe19b5da6a2a6d78e))
+* **movies:** add getExternalIds ([c783251](https://github.com/foestauf/TMDBrJS/commit/c783251e086c6bb75c24980cb3579f28305d4f0f))
+* **movies:** add getImages ([4b612d0](https://github.com/foestauf/TMDBrJS/commit/4b612d0d08742dd96f25f1f54f8f9547cb1208a1))
+* **movies:** add getKeywords ([625c530](https://github.com/foestauf/TMDBrJS/commit/625c530dfa0684d362759e425efde034d0397f72))
+* **movies:** add getLatest ([73608cb](https://github.com/foestauf/TMDBrJS/commit/73608cbce685575de908cc8757279f6e447406b9))
+* **movies:** add getLists ([2b775ea](https://github.com/foestauf/TMDBrJS/commit/2b775ea611e1f6fc6c32a42b00e0bc4aa204ca4e))
+* **movies:** add getNowPlaying ([2bb71a0](https://github.com/foestauf/TMDBrJS/commit/2bb71a06f29283a5955bd6715ff1ca58d10ca0c6))
+* **movies:** add getRecommendations ([f4574c3](https://github.com/foestauf/TMDBrJS/commit/f4574c37c111ff618ff68683a911455965007011))
+* **movies:** add getReleaseDates ([ec65b16](https://github.com/foestauf/TMDBrJS/commit/ec65b16e1a553a892a9e5b8e8a2094b83ecd9416))
+* **movies:** add getReviews ([2aa027c](https://github.com/foestauf/TMDBrJS/commit/2aa027c83c997447e1908f5b46471b66875d37c4))
+* **movies:** add getTranslations ([577ef76](https://github.com/foestauf/TMDBrJS/commit/577ef76d6ac01d2d8de16b0568f001b6f0888f84))
+* **movies:** add getUpcoming ([d9adaea](https://github.com/foestauf/TMDBrJS/commit/d9adaea90bb5821d064fc964e2e5f96a0ef8ae99))
+* **movies:** add getVideos ([a46d31e](https://github.com/foestauf/TMDBrJS/commit/a46d31e2fbe6bf25234174d4bb976ddcff89e4e6))
+* **movies:** add getWatchProviders ([2e58c0a](https://github.com/foestauf/TMDBrJS/commit/2e58c0af720f4e3d89a08a6cad136acef4a44dfc))
+* **movies:** add page param to getTopRated ([6359511](https://github.com/foestauf/TMDBrJS/commit/63595111f0cd846c54255e631eaae93a3ef8e875))
+* **people:** add getChanges ([0a3ac5c](https://github.com/foestauf/TMDBrJS/commit/0a3ac5cae33ea677d18cff6f164db918dc3da6b5))
+* **people:** add getExternalIds ([8226ad6](https://github.com/foestauf/TMDBrJS/commit/8226ad6433df758e09b80e8c5966946bbe15448c))
+* **people:** add getLatest ([db0279a](https://github.com/foestauf/TMDBrJS/commit/db0279a9c44a6199c2e5d37b3c5f1c4b45ba317e))
+* **people:** add getTranslations ([4bea45b](https://github.com/foestauf/TMDBrJS/commit/4bea45bfcf0b6e109f085746ab4c20fa91e24036))
+* **search:** add search service with multi/movies/tv/people endpoints ([3d5d326](https://github.com/foestauf/TMDBrJS/commit/3d5d326a1538473378085e3131af2c9cda057e1b))
+* **trending:** add trending service (all/movies/tv/people × day/week) ([39a86ac](https://github.com/foestauf/TMDBrJS/commit/39a86ac8e9c575ac2f8ce3f974e5576f70d0d6ed))
+* **utils:** add Paginated<T> shared type ([1e128e9](https://github.com/foestauf/TMDBrJS/commit/1e128e9b829cdccbd3f913570136f9389f2376ea))
+
 # [1.9.0](https://github.com/foestauf/TMDBrJS/compare/v1.8.1...v1.9.0) (2026-03-09)
 
 

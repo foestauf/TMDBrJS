@@ -155,12 +155,7 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     return this.apiClient.get<MovieLists>(url.toString());
   }
 
-  async getChanges(
-    id: string | number,
-    startDate?: string,
-    endDate?: string,
-    page?: number,
-  ): Promise<MovieChanges> {
+  async getChanges(id: string | number, startDate?: string, endDate?: string, page?: number): Promise<MovieChanges> {
     const url = new ApiURL(`movie/${id.toString()}/changes`);
     if (startDate) url.appendParam('start_date', startDate);
     if (endDate) url.appendParam('end_date', endDate);

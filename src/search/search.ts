@@ -34,7 +34,8 @@ class Search {
     applyBaseSearchParams(url, query, opts);
     if (opts?.region) url.appendParam('region', opts.region);
     if (opts?.year !== undefined) url.appendParam('year', opts.year.toString());
-    if (opts?.primaryReleaseYear !== undefined) url.appendParam('primary_release_year', opts.primaryReleaseYear.toString());
+    if (opts?.primaryReleaseYear !== undefined)
+      url.appendParam('primary_release_year', opts.primaryReleaseYear.toString());
     return this.apiClient.get<MovieSearchResponse>(url.toString());
   }
 
