@@ -71,6 +71,11 @@ class People extends BaseService<AppendOptions, PeopleAppendResponseMap> {
     const response = await this.apiClient.get<Images>(`3/person/${id.toString()}/tagged_images`);
     return response;
   }
+
+  async getLatest(): Promise<Person> {
+    const url = new ApiURL('person/latest');
+    return this.apiClient.get<Person>(url.toString());
+  }
 }
 
 export default People;
