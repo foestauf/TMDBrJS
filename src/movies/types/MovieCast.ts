@@ -251,3 +251,12 @@ export type AppendOptions =
   | 'releaseDates'
   | 'externalIds'
   | 'accountStates';
+
+export interface AlternativeTitles {
+  id: number;
+  titles: Array<{
+    iso31661: string;
+    title: string;
+    type: string;
+  }>;
+}
