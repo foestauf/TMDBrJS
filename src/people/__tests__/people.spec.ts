@@ -91,4 +91,13 @@ describe('People', () => {
       await expect(tmdb.people.getById(personId)).rejects.toThrow('API error');
     });
   });
+
+  describe('getLatest', () => {
+    it('hits person/latest', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 1, name: 'Latest Person' });
+      const result = await tmdb.people.getLatest();
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('person/latest'));
+      expect(result).toEqual({ id: 1, name: 'Latest Person' });
+    });
+  });
 });
