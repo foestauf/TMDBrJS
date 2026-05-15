@@ -425,4 +425,19 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=2'));
     });
   });
+
+  describe('getChanges', () => {
+    it('hits movie/{id}/changes', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ changes: [] });
+      await tmdb.movies.getChanges('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/changes'));
+    });
+    it('passes startDate, endDate, and page when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ changes: [] });
+      await tmdb.movies.getChanges('550', '2026-01-01', '2026-02-01', 2);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringMatching(/start_date=2026-01-01/));
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringMatching(/end_date=2026-02-01/));
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringMatching(/page=2/));
+    });
+  });
 });
