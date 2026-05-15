@@ -65,6 +65,18 @@ describe('Movies', () => {
 
       expect(result).toEqual(response);
     });
+
+    it('passes the page param when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [] });
+      await tmdb.movies.getTopRated(2);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=2'));
+    });
+
+    it('hits movie/top_rated', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [] });
+      await tmdb.movies.getTopRated();
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/top_rated'));
+    });
   });
 
   describe('getById', () => {
