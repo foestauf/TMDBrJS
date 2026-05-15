@@ -199,6 +199,18 @@ describe('Movies', () => {
 
       expect(result).toEqual(response);
     });
+
+    it('hits movie/{id}/similar', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [] });
+      await tmdb.movies.getSimilar('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/similar'));
+    });
+
+    it('passes the page param when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [] });
+      await tmdb.movies.getSimilar('550', 2);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=2'));
+    });
   });
 
   describe('getCredits', () => {
@@ -238,7 +250,14 @@ describe('Movies', () => {
       const result = await tmdb.movies.getDetails(movieId);
 
       expect(result).toEqual(response);
-      expect(tmdb.apiClient.get).toHaveBeenCalledWith(`movie/${movieId}`);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringMatching(/movie\/123(?!\/)/));
+    });
+
+    it('hits movie/{id}', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, title: 'Fight Club' });
+      const result = await tmdb.movies.getDetails(550);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringMatching(/movie\/550(?!\/)/));
+      expect(result).toEqual({ id: 550, title: 'Fight Club' });
     });
   });
 
@@ -265,7 +284,7 @@ describe('Movies', () => {
       const result = await tmdb.movies.getMovieCredits(movieId);
 
       expect(result).toEqual(response);
-      expect(tmdb.apiClient.get).toHaveBeenCalledWith(`movie/${movieId}/credits`);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining(`movie/${movieId}/credits`));
     });
   });
 });

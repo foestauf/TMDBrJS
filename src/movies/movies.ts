@@ -53,19 +53,20 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     return this.getByIdWithAppendToResponse<T, Movie>('movie/{id}', id, options);
   }
 
-  async getSimilar(id: string | number) {
-    const response = await this.apiClient.get(`movie/${id.toString()}/similar`);
-    return response;
+  async getSimilar(id: string | number, page?: number): Promise<SimilarMovies> {
+    const url = new ApiURL(`movie/${id.toString()}/similar`);
+    if (page) url.appendParam('page', page.toString());
+    return this.apiClient.get<SimilarMovies>(url.toString());
   }
 
-  async getCredits(id: string | number) {
-    const response = await this.apiClient.get<MovieCredits>(`movie/${id.toString()}/credits`);
-    return response;
+  async getCredits(id: string | number): Promise<MovieCredits> {
+    const url = new ApiURL(`movie/${id.toString()}/credits`);
+    return this.apiClient.get<MovieCredits>(url.toString());
   }
 
-  async getDetails(id: string | number) {
-    const response = await this.apiClient.get<Movie>(`movie/${id.toString()}`);
-    return response;
+  async getDetails(id: string | number): Promise<Movie> {
+    const url = new ApiURL(`movie/${id.toString()}`);
+    return this.apiClient.get<Movie>(url.toString());
   }
 
   async getMovieCredits(id: string | number) {
