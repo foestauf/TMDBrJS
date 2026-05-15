@@ -95,6 +95,11 @@ class People extends BaseService<AppendOptions, PeopleAppendResponseMap> {
     const url = new ApiURL(`person/${id.toString()}/external_ids`);
     return this.apiClient.get<ExternalIds>(url.toString());
   }
+
+  async getTranslations(id: string | number): Promise<Translations> {
+    const url = new ApiURL(`person/${id.toString()}/translations`);
+    return this.apiClient.get<Translations>(url.toString());
+  }
 }
 
 export default People;
