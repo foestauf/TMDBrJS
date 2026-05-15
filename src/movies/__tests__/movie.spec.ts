@@ -322,4 +322,12 @@ describe('Movies', () => {
       expect(result).toEqual({ id: 123, title: 'Latest' });
     });
   });
+
+  describe('getImages', () => {
+    it('hits movie/{id}/images', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, backdrops: [], posters: [] });
+      await tmdb.movies.getImages('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/images'));
+    });
+  });
 });
