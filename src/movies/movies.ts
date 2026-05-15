@@ -17,6 +17,7 @@ import {
   AccountStates,
 } from './types/MovieCast.js';
 import { BaseService } from '../utils/BaseService';
+import ApiURL from '../utils/apiURL';
 
 type MovieAppendResponseMap = {
   credits: MovieCredits;
@@ -34,7 +35,9 @@ type MovieAppendResponseMap = {
 
 class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
   async getPopular(page?: number) {
-    return await this.apiClient.get<PopularMovies>('movie/popular?page=' + (page?.toString() ?? '1'));
+    const url = new ApiURL('movie/popular');
+    if (page) url.appendParam('page', page.toString());
+    return this.apiClient.get<PopularMovies>(url.toString());
   }
 
   async getTopRated() {

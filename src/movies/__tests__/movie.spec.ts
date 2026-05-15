@@ -29,6 +29,20 @@ describe('Movies', () => {
 
       expect(result).toEqual(response);
     });
+
+    it('omits the page param when no page is provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [] });
+      await tmdb.movies.getPopular();
+      const calledWith = (tmdb.apiClient.get as unknown as { mock: { calls: [string][] } }).mock.calls[0][0];
+      expect(calledWith).not.toContain('page=');
+      expect(calledWith).toContain('movie/popular');
+    });
+
+    it('passes the page param when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [] });
+      await tmdb.movies.getPopular(3);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=3'));
+    });
   });
 
   describe('getTopRated', () => {
