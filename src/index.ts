@@ -4,6 +4,7 @@ import Tv from './tv/tv';
 import Genres from './genres/genres';
 import Configuration from './configuration/configuration';
 import Trending from './trending/trending';
+import Search from './search/search';
 import { camelCase } from 'change-case';
 import { applyCaseMiddleware } from './utils/applyCaseMiddleware';
 import { Person } from './people/types/Person';
@@ -29,6 +30,7 @@ class Client {
   genres: Genres;
   configuration: Configuration;
   trending: Trending;
+  search: Search;
   private readonly version: string;
   private readonly baseUrl: string;
   private readonly language: string;
@@ -83,6 +85,7 @@ class Client {
     this.genres = new Genres(this.apiClient);
     this.configuration = new Configuration(this.apiClient);
     this.trending = new Trending(this.apiClient);
+    this.search = new Search(this.apiClient);
   }
 
   getVersion(): string {
@@ -99,3 +102,17 @@ export type { Person, MovieCredits, TvShow, TvCredits };
 export type { Genre, GenreList } from './genres/types/Genre';
 export type { ConfigurationDetails, CountryConfig, LanguageConfig, JobConfig, TimezoneConfig } from './configuration/types/Configuration';
 export type { TrendingWindow, TrendingMulti, TrendingAllResponse, TrendingMoviesResponse, TrendingTvResponse, TrendingPeopleResponse } from './trending/types/Trending';
+export type {
+  BaseSearchOptions,
+  MovieSearchOptions,
+  TvSearchOptions,
+  PeopleSearchOptions,
+  MultiSearchResult,
+  MultiSearchResponse,
+  MovieSearchResponse,
+  TvSearchResponse,
+  PeopleSearchResponse,
+  KeywordSearchResponse,
+  CompanySearchResponse,
+  CollectionSearchResponse,
+} from './search/types/Search';
