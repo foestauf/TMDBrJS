@@ -116,4 +116,12 @@ describe('People', () => {
       expect(calledWith).toContain('page=2');
     });
   });
+
+  describe('getExternalIds', () => {
+    it('hits person/{id}/external_ids', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 287, imdbId: 'nm0000148' });
+      await tmdb.people.getExternalIds('287');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('person/287/external_ids'));
+    });
+  });
 });
