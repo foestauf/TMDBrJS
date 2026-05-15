@@ -18,7 +18,7 @@ import {
   AlternativeTitles,
   WatchProviders,
 } from './types/MovieCast.js';
-import type { NowPlayingMovies, UpcomingMovies } from './types/Lists';
+import type { NowPlayingMovies, UpcomingMovies, MovieLists } from './types/Lists';
 import { BaseService } from '../utils/BaseService';
 import ApiURL from '../utils/apiURL';
 
@@ -146,6 +146,12 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
   async getWatchProviders(id: string | number): Promise<WatchProviders> {
     const url = new ApiURL(`movie/${id.toString()}/watch/providers`);
     return this.apiClient.get<WatchProviders>(url.toString());
+  }
+
+  async getLists(id: string | number, page?: number): Promise<MovieLists> {
+    const url = new ApiURL(`movie/${id.toString()}/lists`);
+    if (page) url.appendParam('page', page.toString());
+    return this.apiClient.get<MovieLists>(url.toString());
   }
 }
 
