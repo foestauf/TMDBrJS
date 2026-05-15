@@ -260,3 +260,16 @@ export interface AlternativeTitles {
     type: string;
   }>;
 }
+
+export interface WatchProviders {
+  id: number;
+  results: Record<
+    string,
+    {
+      link: string;
+      flatrate?: Array<{ logoPath: string; providerId: number; providerName: string; displayPriority: number }>;
+      rent?: Array<{ logoPath: string; providerId: number; providerName: string; displayPriority: number }>;
+      buy?: Array<{ logoPath: string; providerId: number; providerName: string; displayPriority: number }>;
+    }
+  >;
+}
