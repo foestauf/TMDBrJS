@@ -3,7 +3,7 @@ import ApiURL from '../utils/apiURL';
 import type { GenreList } from './types/Genre';
 
 class Genres {
-  constructor(private apiClient: IApiClient) {}
+  constructor(private readonly apiClient: IApiClient) {}
 
   async movies(): Promise<GenreList> {
     const url = new ApiURL('genre/movie/list');
