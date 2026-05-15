@@ -300,4 +300,17 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=4'));
     });
   });
+
+  describe('getUpcoming', () => {
+    it('hits movie/upcoming', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [], dates: { maximum: '', minimum: '' } });
+      await tmdb.movies.getUpcoming();
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/upcoming'));
+    });
+    it('passes the page param when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [], dates: { maximum: '', minimum: '' } });
+      await tmdb.movies.getUpcoming(5);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=5'));
+    });
+  });
 });
