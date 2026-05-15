@@ -380,4 +380,12 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/release_dates'));
     });
   });
+
+  describe('getTranslations', () => {
+    it('hits movie/{id}/translations', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, translations: [] });
+      await tmdb.movies.getTranslations('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/translations'));
+    });
+  });
 });

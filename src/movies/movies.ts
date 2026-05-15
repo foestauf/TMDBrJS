@@ -125,6 +125,11 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     const url = new ApiURL(`movie/${id.toString()}/release_dates`);
     return this.apiClient.get<ReleaseDates>(url.toString());
   }
+
+  async getTranslations(id: string | number): Promise<Translations> {
+    const url = new ApiURL(`movie/${id.toString()}/translations`);
+    return this.apiClient.get<Translations>(url.toString());
+  }
 }
 
 export default Movies;
