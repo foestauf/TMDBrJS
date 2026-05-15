@@ -69,9 +69,11 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     return this.apiClient.get<Movie>(url.toString());
   }
 
-  async getMovieCredits(id: string | number) {
-    const response = await this.apiClient.get<MovieCredits>(`movie/${id.toString()}/credits`);
-    return response;
+  /**
+   * @deprecated Use {@link Movies.getCredits} instead. This duplicate will be removed in a future major release.
+   */
+  async getMovieCredits(id: string | number): Promise<MovieCredits> {
+    return this.getCredits(id);
   }
 }
 
