@@ -313,4 +313,13 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=5'));
     });
   });
+
+  describe('getLatest', () => {
+    it('hits movie/latest', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 123, title: 'Latest' });
+      const result = await tmdb.movies.getLatest();
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/latest'));
+      expect(result).toEqual({ id: 123, title: 'Latest' });
+    });
+  });
 });
