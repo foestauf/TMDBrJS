@@ -364,4 +364,12 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=2'));
     });
   });
+
+  describe('getKeywords', () => {
+    it('hits movie/{id}/keywords', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, keywords: [] });
+      await tmdb.movies.getKeywords('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/keywords'));
+    });
+  });
 });
