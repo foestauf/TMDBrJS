@@ -35,7 +35,7 @@ describe('BaseService', () => {
 
       const result = await testService.testGetById('123');
 
-      expect(mockApiClient.get).toHaveBeenCalledWith('https://api.themoviedb.org/3/test/123');
+      expect(mockApiClient.get).toHaveBeenCalledWith('test/123');
       expect(result).toEqual(mockResponse);
     });
 
@@ -46,7 +46,7 @@ describe('BaseService', () => {
       const result = await testService.testGetById('123', { include: ['credits'] as const });
 
       expect(mockApiClient.get).toHaveBeenCalledWith(
-        'https://api.themoviedb.org/3/test/123?append_to_response=credits',
+        'test/123?append_to_response=credits',
       );
       expect(result).toEqual(mockResponse);
     });
@@ -65,7 +65,7 @@ describe('BaseService', () => {
       });
 
       expect(mockApiClient.get).toHaveBeenCalledWith(
-        'https://api.themoviedb.org/3/test/123?append_to_response=credits%2Cvideos',
+        'test/123?append_to_response=credits%2Cvideos',
       );
       expect(result).toEqual(mockResponse);
     });
