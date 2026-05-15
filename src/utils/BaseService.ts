@@ -41,11 +41,13 @@ export abstract class BaseService<TAppendOptions extends string, TAppendResponse
       if (error instanceof Error) {
         // Enhanced error handling for append_to_response specific errors
         if (error.message.includes('append_to_response')) {
-          throw new Error(`Failed to fetch ${endpoint} with append_to_response options: ${error.message}`);
+          throw new Error(`Failed to fetch ${endpoint} with append_to_response options: ${error.message}`, {
+            cause: error,
+          });
         }
-        throw new Error(`Failed to fetch ${endpoint}: ${error.message}`);
+        throw new Error(`Failed to fetch ${endpoint}: ${error.message}`, { cause: error });
       }
-      throw new Error(`Failed to fetch ${endpoint}: Something went wrong`);
+      throw new Error(`Failed to fetch ${endpoint}: Something went wrong`, { cause: error });
     }
   }
 }
