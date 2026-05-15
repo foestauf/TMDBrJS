@@ -440,4 +440,12 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringMatching(/page=2/));
     });
   });
+
+  describe('getAccountStates', () => {
+    it('hits movie/{id}/account_states', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, favorite: false, rated: false, watchlist: false });
+      await tmdb.movies.getAccountStates('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/account_states'));
+    });
+  });
 });
