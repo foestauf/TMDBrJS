@@ -275,7 +275,7 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/). 
 
 The project uses GitHub Actions for continuous integration. The CI pipeline:
 
-1. Runs on Node.js 18.x, 20.x, and 21.x
+1. Runs on Node.js 22.x and 24.x
 2. Performs the following checks:
    - Linting
    - Type checking
