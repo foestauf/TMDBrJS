@@ -1,7 +1,10 @@
 class ApiURL {
   urlInstance: URL;
   constructor(url: string) {
-    this.urlInstance = new URL(url, 'https://api.themoviedb.org/3/');
+    // Dummy base is required so the URL constructor accepts a relative input.
+    // We strip it back out in toString() so Client.get can resolve the path
+    // against its configured baseUrl.
+    this.urlInstance = new URL(url, 'https://placeholder.invalid/');
   }
 
   appendParam(key: string, value: string) {
@@ -9,7 +12,7 @@ class ApiURL {
   }
 
   toString() {
-    return this.urlInstance.toString();
+    return this.urlInstance.pathname.replace(/^\//, '') + this.urlInstance.search;
   }
 
   getURL() {
