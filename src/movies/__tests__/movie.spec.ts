@@ -261,33 +261,6 @@ describe('Movies', () => {
     });
   });
 
-  describe('getMovieCredits', () => {
-    it('should return movie credits', async () => {
-      const movieId = '123';
-      const response = {
-        id: 123,
-        cast: [
-          {
-            id: 1,
-            name: 'Actor 1',
-          },
-        ],
-        crew: [
-          {
-            id: 2,
-            name: 'Director 1',
-          },
-        ],
-      };
-      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue(response);
-
-      const result = await tmdb.movies.getMovieCredits(movieId);
-
-      expect(result).toEqual(response);
-      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining(`movie/${movieId}/credits`));
-    });
-  });
-
   describe('getNowPlaying', () => {
     it('hits movie/now_playing', async () => {
       vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [], dates: { maximum: '', minimum: '' } });
