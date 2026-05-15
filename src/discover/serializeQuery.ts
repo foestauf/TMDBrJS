@@ -7,7 +7,7 @@ export function serializeDiscoverQuery(url: ApiURL, query?: Record<string, unkno
     if (value === undefined || value === null) continue;
     const snakeKey = camelToSnakeCase(key);
     if (Array.isArray(value)) {
-      url.appendParam(snakeKey, value.map((v) => String(v)).join(','));
+      url.appendParam(snakeKey, value.map(String).join(','));
       continue;
     }
     if (typeof value === 'boolean') {
