@@ -59,4 +59,28 @@ describe('Search', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('search/person'));
     });
   });
+
+  describe('keywords', () => {
+    it('hits search/keyword', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.search.keywords('dystopia');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('search/keyword'));
+    });
+  });
+
+  describe('companies', () => {
+    it('hits search/company', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.search.companies('A24');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('search/company'));
+    });
+  });
+
+  describe('collections', () => {
+    it('hits search/collection', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.search.collections('Bond');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('search/collection'));
+    });
+  });
 });
