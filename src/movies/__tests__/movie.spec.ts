@@ -351,4 +351,17 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=2'));
     });
   });
+
+  describe('getRecommendations', () => {
+    it('hits movie/{id}/recommendations', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.movies.getRecommendations('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/recommendations'));
+    });
+    it('passes the page param when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 2, results: [], totalPages: 2, totalResults: 0 });
+      await tmdb.movies.getRecommendations('550', 2);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=2'));
+    });
+  });
 });
