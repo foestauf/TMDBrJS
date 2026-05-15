@@ -5,6 +5,7 @@ import Genres from './genres/genres';
 import Configuration from './configuration/configuration';
 import Trending from './trending/trending';
 import Search from './search/search';
+import Discover from './discover/discover';
 import { camelCase } from 'change-case';
 import { applyCaseMiddleware } from './utils/applyCaseMiddleware';
 import { Person } from './people/types/Person';
@@ -31,6 +32,7 @@ class Client {
   configuration: Configuration;
   trending: Trending;
   search: Search;
+  discover: Discover;
   private readonly version: string;
   private readonly baseUrl: string;
   private readonly language: string;
@@ -86,6 +88,7 @@ class Client {
     this.configuration = new Configuration(this.apiClient);
     this.trending = new Trending(this.apiClient);
     this.search = new Search(this.apiClient);
+    this.discover = new Discover(this.apiClient);
   }
 
   getVersion(): string {
@@ -116,3 +119,11 @@ export type {
   CompanySearchResponse,
   CollectionSearchResponse,
 } from './search/types/Search';
+export type {
+  SortBy,
+  BaseDiscoverQuery,
+  MovieDiscoverQuery,
+  TvDiscoverQuery,
+  DiscoverMoviesResponse,
+  DiscoverTvResponse,
+} from './discover/types/Discover';
