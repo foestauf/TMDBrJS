@@ -14,6 +14,8 @@ export function serializeDiscoverQuery(url: ApiURL, query?: Record<string, unkno
       url.appendParam(snakeKey, value ? 'true' : 'false');
       continue;
     }
-    url.appendParam(snakeKey, String(value));
+    if (typeof value === 'string' || typeof value === 'number') {
+      url.appendParam(snakeKey, String(value));
+    }
   }
 }
