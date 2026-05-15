@@ -404,4 +404,12 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/alternative_titles'));
     });
   });
+
+  describe('getWatchProviders', () => {
+    it('hits movie/{id}/watch/providers', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, results: {} });
+      await tmdb.movies.getWatchProviders('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/watch/providers'));
+    });
+  });
 });

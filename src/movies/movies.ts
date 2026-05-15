@@ -16,6 +16,7 @@ import {
   ExternalIds,
   AccountStates,
   AlternativeTitles,
+  WatchProviders,
 } from './types/MovieCast.js';
 import type { NowPlayingMovies, UpcomingMovies } from './types/Lists';
 import { BaseService } from '../utils/BaseService';
@@ -140,6 +141,11 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
   async getAlternativeTitles(id: string | number): Promise<AlternativeTitles> {
     const url = new ApiURL(`movie/${id.toString()}/alternative_titles`);
     return this.apiClient.get<AlternativeTitles>(url.toString());
+  }
+
+  async getWatchProviders(id: string | number): Promise<WatchProviders> {
+    const url = new ApiURL(`movie/${id.toString()}/watch/providers`);
+    return this.apiClient.get<WatchProviders>(url.toString());
   }
 }
 
