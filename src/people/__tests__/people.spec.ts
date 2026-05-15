@@ -124,4 +124,12 @@ describe('People', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('person/287/external_ids'));
     });
   });
+
+  describe('getTranslations', () => {
+    it('hits person/{id}/translations', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 287, translations: [] });
+      await tmdb.people.getTranslations('287');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('person/287/translations'));
+    });
+  });
 });
