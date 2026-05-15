@@ -542,7 +542,7 @@ describe('Client', () => {
         ok: true,
         json: () => Promise.resolve({}),
       });
-      global.fetch = mockFetch;
+      globalThis.fetch = mockFetch;
 
       try {
         await client.movies.getPopular();
@@ -566,7 +566,7 @@ describe('Client', () => {
         ok: true,
         json: () => Promise.resolve({}),
       });
-      global.fetch = mockFetch;
+      globalThis.fetch = mockFetch;
 
       try {
         await client.movies.getPopular();
@@ -589,7 +589,7 @@ describe('Client', () => {
         ok: false,
         status: 404,
       });
-      global.fetch = mockFetch;
+      globalThis.fetch = mockFetch;
 
       await expect(client.movies.getPopular()).rejects.toThrow('Resource not found');
     });
@@ -601,7 +601,7 @@ describe('Client', () => {
         ok: false,
         status: 429,
       });
-      global.fetch = mockFetch;
+      globalThis.fetch = mockFetch;
 
       await expect(client.movies.getPopular()).rejects.toThrow('Too many requests');
     });
@@ -613,7 +613,7 @@ describe('Client', () => {
         ok: false,
         status: 500,
       });
-      global.fetch = mockFetch;
+      globalThis.fetch = mockFetch;
 
       await expect(client.movies.getPopular()).rejects.toThrow('HTTP error! status: 500');
     });
@@ -625,7 +625,7 @@ describe('Client', () => {
         ok: true,
         json: () => Promise.resolve({}),
       });
-      global.fetch = mockFetch;
+      globalThis.fetch = mockFetch;
 
       try {
         await client.movies.getPopular();
@@ -650,7 +650,7 @@ describe('Client', () => {
         ok: true,
         json: () => Promise.resolve({}),
       });
-      global.fetch = mockFetch;
+      globalThis.fetch = mockFetch;
 
       try {
         await client.movies.getPopular();
