@@ -40,9 +40,10 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     return this.apiClient.get<PopularMovies>(url.toString());
   }
 
-  async getTopRated() {
-    const response = await this.apiClient.get('movie/top_rated');
-    return response;
+  async getTopRated(page?: number): Promise<PopularMovies> {
+    const url = new ApiURL('movie/top_rated');
+    if (page) url.appendParam('page', page.toString());
+    return this.apiClient.get<PopularMovies>(url.toString());
   }
 
   async getById<T extends AppendOptions[]>(
