@@ -167,6 +167,11 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     if (page) url.appendParam('page', page.toString());
     return this.apiClient.get<MovieChanges>(url.toString());
   }
+
+  async getAccountStates(id: string | number): Promise<AccountStates> {
+    const url = new ApiURL(`movie/${id.toString()}/account_states`);
+    return this.apiClient.get<AccountStates>(url.toString());
+  }
 }
 
 export default Movies;
