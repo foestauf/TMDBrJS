@@ -25,8 +25,6 @@ jobs:
           ssh-key: ${{ secrets.DEPLOY_TOKEN }}
       - name: Install pnpm
         uses: pnpm/action-setup@v6
-        with:
-          version: 10
       - name: Use Node.js 24.x
         uses: actions/setup-node@v6
         with:
