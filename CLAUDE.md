@@ -37,9 +37,13 @@ npm run commit        # Use commitizen for conventional commits
 
 ### Core Structure
 - **Client Entry Point**: `src/index.ts` - Main TmdbClient class that initializes API client and service modules
-- **Service Modules**: 
+- **Service Modules**:
   - `src/movies/movies.ts` - Movie-related API endpoints
   - `src/people/people.ts` - People-related API endpoints
+  - `src/tv/tv.ts` - TV-related API endpoints
+  - `src/genres/genres.ts` - Genre lookup endpoints
+  - `src/configuration/configuration.ts` - TMDB configuration (image base URLs, countries, languages, etc.)
+  - `src/trending/trending.ts` - Trending content endpoints
 - **Utilities**:
   - `src/utils/apiURL.ts` - URL builder for TMDB API
   - `src/utils/applyCaseMiddleware.ts` - Transforms API responses from snake_case to camelCase

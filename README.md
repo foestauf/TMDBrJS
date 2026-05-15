@@ -148,6 +148,31 @@ const combinedCredits = await client.people.getCombinedCredits('287');
 const images = await client.people.getImages('287');
 ```
 
+### Genres
+
+```typescript
+const movieGenres = await client.genres.movies();
+const tvGenres = await client.genres.tv();
+```
+
+### Configuration
+
+```typescript
+const config = await client.configuration.details();
+// config.images.secureBaseUrl + size + filePath builds a poster URL
+const countries = await client.configuration.countries();
+const languages = await client.configuration.languages();
+```
+
+### Trending
+
+```typescript
+const trending = await client.trending.all('day');
+const trendingMovies = await client.trending.movies('week');
+const trendingTv = await client.trending.tv('day');
+const trendingPeople = await client.trending.people('week');
+```
+
 ## Advanced Features
 
 ### Type-Safe append_to_response
