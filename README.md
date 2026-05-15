@@ -173,6 +173,46 @@ const trendingTv = await client.trending.tv('day');
 const trendingPeople = await client.trending.people('week');
 ```
 
+### Search
+
+```typescript
+const results = await client.search.multi('Dune', { page: 1 });
+const movies = await client.search.movies('The Matrix', { year: 1999 });
+const tv = await client.search.tv('The Office', { firstAirDateYear: 2005 });
+const people = await client.search.people('Tilda Swinton');
+```
+
+For `multi`, results carry a `mediaType` discriminator:
+
+```typescript
+const results = await client.search.multi('Foo');
+for (const r of results.results) {
+  if (r.mediaType === 'movie') console.log(r.title);
+  else if (r.mediaType === 'tv') console.log(r.name);
+  else console.log(r.name); // person
+}
+```
+
+### Discover
+
+```typescript
+const popular2026 = await client.discover.movies({
+  sortBy: 'popularity.desc',
+  withGenres: [28, 12],
+  primaryReleaseYear: 2026,
+  voteAverageGte: 7,
+  page: 2,
+});
+
+const recentDrama = await client.discover.tv({
+  sortBy: 'first_air_date.desc',
+  withGenres: [18],
+  firstAirDateYear: 2025,
+});
+```
+
+Number arrays are joined with `,` (TMDB's AND semantics). To express OR, pass the value as a `|`-joined string: `withGenres: '28|12'`.
+
 ## Advanced Features
 
 ### Type-Safe append_to_response
