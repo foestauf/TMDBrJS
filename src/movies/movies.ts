@@ -16,6 +16,7 @@ import {
   ExternalIds,
   AccountStates,
 } from './types/MovieCast.js';
+import type { NowPlayingMovies, UpcomingMovies } from './types/Lists';
 import { BaseService } from '../utils/BaseService';
 import ApiURL from '../utils/apiURL';
 
@@ -74,6 +75,12 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
    */
   async getMovieCredits(id: string | number): Promise<MovieCredits> {
     return this.getCredits(id);
+  }
+
+  async getNowPlaying(page?: number): Promise<NowPlayingMovies> {
+    const url = new ApiURL('movie/now_playing');
+    if (page) url.appendParam('page', page.toString());
+    return this.apiClient.get<NowPlayingMovies>(url.toString());
   }
 }
 
