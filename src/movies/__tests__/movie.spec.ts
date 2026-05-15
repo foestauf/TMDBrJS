@@ -287,4 +287,17 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining(`movie/${movieId}/credits`));
     });
   });
+
+  describe('getNowPlaying', () => {
+    it('hits movie/now_playing', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [], dates: { maximum: '', minimum: '' } });
+      await tmdb.movies.getNowPlaying();
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/now_playing'));
+    });
+    it('passes the page param when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ results: [], dates: { maximum: '', minimum: '' } });
+      await tmdb.movies.getNowPlaying(4);
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('page=4'));
+    });
+  });
 });
