@@ -21,7 +21,7 @@ function applyBaseSearchParams(url: ApiURL, query: string, opts?: BaseSearchOpti
 }
 
 class Search {
-  constructor(private apiClient: IApiClient) {}
+  constructor(private readonly apiClient: IApiClient) {}
 
   async multi(query: string, opts?: BaseSearchOptions): Promise<MultiSearchResponse> {
     const url = new ApiURL('search/multi');

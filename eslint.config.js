@@ -26,6 +26,7 @@ export default [
     rules: {
       ...tseslint.configs['strict-type-checked'].rules,
       '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/prefer-readonly': 'error',
     },
   },
   {

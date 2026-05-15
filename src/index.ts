@@ -37,7 +37,7 @@ class Client {
   private readonly baseUrl: string;
   private readonly language: string;
 
-  constructor(private config: IConfig) {
+  constructor(private readonly config: IConfig) {
     this.version = config.version ?? '3';
     this.baseUrl = config.baseUrl ?? 'https://api.themoviedb.org';
     this.language = config.language ?? 'en-US';

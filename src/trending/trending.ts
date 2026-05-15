@@ -9,7 +9,7 @@ import type {
 } from './types/Trending';
 
 class Trending {
-  constructor(private apiClient: IApiClient) {}
+  constructor(private readonly apiClient: IApiClient) {}
 
   async all(window: TrendingWindow): Promise<TrendingAllResponse> {
     const url = new ApiURL(`trending/all/${window}`);

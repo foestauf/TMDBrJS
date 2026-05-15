@@ -9,7 +9,7 @@ import type {
 } from './types/Configuration';
 
 class Configuration {
-  constructor(private apiClient: IApiClient) {}
+  constructor(private readonly apiClient: IApiClient) {}
 
   async details(): Promise<ConfigurationDetails> {
     const url = new ApiURL('configuration');

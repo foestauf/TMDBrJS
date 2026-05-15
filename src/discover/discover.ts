@@ -9,7 +9,7 @@ import type {
 } from './types/Discover';
 
 class Discover {
-  constructor(private apiClient: IApiClient) {}
+  constructor(private readonly apiClient: IApiClient) {}
 
   async movies(query?: MovieDiscoverQuery): Promise<DiscoverMoviesResponse> {
     const url = new ApiURL('discover/movie');
