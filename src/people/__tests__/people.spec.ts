@@ -100,4 +100,20 @@ describe('People', () => {
       expect(result).toEqual({ id: 1, name: 'Latest Person' });
     });
   });
+
+  describe('getChanges', () => {
+    it('hits person/{id}/changes', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ changes: [] });
+      await tmdb.people.getChanges('287');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('person/287/changes'));
+    });
+    it('passes startDate, endDate, and page when provided', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ changes: [] });
+      await tmdb.people.getChanges('287', '2026-01-01', '2026-02-01', 2);
+      const calledWith = (tmdb.apiClient.get as unknown as { mock: { calls: [string][] } }).mock.calls[0][0];
+      expect(calledWith).toContain('start_date=2026-01-01');
+      expect(calledWith).toContain('end_date=2026-02-01');
+      expect(calledWith).toContain('page=2');
+    });
+  });
 });
