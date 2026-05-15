@@ -103,6 +103,12 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     const url = new ApiURL(`movie/${id.toString()}/videos`);
     return this.apiClient.get<Videos>(url.toString());
   }
+
+  async getReviews(id: string | number, page?: number): Promise<Reviews> {
+    const url = new ApiURL(`movie/${id.toString()}/reviews`);
+    if (page) url.appendParam('page', page.toString());
+    return this.apiClient.get<Reviews>(url.toString());
+  }
 }
 
 export default Movies;
