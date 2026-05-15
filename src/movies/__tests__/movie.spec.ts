@@ -330,4 +330,12 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/images'));
     });
   });
+
+  describe('getVideos', () => {
+    it('hits movie/{id}/videos', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, results: [] });
+      await tmdb.movies.getVideos('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/videos'));
+    });
+  });
 });

@@ -98,6 +98,11 @@ class Movies extends BaseService<AppendOptions, MovieAppendResponseMap> {
     const url = new ApiURL(`movie/${id.toString()}/images`);
     return this.apiClient.get<Images>(url.toString());
   }
+
+  async getVideos(id: string | number): Promise<Videos> {
+    const url = new ApiURL(`movie/${id.toString()}/videos`);
+    return this.apiClient.get<Videos>(url.toString());
+  }
 }
 
 export default Movies;
