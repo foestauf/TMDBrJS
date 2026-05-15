@@ -11,6 +11,7 @@ import {
   Translations,
 } from './types/Person';
 import { MovieCredits } from './types/MovieCredit';
+import type { PersonChanges } from './types/Changes';
 import ApiURL from '../utils/apiURL';
 import { BaseService, BaseAppendResponse } from '../utils/BaseService';
 
@@ -75,6 +76,19 @@ class People extends BaseService<AppendOptions, PeopleAppendResponseMap> {
   async getLatest(): Promise<Person> {
     const url = new ApiURL('person/latest');
     return this.apiClient.get<Person>(url.toString());
+  }
+
+  async getChanges(
+    id: string | number,
+    startDate?: string,
+    endDate?: string,
+    page?: number,
+  ): Promise<PersonChanges> {
+    const url = new ApiURL(`person/${id.toString()}/changes`);
+    if (startDate) url.appendParam('start_date', startDate);
+    if (endDate) url.appendParam('end_date', endDate);
+    if (page) url.appendParam('page', page.toString());
+    return this.apiClient.get<PersonChanges>(url.toString());
   }
 }
 
