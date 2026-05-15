@@ -3,6 +3,7 @@ import People from './people/people';
 import Tv from './tv/tv';
 import Genres from './genres/genres';
 import Configuration from './configuration/configuration';
+import Trending from './trending/trending';
 import { camelCase } from 'change-case';
 import { applyCaseMiddleware } from './utils/applyCaseMiddleware';
 import { Person } from './people/types/Person';
@@ -27,6 +28,7 @@ class Client {
   tv: Tv;
   genres: Genres;
   configuration: Configuration;
+  trending: Trending;
   private readonly version: string;
   private readonly baseUrl: string;
   private readonly language: string;
@@ -80,6 +82,7 @@ class Client {
     this.tv = new Tv(this.apiClient);
     this.genres = new Genres(this.apiClient);
     this.configuration = new Configuration(this.apiClient);
+    this.trending = new Trending(this.apiClient);
   }
 
   getVersion(): string {
@@ -95,3 +98,4 @@ export { Client };
 export type { Person, MovieCredits, TvShow, TvCredits };
 export type { Genre, GenreList } from './genres/types/Genre';
 export type { ConfigurationDetails, CountryConfig, LanguageConfig, JobConfig, TimezoneConfig } from './configuration/types/Configuration';
+export type { TrendingWindow, TrendingMulti, TrendingAllResponse, TrendingMoviesResponse, TrendingTvResponse, TrendingPeopleResponse } from './trending/types/Trending';
