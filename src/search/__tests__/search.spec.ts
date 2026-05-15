@@ -28,4 +28,35 @@ describe('Search', () => {
       expect(calledWith).toContain('include_adult=true');
     });
   });
+
+  describe('movies', () => {
+    it('hits search/movie with movie-specific options', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.search.movies('Dune', { year: 2024, primaryReleaseYear: 2024, region: 'US' });
+      const calledWith = (tmdb.apiClient.get as unknown as { mock: { calls: [string][] } }).mock.calls[0][0];
+      expect(calledWith).toContain('search/movie');
+      expect(calledWith).toContain('query=Dune');
+      expect(calledWith).toContain('year=2024');
+      expect(calledWith).toContain('primary_release_year=2024');
+      expect(calledWith).toContain('region=US');
+    });
+  });
+
+  describe('tv', () => {
+    it('hits search/tv with firstAirDateYear', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.search.tv('The Office', { firstAirDateYear: 2005 });
+      const calledWith = (tmdb.apiClient.get as unknown as { mock: { calls: [string][] } }).mock.calls[0][0];
+      expect(calledWith).toContain('search/tv');
+      expect(calledWith).toContain('first_air_date_year=2005');
+    });
+  });
+
+  describe('people', () => {
+    it('hits search/person', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ page: 1, results: [], totalPages: 1, totalResults: 0 });
+      await tmdb.search.people('Tilda Swinton');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('search/person'));
+    });
+  });
 });
