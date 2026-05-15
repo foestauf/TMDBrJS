@@ -41,6 +41,8 @@ npm run commit        # Use commitizen for conventional commits
   - `src/movies/movies.ts` - Movie-related API endpoints
   - `src/people/people.ts` - People-related API endpoints
   - `src/tv/tv.ts` - TV-related API endpoints
+  - `src/search/search.ts` - Search endpoints (multi, movies, tv, people, keywords, companies, collections)
+  - `src/discover/discover.ts` - Discover endpoints with typed query objects
   - `src/genres/genres.ts` - Genre lookup endpoints
   - `src/configuration/configuration.ts` - TMDB configuration (image base URLs, countries, languages, etc.)
   - `src/trending/trending.ts` - Trending content endpoints
