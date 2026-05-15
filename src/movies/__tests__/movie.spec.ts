@@ -388,4 +388,12 @@ describe('Movies', () => {
       expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/translations'));
     });
   });
+
+  describe('getExternalIds', () => {
+    it('hits movie/{id}/external_ids', async () => {
+      vi.spyOn(tmdb.apiClient, 'get').mockResolvedValue({ id: 550, imdbId: 'tt0137523' });
+      await tmdb.movies.getExternalIds('550');
+      expect(tmdb.apiClient.get).toHaveBeenCalledWith(expect.stringContaining('movie/550/external_ids'));
+    });
+  });
 });
