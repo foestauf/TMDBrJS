@@ -56,6 +56,8 @@
     "@commitlint/cli": "^21.0.0",
     "@commitlint/config-conventional": "^21.0.0",
     "@eslint/js": "^10.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/jest": "30.0.0",
     "@types/node": "^24.0.0",
     "@types/node-fetch": "^2.6.11",
@@ -63,6 +65,7 @@
     "@typescript-eslint/parser": "8.67.0",
     "@vitest/coverage-v8": "^4.0.0",
     "commitizen": "^4.3.0",
+    "conventional-changelog-conventionalcommits": "^10.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^17.0.0",
     "eslint": "10.8.1",
@@ -72,13 +75,11 @@
     "node-fetch": "^3.0.0",
     "prettier": "3.9.6",
     "publint": "^0.3.15",
+    "semantic-release": "^25.0.0",
     "tsdown": "^0.22.0",
     "typescript": "6.0.3",
     "typescript-eslint": "^8.0.0",
-    "vitest": "^4.0.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "semantic-release": "^25.0.0"
+    "vitest": "^4.0.0"
   },
   "dependencies": {
     "change-case": "^5.4.4",
@@ -97,8 +98,18 @@
       "main"
     ],
     "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits"
+        }
+      ],
       "@semantic-release/changelog",
       [
         "@semantic-release/npm",
