@@ -10,10 +10,11 @@ TMDBrJS is a TypeScript library for interacting with The Movie Database (TMDB) A
 
 ### Build
 ```bash
-npm run build          # Build dual ESM+CJS with tsdown to dist/
+npm run build          # Build the ESM bundle with tsdown to dist/
 npm run dev           # Watch mode for development
 npm run check-types   # Type check without emitting files
 npm run validate-package  # Validate package exports and types
+npm run test:package      # Smoke test that the built bundle loads from ESM and CJS
 ```
 
 ### Testing
@@ -71,15 +72,14 @@ The main client (`TmdbClient`) creates an HTTP client with:
 ## Important Implementation Details
 
 1. **ESM Module**: This is a pure ESM package (type: "module" in package.json)
-2. **Node Version**: Requires Node.js 20+
-3. **Build System**: Uses tsdown (Rust-powered bundler) for fast dual-format builds
-4. **Build Output**: Dual ESM+CJS bundles in `dist/` directory with proper type declarations
-   - ESM: `index.mjs` with `index.d.mts` types
-   - CJS: `index.cjs` with `index.d.cts` types
-5. **Package Validation**: Automated validation with @arethetypeswrong/cli and publint
-6. **Case Conversion**: All TMDB API responses are automatically converted from snake_case to camelCase
-7. **Error Handling**: API errors are caught and re-thrown with descriptive messages
-8. **Type Safety**: Extensive use of TypeScript generics for append_to_response functionality
+2. **Node Version**: Requires Node.js 22.12+
+3. **Build System**: Uses tsdown (Rust-powered bundler)
+4. **Build Output**: A single ESM bundle in `dist/` — `index.mjs` with `index.d.mts` types. **Do not reintroduce a CommonJS build.** The package is ESM-only as of v2.0.0; CommonJS consumers load it through Node's `require(esm)`, which is why `engines.node` is `>=22.12` and why `attw` is run with `--ignore-rules cjs-resolves-to-esm` (that warning describes the intended trade-off, not a defect).
+5. **No top-level await**: `require(esm)` only works on a synchronous module graph. A top-level await anywhere in the bundle or its dependencies silently breaks every CommonJS consumer, so `scripts/smoke-test.mjs` asserts both load paths in separate processes (the isolation matters — within one process an earlier `import()` caches the module and a later `require()` never exercises the sync path).
+6. **Package Validation**: Automated validation with @arethetypeswrong/cli and publint
+7. **Case Conversion**: All TMDB API responses are automatically converted from snake_case to camelCase
+8. **Error Handling**: API errors are caught and re-thrown with descriptive messages
+9. **Type Safety**: Extensive use of TypeScript generics for append_to_response functionality
 
 ## Release Process
 - Uses semantic-release for automated versioning and publishing

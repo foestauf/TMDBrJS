@@ -10,7 +10,7 @@ TMDBrJS is a TypeScript library for interacting with [The Movie Database (TMDB)]
 
 - 🎯 **Full TypeScript support** with comprehensive type definitions
 - 🔄 **Automatic camelCase conversion** of TMDB API responses
-- 📦 **ESM and CommonJS** support for all JavaScript environments
+- 📦 **ESM-only** modern package, loadable from CommonJS via Node's `require(esm)`
 - 🎬 **Complete movie endpoints** including popular, top-rated, and detailed movie information
 - 👥 **People endpoints** with credits and media information
 - 🔍 **Advanced append_to_response** support with type safety
@@ -25,7 +25,7 @@ This package is a personal project and may not be actively maintained or thoroug
 
 ## Requirements
 
-- Node.js 18 or higher
+- Node.js 22.12 or higher
 - TMDB API key (get one at [themoviedb.org](https://www.themoviedb.org/settings/api))
 
 ## Installation
@@ -40,6 +40,28 @@ yarn add tmdbrjs
 # pnpm
 pnpm add tmdbrjs
 ```
+
+## Module Format
+
+TMDBrJS is an **ESM-only** package. It ships a single ESM bundle with type declarations and does not publish a CommonJS build.
+
+```typescript
+import { Client } from 'tmdbrjs';
+```
+
+CommonJS projects can still consume it. On Node.js 22.12 and later, `require()` transparently loads ESM modules whose graph is synchronous, and TMDBrJS is deliberately kept free of top-level await so this keeps working:
+
+```javascript
+const { Client } = require('tmdbrjs');
+```
+
+If you are on an older runtime, or in a toolchain that intercepts `require` and does not implement `require(esm)` — Jest running in CommonJS mode without ESM transforms is the common case — use a dynamic import instead:
+
+```javascript
+const { Client } = await import('tmdbrjs');
+```
+
+TypeScript consumers should use `"moduleResolution": "bundler"`, `"node16"`, or `"nodenext"`. The legacy `"node"` (node10) resolution is not supported.
 
 ## Getting Started
 
@@ -273,7 +295,7 @@ console.log(movie.backdropPath);
 
 ### Prerequisites
 
-- Node.js >= 18
+- Node.js >= 22.12
 - pnpm (recommended) or npm
 - TMDB API key for running tests
 
@@ -298,7 +320,7 @@ TMDB_API_KEY=your_api_key_here
 ### Available Scripts
 
 ```bash
-pnpm build          # Build both ESM and CommonJS versions
+pnpm build          # Build the ESM bundle and type declarations
 pnpm dev           # Watch mode for development
 pnpm test          # Run unit tests with coverage
 pnpm test:e2e      # Run end-to-end tests
@@ -306,6 +328,7 @@ pnpm lint          # Run ESLint
 pnpm lint:fix      # Fix ESLint issues
 pnpm format        # Format code with Prettier
 pnpm check-types   # Type check without building
+pnpm test:package  # Verify the built bundle loads from ESM and CommonJS
 ```
 
 ### Running Tests
