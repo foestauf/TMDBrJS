@@ -4,20 +4,13 @@
   "description": "A TypeScript wrapper for The Movie Database (TMDB) API",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.mjs",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12"
   },
   "packageManager": "pnpm@11.22.0",
   "type": "module",
@@ -26,21 +19,21 @@
     "clean": "rm -rf dist || true",
     "build": "tsdown",
     "check-types": "tsc --noEmit --pretty",
-    "validate-package": "attw --pack . && publint",
+    "validate-package": "attw --pack . --ignore-rules cjs-resolves-to-esm && publint",
     "commit": "cz",
     "dev": "tsdown --watch",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "test": "vitest --coverage run",
+    "test:package": "node scripts/smoke-test.mjs",
     "test:e2e": "vitest --config vitest.e2e.config.ts run",
     "test:e2e:watch": "vitest --config vitest.e2e.config.ts",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run lint && npm run validate-package",
+    "prepublishOnly": "npm run lint && npm run validate-package && npm run test:package",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "check-api": "NODE_OPTIONS=\"--loader ts-node/esm\" ts-node --project scripts/tsconfig.json scripts/check-api-compatibility.ts",
     "validate-types": "tsc --noEmit"
   },
   "repository": {
@@ -79,7 +72,6 @@
     "node-fetch": "^3.0.0",
     "prettier": "3.9.6",
     "publint": "^0.3.15",
-    "ts-node": "^10.9.2",
     "tsdown": "^0.22.0",
     "typescript": "6.0.3",
     "typescript-eslint": "^8.0.0",

@@ -27,11 +27,13 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm build
+      - name: Verify built package loads (ESM + require(esm))
+        run: pnpm test:package
 
   test:
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [22.x, 24.x]
 
     name: Run all tests
     runs-on: ubuntu-latest
@@ -70,6 +72,9 @@ jobs:
 
       - name: Validate package exports
         run: pnpm validate-package
+
+      - name: Verify built package loads (ESM + require(esm))
+        run: pnpm test:package
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v7
