@@ -1,3 +1,5 @@
+## [2.0.0](https://github.com/foestauf/TMDBrJS/compare/v1.10.0...v2.0.0) (2026-08-19)
+
 # [1.10.0](https://github.com/foestauf/TMDBrJS/compare/v1.9.0...v1.10.0) (2026-05-15)
 
 

@@ -40,9 +40,7 @@ export interface CollectionResult {
 }
 
 export type MultiSearchResult =
-  | (Movie & { mediaType: 'movie' })
-  | (TvShow & { mediaType: 'tv' })
-  | (Person & { mediaType: 'person' });
+  (Movie & { mediaType: 'movie' }) | (TvShow & { mediaType: 'tv' }) | (Person & { mediaType: 'person' });
 
 export type MultiSearchResponse = Paginated<MultiSearchResult>;
 export type MovieSearchResponse = Paginated<Movie>;

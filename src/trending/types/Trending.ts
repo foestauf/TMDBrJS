@@ -6,9 +6,7 @@ import type { Paginated } from '../../utils/types';
 export type TrendingWindow = 'day' | 'week';
 
 export type TrendingMulti =
-  | (Movie & { mediaType: 'movie' })
-  | (TvShow & { mediaType: 'tv' })
-  | (Person & { mediaType: 'person' });
+  (Movie & { mediaType: 'movie' }) | (TvShow & { mediaType: 'tv' }) | (Person & { mediaType: 'person' });
 
 export type TrendingMoviesResponse = Paginated<Movie>;
 export type TrendingTvResponse = Paginated<TvShow>;
